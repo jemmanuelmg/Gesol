@@ -1,0 +1,36 @@
+.gob-en-linea {
+  background: url('../images/gob-enlinea.png') top center;
+  /*background-size: cover;*/
+  background-size: contain;  
+  height: 52px;
+  /*max-width: 1200px; */
+  width: 100%;
+  margin: -12px auto 0;
+}
+.ubicacion {
+  background-color: white;
+  font-size: 11px;
+  padding: 20px;
+  /*max-width: 1200px; */
+  width: 100%;
+  margin: 0 auto 50px;
+  margin: 0 auto;  
+}
+.brand {
+  background-color: #BBD035;
+  border-top: 1px solid mediumseagreen;
+  height: 50px;
+  /*position: fixed;
+  bottom: 0;*/
+  width: 100%;
+  /*max-width: 1200px;*/
+  margin: 0 auto;
+}
+.brand p {
+  text-shadow: 1px 1px 0px rgba(255,255,255,.6);
+  vertical-align: middle;
+  line-height: 50px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: bold;
+}
