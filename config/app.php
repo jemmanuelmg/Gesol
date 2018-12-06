@@ -178,6 +178,7 @@ return [
         Gesol\Providers\RouteServiceProvider::class,
         Codedge\Fpdf\FpdfServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
+        Nexmo\Laravel\NexmoServiceProvider::class,
 
     ],
 
@@ -231,6 +232,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class,
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+        'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
 
     ],
 
