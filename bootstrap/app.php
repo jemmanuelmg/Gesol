@@ -42,6 +42,18 @@ $app->singleton(
 );
 
 /*
+|-------------------------------------------------------------------------
+|Registro de aplicaciónes (que lo requieran como nexmo)
+|-------------------------------------------------------------------------
+| 
+| Ciertas APIs como nexmo requieren un registro adicional en este archivo.
+|
+|
+*/
+
+$app->register(Nexmo\Laravel\NexmoServiceProvider::class);
+
+/*
 |--------------------------------------------------------------------------
 | Return The Application
 |--------------------------------------------------------------------------

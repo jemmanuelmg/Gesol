@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9de74a8c62c9dc287451d2d5f25a4d5",
+    "content-hash": "dd18a56eebbc8508a5398c3f50de428b",
     "packages": [
         {
             "name": "codedge/laravel-fpdf",
@@ -1533,6 +1533,51 @@
                 "schedule"
             ],
             "time": "2017-01-23T04:29:33+00:00"
+        },
+        {
+            "name": "myclabs/deep-copy",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/myclabs/DeepCopy.git",
+                "reference": "3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e",
+                "reference": "3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "doctrine/collections": "^1.0",
+                "doctrine/common": "^2.6",
+                "phpunit/phpunit": "^4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DeepCopy\\": "src/DeepCopy/"
+                },
+                "files": [
+                    "src/DeepCopy/deep_copy.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Create deep copies (clones) of your objects",
+            "keywords": [
+                "clone",
+                "copy",
+                "duplicate",
+                "object",
+                "object graph"
+            ],
+            "time": "2017-10-19T19:58:43+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -3186,6 +3231,65 @@
             "time": "2018-11-20T16:10:26+00:00"
         },
         {
+            "name": "telesign/telesign",
+            "version": "v2.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TeleSign/php_telesign.git",
+                "reference": "b5ef827c176af404368ace03598706fa8212491f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TeleSign/php_telesign/zipball/b5ef827c176af404368ace03598706fa8212491f",
+                "reference": "b5ef827c176af404368ace03598706fa8212491f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xml": "*",
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=5.6.0",
+                "psr/http-message": "^1.0",
+                "ramsey/uuid": "^3.5"
+            },
+            "require-dev": {
+                "composer/semver": "^1.4",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "telesign\\sdk\\": "src/"
+                },
+                "files": [
+                    "src/util.php",
+                    "src/version/version.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "TeleSign Corp.",
+                    "email": "support@telesign.com",
+                    "homepage": "https://www.telesign.com"
+                }
+            ],
+            "description": "TeleSign SDK",
+            "homepage": "https://github.com/telesign/php_telesign",
+            "keywords": [
+                "Authentication",
+                "identity",
+                "messaging",
+                "mobile",
+                "sms",
+                "telesign",
+                "voice"
+            ],
+            "time": "2018-05-22T23:45:18+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.1",
             "source": {
@@ -3561,51 +3665,6 @@
                 "testing"
             ],
             "time": "2018-11-13T20:50:16+00:00"
-        },
-        {
-            "name": "myclabs/deep-copy",
-            "version": "1.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e",
-                "reference": "3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6 || ^7.0"
-            },
-            "require-dev": {
-                "doctrine/collections": "^1.0",
-                "doctrine/common": "^2.6",
-                "phpunit/phpunit": "^4.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "DeepCopy\\": "src/DeepCopy/"
-                },
-                "files": [
-                    "src/DeepCopy/deep_copy.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Create deep copies (clones) of your objects",
-            "keywords": [
-                "clone",
-                "copy",
-                "duplicate",
-                "object",
-                "object graph"
-            ],
-            "time": "2017-10-19T19:58:43+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",

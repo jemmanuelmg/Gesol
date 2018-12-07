@@ -14,7 +14,9 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
-        "nexmo/laravel": "^1.0"
+        "myclabs/deep-copy": "^1.7",
+        "nexmo/laravel": "^1.0",
+        "telesign/telesign": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -69,4 +69,9 @@ Route::post('resetPassword/reset', 'resetPassword\ResetPasswordController@reset'
 	 */
 Route::get('metricas', 'MetricasController@generarMetricas');
 
+	/**
+	* Rutas para nexmo sms
+	*/
+Route::get('nexmo', 'smsController@test');
+
 
