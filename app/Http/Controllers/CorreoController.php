@@ -39,29 +39,56 @@ class CorreoController extends Controller
      */
     public function store(ValidaCorreoContactoRequest $request)
     {
+
+        $recaptcha = $request['g-recaptcha-response'];
+        
+        if ($recaptcha != '') {
+
+            $secret = '6Lf5vDAUAAAAABQXMPseu-k_mAgthb6Ur9RbGuio';
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $var = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $recaptcha . '&remoteip=' . $ip);
+            $array = json_decode($var, true);
+
+            if ($array['success']) {
+                $humano = true;
+            }else{
+                Session::flash('mensaje-error', 'Porfavor, complete la validacion "No soy un robot" correctamente');
+                return Redirect::to('/usuarios/create');
+            }
+
+        }else{
+            Session::flash('mensaje-error', 'Porfavor, complete la validacion "No soy un robot" correctamente');
+            return Redirect::to('/usuarios/create');
+        }
+
+
+        if($humano){
+
         //Arreglo de datos para funcion enviar
-        $datosMensaje = [
-            'nombre' => $request['nombre'],
-            'correo' => $request['correo'], 
-            'mensaje' => $request['mensaje']
-        ];
+            $datosMensaje = [
+                'nombre' => $request['nombre'],
+                'correo' => $request['correo'], 
+                'mensaje' => $request['mensaje']
+            ];
 
         //Datos adicionales para funcion anonima
 
-        $usuCorreo = $request['correo'];
-        $usuNombre = $request['nombre'];
-        $usuAsunto = $request['asunto'];
+            $usuCorreo = $request['correo'];
+            $usuNombre = $request['nombre'];
+            $usuAsunto = $request['asunto'];
 
-        Mail::send('correos.plantillaContacto', $datosMensaje, function (Message $msj) use ($usuCorreo, $usuNombre, $usuAsunto){
- 
-            $msj->to('gesol.uts@gmail.com', 'Gesol')
+            Mail::send('correos.plantillaContacto', $datosMensaje, function (Message $msj) use ($usuCorreo, $usuNombre, $usuAsunto){
+               
+                $msj->to('gesol.uts@gmail.com', 'Gesol')
                 ->from($usuCorreo,  $usuNombre)
                 ->subject('Contacto a Gesol: ' . $usuAsunto);
-        });
+            });
 
-        Session::flash('mensaje-exito', 'Mensaje enviado correctamente');
+            Session::flash('mensaje-exito', 'Mensaje enviado correctamente');
 
-        return Redirect::to('/');
+            return Redirect::to('/');
+
+        }
     }
 
     /**

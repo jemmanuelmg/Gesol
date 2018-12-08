@@ -75,29 +75,8 @@ class UsuarioController extends Controller
     //Para validacion el request debe venir de validacion
     public function store(ValidaUsuarioCreateRequest $request)
     {
-        $recaptcha = $request['g-recaptcha-response'];
-        
-        if ($recaptcha != '') {
 
-            $secret = '6Lf5vDAUAAAAABQXMPseu-k_mAgthb6Ur9RbGuio';
-            $ip = $_SERVER['REMOTE_ADDR'];
-            $var = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $recaptcha . '&remoteip=' . $ip);
-            $array = json_decode($var, true);
-
-            if ($array['success']) {
-                $humano = true;
-            }else{
-                Session::flash('mensaje-error', 'Porfavor, complete la validacion "No soy un robot" correctamente');
-                return Redirect::to('/usuarios/create');
-            }
-
-        }else{
-            Session::flash('mensaje-error', 'Porfavor, complete la validacion "No soy un robot" correctamente');
-            return Redirect::to('/usuarios/create');
-        }
-
-        if($humano){
-        //En caso de que el admin especifique el rol
+        if($request['token'] === $request['tokenRes']){
             if(isset($request['rol'])){
 
                 usuarios::create([
@@ -112,7 +91,7 @@ class UsuarioController extends Controller
                     'password'=> \Hash::make($request['password']),
                     'rol_id'=>$request['rol']
 
-                    ]);
+                ]);
 
                 Session::flash('mensaje-exito', 'Se ha ingresado un nuevo usuario satisfactoriamente por ADMIN');
                 return Redirect::to('/');
@@ -132,12 +111,16 @@ class UsuarioController extends Controller
                     'email'=>$request['correo'],
                     'password'=>\Hash::make($request['password'])
 
-                    ]);
+                ]);
 
                 Session::flash('mensaje-exito', 'Se ha ingresado un nuevo usuario satisfactoriamente');
                 return Redirect::to('/');
 
-            }
+            }    
+        }else{
+            
+            Session::flash('mensaje-error', 'El número de confirmación enviado a tu celular no coincide. Vuelve a intentarlo');
+            return Redirect::to('/usuarios/create');                
         }
         
     }
@@ -164,11 +147,11 @@ class UsuarioController extends Controller
     public function edit($usu_cedula)
     {
         //tambien puede usarse \Gesol\usuarios::
-       $usuario = usuarios::find($usu_cedula);
+     $usuario = usuarios::find($usu_cedula);
 
        //En vez de compact se puede escribir un array como segundo parametro ['nombre' => '$valor'].
-       return view('vistasUsuarios.edit', compact('usuario'));
-   }
+     return view('vistasUsuarios.edit', compact('usuario'));
+ }
 
     /**
      * Update the specified resource in storage.
@@ -182,44 +165,44 @@ class UsuarioController extends Controller
         //En caso de que el admin especifique el rol
         if(isset($request['rol'])){
             $usuario = new Usuarios();
-           $usuario = usuarios::find(Session('usu_cedula'));
+            $usuario = usuarios::find(Session('usu_cedula'));
 
-           $usuario->usu_cedula = $request['cedula'];
-           $usuario->usu_nombres = $request['nombres'];
-           $usuario->usu_apellidos = $request['apellidos'];
-           $usuario->usu_genero = $request['genero'];
-           $usuario->usu_fechaNac = $request['fechaNac'];
-           $usuario->usu_telefono = $request['telefono'];
-           $usuario->email = $request['correo'];
-           $usuario->password = \Hash::make($request['password']);
-           $usuario->rol_id = $request['rol'];
+            $usuario->usu_cedula = $request['cedula'];
+            $usuario->usu_nombres = $request['nombres'];
+            $usuario->usu_apellidos = $request['apellidos'];
+            $usuario->usu_genero = $request['genero'];
+            $usuario->usu_fechaNac = $request['fechaNac'];
+            $usuario->usu_telefono = $request['telefono'];
+            $usuario->email = $request['correo'];
+            $usuario->password = \Hash::make($request['password']);
+            $usuario->rol_id = $request['rol'];
 
-           $usuario->save();
+            $usuario->save();
 
 
-           Session::flash('mensaje-exito', 'Se ha actualizado exitosamente por ADMIN');
-           return Redirect::to('/usuarios');
+            Session::flash('mensaje-exito', 'Se ha actualizado exitosamente por ADMIN');
+            return Redirect::to('/usuarios');
 
-       }else{
-        $usuario = new Usuarios();
-        $usuario = usuarios::find(Session('usu_cedula'));
+        }else{
+            $usuario = new Usuarios();
+            $usuario = usuarios::find(Session('usu_cedula'));
 
-        $usuario->usu_cedula = $request['cedula'];
-        $usuario->usu_nombres = $request['nombres'];
-        $usuario->usu_apellidos = $request['apellidos'];
-        $usuario->usu_genero = $request['genero'];
-        $usuario->usu_fechaNac = $request['fechaNac'];
-        $usuario->usu_telefono = $request['telefono'];
-        $usuario->email = $request['correo'];
-        $usuario->password = \Hash::make($request['password']);
+            $usuario->usu_cedula = $request['cedula'];
+            $usuario->usu_nombres = $request['nombres'];
+            $usuario->usu_apellidos = $request['apellidos'];
+            $usuario->usu_genero = $request['genero'];
+            $usuario->usu_fechaNac = $request['fechaNac'];
+            $usuario->usu_telefono = $request['telefono'];
+            $usuario->email = $request['correo'];
+            $usuario->password = \Hash::make($request['password']);
 
-        $usuario->save();
+            $usuario->save();
 
-        Session::flash('mensaje-exito', 'Se ha actualizado exitosamente');
-        return Redirect::to('/');
+            Session::flash('mensaje-exito', 'Se ha actualizado exitosamente');
+            return Redirect::to('/');
 
+        }
     }
-}
 
     /**
      * Remove the specified resource from storage.

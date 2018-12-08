@@ -6,7 +6,7 @@ Registrarse Gesol
 
 @section('estilos')
 @parent
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 @stop
 
@@ -49,7 +49,7 @@ Registrarse Gesol
 				</div>
 
 				<fieldset class="form-group row">
-					<legend class="col-form-legend col-sm-2">Genero *</legend>
+					<legend class="col-form-legend col-sm-2">Genero</legend>
 					<div class="col-sm-10">
 						<div class="form-check-inline">
 							<label class="form-check-label">
@@ -114,20 +114,26 @@ Registrarse Gesol
 				<div class="contenedor-azul">
 					<div class="form-group">
 
-						<label class="control-label" for="telefono">Telefono *:</label><p class="texto-gris"> Para confirmar tu cuenta debes introducir tu número celular al cual le será enviado un código de confirmación. Será valido por los siguientes 5 minutos.</p>
+						<label class="control-label" for="telefono">Telefono:</label>
+
+						<p class="texto-gris"> 
+							<span class="badge badge-info">info</span> Para confirmar tu cuenta debes introducir tu número celular al cual le será enviado un código de confirmación. Será valido por los siguientes 5 minutos.
+						</p>
 
 						<input type="number" id="input-telefono" class="form-control" name="telefono" placeholder="Introduzca su telefono" />
 
-						<button id="btn-telefono"class="btn btn-primary btn-sm" type="button" data-toggle="popover" data-trigger="focus" data-placement="top" title = "Enviado" data-content="SMS enviado. Porfavor revisalo para continuar"><i class="fas fa-user-check fa-1x" aria-hidden="true"></i></button>
+						<button id="btn-telefono"class="btn btn-primary btn-sm" type="button" data-toggle="popover" data-trigger="focus" data-placement="top" title="Verificando.." data-content="Se enviará un mensaje de texto al número">
+							
+							<i class="fas fa-user fa-1x" aria-hidden="true"></i>
+							<div id="div-spin"><i class="fas fa-sync fa-spin fa-1x" aria-hidden="true"></i></div>
 
-						<center>
-							<div id="div-spin" class="invisible"><i class="fas fa-sync fa-spin fa-1x" aria-hidden="true"></i></div>
-						</center>
+						</button>
+
 
 					</div>
 					<br>
 
-					<div class="invisible" id="div-verificar-tel"> 
+					<div id="div-verificar-tel"> 
 						<label id="lbl-token" class="control-label" for="token">Código:</label> 
 
 						<input type="number" id="input-token" name="token" class="form-control" placeholder="Introduzce tu codigo de confirmación" />
@@ -138,10 +144,6 @@ Registrarse Gesol
 
 
 				</div>
-
-				<br>
-
-				<div class="g-recaptcha" data-sitekey="6Lf5vDAUAAAAAB-fgq6MBtZjAqKPOc0Ljw7fZeJX"></div>
 
 				<br>
 

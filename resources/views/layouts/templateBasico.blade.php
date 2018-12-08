@@ -31,7 +31,7 @@
 
       <div class="container">        
         <!-- LOGO -->
-        <a class="navbar-brand" href="/"><img src={{asset('images/gesol_logo_new2.png')}} alt="Logo" height="60px"></a>
+        <a class="navbar-brand" href="/"><img src={{asset('images/gesol_logo_new2.png')}} alt="Logo" height="55px"></a>
         <!-- FIN LOGO-->
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

@@ -327,7 +327,6 @@ code {
   display: none;
 }
 
-
-.invisible2{
-  margin-top: 15px;
+#div-spin{
+  display:inline;
 }

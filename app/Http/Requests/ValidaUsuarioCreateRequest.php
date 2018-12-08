@@ -37,9 +37,12 @@ class ValidaUsuarioCreateRequest extends FormRequest
             'apellidos'=>'required|string|min:3',
             'genero'=>'required|string|in:Femenino,Masculino',
             'fechaNac'=>'required|string',
-            'telefono'=>'required|numeric',
+            'telefono'=>'required|numeric|min:10',
+            'token' => 'required|numeric|min:4',
+            'token.same:tokenRes' => 'El codigo de confirmación enviado a tu celular no coincide.',
             'correo'=>'required|email|unique:usuarios,email',
-            'password'=>'required|string|min:4|same:passwordRepeat',
+            'password'=>'required|string|min:4',
+            'password.same:passwordRepeat' => 'Las contraseñas no coinciden',
             'rol'=>'numeric|in:1,2,3,4,5'
         ];
     }

@@ -2,82 +2,66 @@ $(document).ready(function() {
 
 	var inputTelefono = $("#input-telefono");
 	var botonTelefono = $("#btn-telefono");
-	
-	botonTelefono.click(function(e){
 
-		e.preventDefault();
-
-		alert("Ruta => http://127.0.0.1:8000/confirmarSms/" + inputTelefono.val());
-
-		$.ajax({
-			url: 'http://127.0.0.1:8000/confirmarSms/' + inputTelefono.val(),
-			type:'GET',
-			dataType:'json',
-			complete: function(data) {
-				alert('complete:');
-
-				alert(data.msg);
-
-			},
-			success:function(data) {
-
-				alert('success:');
-
-				alert(data.msg);
-			},
-
-		})
-
-	});
-
-	/*
 	var divVerificarTel = $('#div-verificar-tel');
 	var inputToken = $("#input-token");
 	var inputTokenRes = $("#input-token-res");
 	var lblToken = $("#lbl-token");
 	var divSpin = $("#div-spin");
-
-
-	//Desplegar funcionalidad al botón
+	
+	divVerificarTel.hide();
+	divSpin.hide();
+	
 	botonTelefono.click(function(e){
 
 		e.preventDefault();
 
-		//Llamada ajax
-		$.ajax({
-			url: '/verificarSms',
+		if(inputTelefono.val().length === 10){
 
-			data: {
-				telefono:inputTelefono.val()
-			},
+			$.ajax({
+				url: 'http://127.0.0.1:8000/confirmarSms/'+'57'+inputTelefono.val(),
+				type:'GET',
+				async:true,
+				dataType:'json',
 
-			type: 'GET',
-			async:true,
+				beforeSend: function(xhr){
+					divSpin.show(200);
+				}, 
 
-			beforeSend: function(xhr){
-				divSpin.css('display','block');
+			success: function(data){ // result o tambien llamado data
 
-			}, 
+				divVerificarTel.show(300);
+				inputTokenRes.val(data.token);
 
-			success: function(result){ // result o tambien llamado data
-				alert(result);
-				divVerificarTel.css('display','block');
-				inputTokenRes.val(result.token);
 			},
 
 			complete: function() {
-				divSpin.css('display','none');
+				divSpin.hide(200);
 			},
 
 			error: function(xhr, textStatus, errorThrown) {
-				alert("Error occured.please try again");
+				alert("eError en el AJAX Gesol");
 				console.log(JSON.stringify(xhr));
-        		console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+				console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
 			},
 
-		});
+		})
+
+		}else{
+			alert("Telefono no válido. \n Para continuar: 10 dígitos y sin prefijos (no +57)")
+
+		}
+		
 
 	});
 
-	*/
+	
+
 });
+
+
+
+/*
+botonTelefono.attr("title","Enviado");
+			botonTelefono.attr("data-content","SMS enviado. Porfavor revisalo para continuar");
+*/
