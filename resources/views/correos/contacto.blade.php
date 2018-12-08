@@ -13,7 +13,7 @@
 
 	        	<div class="col-md-12">
 	        		
-          			<h2 class="display-4"><center><strong>Contáctenos&nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o fa-2x" aria-hidden="true"></i></strong></center></h2>
+          			<h2 class="display-4"><center><strong>Contáctenos&nbsp;&nbsp;&nbsp;<i class="far fa-comments fa-2x" aria-hidden="true"></i></strong></center></h2>
 
 	        		{!!Form::open(['route' => 'contacto.store', 'method'=>'POST'])!!}          
 

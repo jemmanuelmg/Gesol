@@ -1,0 +1,333 @@
+/* ESTILOS CSS DE GESOL
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  background-color: #F1F1F1;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* CSS DEL NAVBAR */
+.btn.focus, .btn:focus {
+      outline: 0;
+      box-shadow: none;
+}
+.navbar-dark .navbar-nav .nav-link,.navbar-dark .navbar-nav .nav-link:hover {
+/* color: rgba(255,255,255,.5); */
+  color: #FFF;
+}
+.dropdown-menu{
+  background-color: #BBD035;
+}
+.dropdown-item{
+  color: #FFF;
+}
+.dropdown-item:hover{
+  color: rgba(255,255,255,.5);
+  background-color: #BBD035;
+}
+.dropdown-item:focus{
+  color: rgba(255,255,255,.5);
+  background-color: #BBD035;
+}
+a {
+    color: #FFF;
+    text-decoration: none;
+    background-color: transparent;
+}
+a:hover{
+    color: #FFF;
+    text-decoration: none;
+    background-color: transparent;
+}
+.btn-link{
+  color: #fff;
+  border-color: transparent;
+}
+.btn-link:active, .btn-link:focus, .btn-link:hover {
+  color: #fff;
+  border-color: #FFF;
+}
+.btn-link.active, .btn-link:active, .btn-link:disabled {
+  color: #fff;
+  background-color: transparent;
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.btn-secondary {
+    color: #fff;
+    background-color: #BBD035;
+    border-color: transparent;
+}
+.btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
+  color: #fff;
+  background-color: #BBD035;
+  border-color: #FFF;
+}
+.btn-secondary:not([disabled]):not(.disabled).active, .btn-secondary:not([disabled]):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: transparent;
+    border-color: #FFF;
+    box-shadow: 0 0 0 0 white;
+}
+/* FIN CSS DEL NAVBAR */
+
+/* CSS DEL SECTION */
+.hero {
+  margin: 0 auto;
+  position: relative;
+  /*width: 1200px;*/
+  width: 1198px;
+  z-index: 9;
+}
+/* FIN CSS DEL SECTION */
+
+/* CSS DE LAS TABLAS */
+.responstable {
+  margin: 1em 0;
+  width: 100%;
+  overflow: hidden;
+  background: #FFF;
+  color: #024457;
+  border-radius: 10px;
+  border: 1px solid #167F92;
+}
+.responstable tr {
+  border: 1px solid #D9E4E6;
+}
+.responstable tr:nth-child(odd) {
+  background-color: #EAF3F3;
+}
+.responstable > thead > tr > th{
+  text-align: center;
+}
+.responstable > tbody > tr > td{
+  text-align: center;
+}
+.responstable th {
+  display: none;
+  border: 1px solid #FFF;
+  background-color: #BBD035;
+  color: #FFF;
+  padding: 1em;
+}
+.responstable th:first-child  {
+  display: table-cell;
+  text-align: center;
+}
+.responstable th:nth-child(2) {
+  display: table-cell;
+}
+.responstable th:nth-child(2) span {
+  display: none;
+}
+.responstable th:nth-child(2):after {
+  content: attr(data-th);
+}
+@media (min-width: 4  80px) {
+  .responstable th:nth-child(2) span {
+    display: block;
+  }
+  .responstable th:nth-child(2):after {
+    display: none;
+  }
+}
+.responstable td {
+  display: block;
+  word-wrap: break-word;
+  max-width: 12em;
+}
+.responstable td:first-child {
+  display: table-cell;
+  text-align: center;
+  border-right: 1px solid #D9E4E6;
+}
+@media (min-width: 480px) {
+  .responstable td {
+    border: 1px solid #D9E4E6;
+  }
+}
+.responstable th, .responstable td {
+  text-align: left;
+  margin: .5em 1em;
+}
+@media (min-width: 480px) {
+  .responstable th, .responstable td {
+    display: table-cell;
+    padding: 1em;
+  }
+}
+/*   padding: 0 2em; */
+/* FIN CSS DE LAS TABLAS*/
+
+/* CSS DEL FOOTER */
+.footer {
+  position: absolute;
+  bottom: 0px;  
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+}
+.gob-en-linea {
+  background: url('../images/gob-enlinea.png') top center;
+  /*background-size: cover;*/
+  background-size: contain;  
+  height: 52px;
+  /*max-width: 1200px; */
+  width: 100%;
+  margin: -12px auto 0;
+}
+.ubicacion {
+  /*background-color: white;*/
+  font-size: 11px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  margin: 0 auto;  
+}
+.brand {
+  background-color: #BBD035;
+  border-top: 1px solid mediumseagreen;
+  height: 50px;
+  /*position: fixed;
+  bottom: 0;*/
+  width: 100%;
+  /*max-width: 1200px;*/
+  margin: 0 auto;
+}
+.brand p {
+  text-shadow: 1px 1px 0px rgba(255,255,255,.6);
+  vertical-align: middle;
+  line-height: 50px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+/* FIN CSS DEL FOOTER */
+
+/* CSS DE METRICAS */
+.highcharts-background {
+    fill: #E9ECEF;
+}
+.highcharts-button-symbol {
+    stroke: #666666;
+    stroke-width: 3px;
+}
+.highcharts-menu-item {
+    padding: 0.5em 1em;
+    background:none;
+    color: #333333;
+    cursor: pointer;
+    transition: background 250ms, color 250ms;
+}
+.highcharts-menu-item:hover {
+    color: #333333;
+    background-color: #F1F1F1;
+}
+/* FIN DEL CSS DE METRICAS */
+
+
+/* CSS CAROUSERL INDEX */
+.carousel-item {
+  height: 100vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+/* FIN CSS CAROUSERL INDEX */
+
+/* CSS PARA LOS LINK DE PAGINA DE AYUDA */
+#link-ayuda{
+  color: #BBD035;
+}
+/* FIN CSS PARA LOS LINK DE PAGINA DE AYUDA*/
+
+.portfolio-item {
+  height: 400px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 80px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.nav-jj{
+  position: fixed;  
+}
+
+.titulo-carrusel{
+  color:#3d89c8;
+}
+
+#input-telefono{
+  margin-bottom: 7px;
+}
+
+#btn-telefono{
+  float: right;
+}
+
+.contenedor-azul{
+  border-color:#3d89c8;
+  border-style: solid;
+  border-radius:6px;
+  padding: 10px; 
+  border-width: 1px;
+}
+
+.texto-gris{
+  color: #696969;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.invisible{
+  margin-top: 15px;
+  display: none;
+}
+
+
+.invisible2{
+  margin-top: 15px;
+}
