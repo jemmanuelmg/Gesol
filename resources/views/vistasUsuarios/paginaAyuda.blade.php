@@ -46,7 +46,7 @@
 
                         <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
-                                GESOL es una plataforma web, con la cual se logra que los estudiantes de nuestras coordinacion de sistemas de las unidades tecnológicas de santader puedan gestionar las diferentes solicitudes academicas sin tener la necesidad de dirigirse a la institucion.
+                                Gesol es una plataforma web, con la cual se logra que los estudiantes vinculados a diferentes Instituciones Educativas puedan gestionar las diferentes solicitudes academicas sin tener la necesidad de dirigirse a la institucion.
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
 
                         <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
                             <div class="card-body">
-                                El tiempo estimado de respuesta de una solicitud es de aproximado una semana dependiendo de las congestiones que tengan lugar en la coordinacion de sistemas de las Unidades Tecnológicas de Santander.
+                                El tiempo estimado de respuesta de una solicitud es de aproximado una semana dependiendo de las congestiones que tengan lugar en la dependencia a la que se dirija la solicitud.
                             </div>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
 
                         <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix" data-parent="#accordion">
                             <div class="card-body">
-                                Puede dejar su reclamo en nuestra <a href="contacto/create" id="link-ayuda">pagina de contactos</a>, o si lo desea puede dirigirse directamente a la coordinacion de sistemas de las Unidades Tecnológicas de Santander .
+                                Puede dejar su reclamo en nuestra <a href="contacto/create" id="link-ayuda">pagina de contactos</a>, o si lo desea puede dirigirse directamente a la dependencia a la que se dirijía la solicitud.
                             </div>
                         </div>
                     </div>

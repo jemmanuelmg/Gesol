@@ -41,6 +41,7 @@ class CorreoController extends Controller
     {
 
         $recaptcha = $request['g-recaptcha-response'];
+        $humano = false;
         
         if ($recaptcha != '') {
 
@@ -53,12 +54,12 @@ class CorreoController extends Controller
                 $humano = true;
             }else{
                 Session::flash('mensaje-error', 'Porfavor, complete la validacion "No soy un robot" correctamente');
-                return Redirect::to('/usuarios/create');
+                return Redirect::to('contacto/create');
             }
 
         }else{
             Session::flash('mensaje-error', 'Porfavor, complete la validacion "No soy un robot" correctamente');
-            return Redirect::to('/usuarios/create');
+            return Redirect::to('contacto/create');
         }
 
 
