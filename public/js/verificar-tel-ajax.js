@@ -28,40 +28,32 @@ $(document).ready(function() {
 					divSpin.show(200);
 				}, 
 
-			success: function(data){ // result o tambien llamado data
+				success: function(data){ // result o tambien llamado data
 
-				divVerificarTel.show(300);
-				inputTokenRes.val(data.token);
+					divVerificarTel.show(300);
+					inputTokenRes.val(data.token);
 
-			},
+				},
 
-			complete: function() {
-				divSpin.hide(200);
-			},
+				complete: function() {
+					divSpin.hide(200);
+				},
 
-			error: function(xhr, textStatus, errorThrown) {
-				alert("eError en el AJAX Gesol");
-				console.log(JSON.stringify(xhr));
-				console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-			},
+				error: function(xhr, textStatus, errorThrown) {
+					alert("Error en el AJAX Gesol");
+					console.log(JSON.stringify(xhr));
+					console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+				},
 
-		})
+			});
 
-		}else{
-			alert("Telefono no válido. \n Para continuar: 10 dígitos y sin prefijos (no +57)")
+			}else{
+				alert("Telefono no válido. \n Verifica que contenga 10 dígitos y sin prefijos \n (no +57)")
 
-		}
-		
+			}
+			
 
-	});
-
-	
+		});
 
 });
 
-
-
-/*
-botonTelefono.attr("title","Enviado");
-			botonTelefono.attr("data-content","SMS enviado. Porfavor revisalo para continuar");
-*/
