@@ -513,6 +513,9 @@ class SolicitudesController extends Controller{
         //se envia como parametro el correo de destino y el nombre de archivo
         $this->enviarCorreo($sol_formato, Session('email'));
 
+        //Enviar mensaje de texto
+        $this->enviarSms($sol_nombre);
+
         $pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($sol_formato, 'I'); 
 
@@ -1116,5 +1119,31 @@ class SolicitudesController extends Controller{
             ->subject('Confirmacion Gesol: solicitud guardada');
             
         });
+    }
+
+    /**
+    * Metodo que envía sms al usuario informando que lasolicitud fué enviada con éxito.
+    */
+    public function enviarCorreo($sol_nombre){
+
+        //Iniciar config de idioma y zona horaria
+        setlocale(LC_ALL,"es_ES");
+        date_default_timezone_set("America/Bogota");
+
+        $customer_id = "44153ECC-F0AD-4D45-9F23-E95431EC8C63";
+        $api_key = "orub9TGHNbP1itCRoF1lFINssYfy+VHYJI8FnXNp2hhzc2/S9QOGmZyQQHVR1qmbaIxfVQjgsgInHrz9JymGHQ==";
+
+            //$phone_number = $request->telefono;
+        $phone_number = '57' . Session('usu_telefono');
+        $message = "\n\n Gesol te informa que tu solicitud " . $sol_nombre . " fué recibida correctamente el día: " . date("l") ." " . date("Y/m/d") . " a las " . date("h:i a") . ". \n Saludos!;
+        $message_type = "ARN";
+
+        $messaging = new MessagingClient($customer_id, $api_key);
+        $response = $messaging->message($phone_number, $message, $message_type);
+
+        return json_encode(array(
+            'status'=> 'success',
+            'token' => $token
+        ));
     }
 }
