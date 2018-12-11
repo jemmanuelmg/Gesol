@@ -71,6 +71,8 @@ class LoginController extends Controller
 
             $request->session()->put('usu_cedula', $usuarioLoggeado->usu_cedula);
 
+            $request->session()->put('usu_telefono', $usuarioLoggeado->usu_telefono);
+
             //Determinar nombre del rol
             if ($usuarioLoggeado->rol_id == 3) {
                 $request->session()->put('rol_nombre', 'Coordinador (Admin)');

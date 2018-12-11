@@ -111,25 +111,21 @@ Registrarse Gesol
 				</div>
 				@endif
 
-				<div class="contenedor-azul">
+				<div id="contenedor-tel">
 					<div class="form-group">
-
-						<label class="control-label" for="telefono">Telefono:</label>
-
+						<label class="control-label" id="label-telefono" for="telefono">Telefono:</label>
 						<p class="texto-gris"> 
-							<span class="badge badge-info">info</span> Para confirmar tu cuenta debes introducir tu número celular al cual le será enviado un código de confirmación. Será valido por los siguientes 5 minutos.
+							<span class="badge badge-info" id="span-tel">info</span> Para confirmar tu cuenta debes introducir tu número celular al cual le será enviado un código de confirmación. Será valido por los siguientes 10 minutos.
 						</p>
 
 						<input type="number" id="input-telefono" class="form-control" name="telefono" placeholder="Introduzca su telefono" />
 
-						<button id="btn-telefono"class="btn btn-primary btn-sm" type="button" data-toggle="popover" data-trigger="focus" data-placement="top" title="Verificando.." data-content="Se enviará un mensaje de texto al número">
+						<button id="btn-telefono"class="btn btn-primary btn-sm" type="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Verificando.." data-content="Se enviará un mensaje de texto al número">
 							
 							<i class="fas fa-user fa-1x" aria-hidden="true"></i>
 							<div id="div-spin"><i class="fas fa-sync fa-spin fa-1x" aria-hidden="true"></i></div>
 
 						</button>
-
-
 					</div>
 					<br>
 
@@ -140,8 +136,6 @@ Registrarse Gesol
 
 						<input type="hidden" id="input-token-res" name="tokenRes" value="">
 					</div>
-
-
 
 				</div>
 

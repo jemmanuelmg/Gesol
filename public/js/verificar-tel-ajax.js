@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+	var contenedorTel = $("#contenedor-tel");
+	var labelTelefono = $("#label-telefono");
+	var spanTel = $("#span-tel");
 	var inputTelefono = $("#input-telefono");
 	var botonTelefono = $("#btn-telefono");
 
@@ -37,6 +40,15 @@ $(document).ready(function() {
 
 				complete: function() {
 					divSpin.hide(200);
+
+					inputTelefono.removeClass("is-invalid");
+					inputTelefono.addClass("is-valid");
+
+					contenedorTel.css("border-color", "#28A745");
+					labelTelefono.css("color", "#28A745");
+
+					spanTel.removeClass("badge-danger");
+					spanTel.addClass("badge-success");
 				},
 
 				error: function(xhr, textStatus, errorThrown) {
@@ -49,6 +61,13 @@ $(document).ready(function() {
 
 			}else{
 				alert("Telefono no válido. \n Verifica que contenga 10 dígitos y sin prefijos \n (no +57)")
+				
+				contenedorTel.css("border-color", "#DC3545");
+				labelTelefono.css("color", "#DC3545");
+				inputTelefono.addClass("is-invalid");
+				spanTel.removeClass("badge-info");
+				spanTel.addClass("badge-danger");
+				
 
 			}
 			

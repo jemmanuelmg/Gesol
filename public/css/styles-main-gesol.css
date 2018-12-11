@@ -308,7 +308,7 @@ code {
   float: right;
 }
 
-.contenedor-azul{
+#contenedor-tel{
   border-color:#3d89c8;
   border-style: solid;
   border-radius:6px;
@@ -318,7 +318,7 @@ code {
 
 .texto-gris{
   color: #696969;
-  font-size: 13px;
+  font-size: 14px;
   font-style: italic;
 }
 
