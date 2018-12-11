@@ -2,6 +2,12 @@
 
 @section('titulo') Gesol - Manuales de ayuda FAQ @stop
 
+@section('estilos')
+
+  <script type="text/javascript" src="{{ URL::asset('js/script-chatbot.js') }}"></script>
+
+@show 
+
 @section('contenido')
         <div class="container">
             <!--Jumbotron-->

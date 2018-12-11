@@ -4,8 +4,7 @@
 
 @section('estilos')
 
-{!!Html::style('css/footer.css')!!}
-{!!Html::style('css/font-awesome.min.css')!!}
+  <script type="text/javascript" src="{{ URL::asset('js/script-chatbot.js') }}"></script>
 
 @show 
 
