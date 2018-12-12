@@ -56,7 +56,7 @@
                       <label class="control-label" for="programa">Programa Academico *</label>
                         <div class="input-group">
                             <select name="programa" class="custom-select mb-2 mr-sm-2 mb-sm-0">
-                                <option>Seleccione</option>
+                                <option value="Seleccione">Seleccione</option>
                                 <option value="Desarrollo de sistemas informaticos">Desarrollo de sistemas informaticos</option>
                                 <option value="Deportiva">Tecnologia en Deportes</option>
                             </select>
@@ -66,8 +66,8 @@
                     <div class="form-group">
                       <label class="control-label" for="jornada">Jornada *</label>
                         <div class="input-group">
-                            <select name="jornada" id="probando" class="custom-select mb-2 mr-sm-2 mb-sm-0">
-                                <option>Seleccione</option>
+                            <select name="jornada" class="custom-select mb-2 mr-sm-2 mb-sm-0">
+                                <option value="Seleccione">Seleccione</option>
                                 <option value="Nocturna">Nocturna</option>
                                 <option value="Diurna">Diurna</option>
                             </select>
@@ -124,9 +124,10 @@
                     <input class="btn btn-primary btn-enviar-sol" type="submit" value="Generar">
 
                     {!!Form::close()!!}
-
-                    <button class="btn btn-primary btn-enviar-sol">Hola!</button>
-                    <div class="container">@include('partials.loading')</div>
+                    
+                    <div id="contenedor-error-load">
+                        <p><i><span class="badge badge-danger" id="span-tel">info</span> Porfavor, rellena todos los campos para continuar</i>&nbsp;&nbsp;&nbsp;<i class="far fa-hand-point-up fa-1x"></i></p>
+                    </div>
                     
 
                 </div><!--/span-->
@@ -137,6 +138,19 @@
 
     </div>
 
+    <div id="oscurecer"></div>
+        
+    <div id="div-loading">
+        <i class="fas fa-spinner fa-6x fa-spin"></i>
+        <p id="letra-pequena-load">&nbsp;&nbsp;Cargando...</p>
+    </div>
+
     <!-- FIN DEL CONTENEDOR PARA FORMULARIO R-DC-13 -->
+
+
+@section('javascript')
+    @parent
+    <script type="text/javascript" src="{{ URL::asset('js/script-cargando.js') }}"></script>
+@stop
     
     

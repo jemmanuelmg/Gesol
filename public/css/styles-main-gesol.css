@@ -356,7 +356,7 @@ code {
 
 
 /*Estilos para el gif cargando en formularios*/
-.contenedor-error{
+#contenedor-error-load{
   margin-top: 10px;
   border-color:#DC3545;
   color:#DC3545;
@@ -367,29 +367,39 @@ code {
   display:none;
 }
 
-.oscurecer{
-  display: none;
-}
-
-.div-loading{
-  display:none;
-}
-
-.contenedor-error p{
+#contenedor-error-load p{
   margin-top: 7px;
   margin-right: 5px;
 }
 
-.fa-spinner{
-  /*color:#4169E1;*/
-  color:#28A745
+#div-loading{
+  z-index:1000;
+  position: fixed;
+  top:50%;
+  left:50%;
+  display: none;
 }
 
-.letra-pequena{
+#oscurecer{
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.fa-spinner{
+  color:#4169E1;
+}
+
+#letra-pequena-load{
   font-size: 15px;
-  /*color:#4169E1;*/
-  color:#28A745;
+  color:#4169E1;
   font-family: 'Century Gothic';
+  src:url(/fonts/Raleway-Regular.ttf) format('truetype');
 }
 
 
