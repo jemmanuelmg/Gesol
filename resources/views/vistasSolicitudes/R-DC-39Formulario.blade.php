@@ -273,9 +273,11 @@
 
                     <br>
 
-                    <input type="submit" value="Generar" class="btn btn-primary btn-lg">
+                    <input type="submit" value="Generar" class="btn btn-primary">
 
                     {!!Form::close()!!}
+
+                    <div class="container">@include('partials.loading')</div>
 
                 </div><!--/span-->
 

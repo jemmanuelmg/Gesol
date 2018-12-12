@@ -10,6 +10,7 @@ use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Mail;
 use Gesol\Http\Requests\ValidaFormsSolicitudes;
 use Gesol\Http\Requests\ValidaUpdateRespuestaRequest;
+use telesign\sdk\messaging\MessagingClient;
 use DB;
 
 class SolicitudesController extends Controller{
@@ -563,9 +564,11 @@ class SolicitudesController extends Controller{
         $Asignatura = $_POST["asignatura"];
         $Telefono = $_POST["telefono"];
         $Consignacion = $_POST["consignacion"];
-        $Dia = $_POST["dia"];
-        $Mes = $_POST["mes"];
-        $Año = $_POST["año"];
+
+        $fecha = explode('-', $_POST["fechaSol"]);
+        $Año = $fecha[0];
+        $Mes = $fecha[1];
+        $Dia = $fecha[2];
 
 
         //Renglon 1
@@ -1152,9 +1155,5 @@ class SolicitudesController extends Controller{
         $messaging = new MessagingClient($customer_id, $api_key);
         $response = $messaging->message($phone_number, $message, $message_type);
 
-        return json_encode(array(
-            'status'=> 'success',
-            'token' => $token
-        ));
     }
 }

@@ -235,6 +235,8 @@
 
                     {!!Form::close()!!}
 
+                    <div class="container">@include('partials.loading')</div>
+
                 </div><!--/span-->
 
             </div><!--/row-->
