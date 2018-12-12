@@ -157,6 +157,8 @@
                         <p class="form-control-static">Si lo desea, puede adjuntar el recibo de pago para un trámite mas rápido.</p>
 
                         <input type="file" id="imgRecibo" name="imgRecibo" class="form-control-file" accept=".jpg, .jpeg, .png, .gif">
+                        
+
                                     
                     </div>
 
@@ -168,7 +170,7 @@
 
                     <br>
 
-                    <input type="submit" value="Generar" class="btn btn-primary btn-lg">
+                    <input class="btn btn-primary btn-enviar-sol " type="submit" value="Generar">
 
                     {!!Form::close()!!}
 
@@ -181,17 +183,18 @@
     </div>
     <!-- FIN DEL CONTENEDOR PARA FORMULARIO R-DC-13 -->
 
+    <!--INICIO DIV DE CARGA-->
+    <div id="oscurecer"></div>
+        
+    <div id="div-loading">
+        <i class="fas fa-spinner fa-5x fa-spin"></i>
+        <p class="letra-pequena">&nbsp;&nbsp;&nbsp;&nbsp;Cargando...</p>
+    </div>
+
 @stop
 
 @section('javascript')
     @parent
-    <script type="text/javascript">
-        var imgRecibo = document.getElementById("imgRecibo").files[0];
-
-            if (imgRecibo.size > 2097152) // 2 mb for bytes.
-            {
-                alert("El tamaño maximo de archivo es de 2MB. Por favor, seleccione uno mas liviano.");
-                return;
-            }
-    </script>
+    <script type="text/javascript" src="{{ URL::asset('js/script-cargando.js') }}"></script>
 @stop
+

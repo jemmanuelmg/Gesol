@@ -638,8 +638,6 @@ class SolicitudesController extends Controller{
         $sol_formato = Session('usu_cedula') . '-R-DC-13' . 'No' . $cuantasVeces . '.pdf';
         $rutaGuardar = '../public/solicitudesPDF/' . $sol_formato;
 
-        //Enviar correo al usuario con solicitud creada
-        $this->enviarCorreo($sol_formato, Session('email'));
 
         //Guardar registro en BD
         solicitudes::create([
@@ -648,6 +646,12 @@ class SolicitudesController extends Controller{
             'sol_estado' => 'Pendiente',
             'usu_cedula' => Session('usu_cedula')
             ]);
+
+        //Enviar correo al usuario con solicitud creada
+        $this->enviarCorreo($sol_formato, Session('email'));
+
+        //Enviar mensaje de texto
+        $this->enviarSms($sol_nombre);
 
         $pdf->Output($rutaGuardar, 'F');
         $pdf->Output($sol_formato, 'I'); 
@@ -756,8 +760,6 @@ class SolicitudesController extends Controller{
         $sol_formato = Session('usu_cedula') . '-R-DC-14' . 'No' . $cuantasVeces . '.pdf';
         $rutaGuardar = '../public/solicitudesPDF/' . $sol_formato;
 
-        //Enviar correo al usuario con solicitud creada
-        $this->enviarCorreo($sol_formato, Session('email'));
 
         //Guardar registro en BD
         solicitudes::create([
@@ -766,6 +768,11 @@ class SolicitudesController extends Controller{
             'sol_estado' => 'Pendiente',
             'usu_cedula' => Session('usu_cedula')
             ]);
+
+        //Enviar correo al usuario con solicitud creada
+        $this->enviarCorreo($sol_formato, Session('email'));
+
+        $this->enviarSms($sol_nombre);
 
         $pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($sol_formato, 'I'); 
@@ -925,9 +932,6 @@ class SolicitudesController extends Controller{
         $sol_formato = Session('usu_cedula') . '-R-DC-40' . 'No' . $cuantasVeces . '.pdf';
         $rutaGuardar = '../public/solicitudesPDF/' . $sol_formato;
 
-        //Enviar correo al usuario con solicitud creada
-        $this->enviarCorreo($sol_formato, Session('email'));
-
         //Guardar registro en BD
         solicitudes::create([
             'sol_nombre'=>'R-DC-40',
@@ -935,6 +939,11 @@ class SolicitudesController extends Controller{
             'sol_estado' => 'Pendiente',
             'usu_cedula' => Session('usu_cedula')
             ]);
+
+        //Enviar correo al usuario con solicitud creada
+        $this->enviarCorreo($sol_formato, Session('email'));
+
+        $this->enviarSms($sol_nombre);
 
         $pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($sol_formato, 'I'); 
@@ -1080,9 +1089,6 @@ class SolicitudesController extends Controller{
         $sol_formato = Session('usu_cedula') . '-R-DC-52' . 'No' . $cuantasVeces . '.pdf';
         $rutaGuardar = '../public/solicitudesPDF/' . $sol_formato;
 
-        //Enviar correo al usuario con solicitud creada
-        $this->enviarCorreo($sol_formato, Session('email'));
-
         //Guardar registro en BD
         solicitudes::create([
             'sol_nombre'=>'R-DC-52',
@@ -1090,6 +1096,11 @@ class SolicitudesController extends Controller{
             'sol_estado' => 'Pendiente',
             'usu_cedula' => Session('usu_cedula')
             ]);
+
+        //Enviar correo al usuario con solicitud creada
+        $this->enviarCorreo($sol_formato, Session('email'));
+
+        $this->enviarSms($sol_nombre);
 
         $pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($sol_formato, 'I'); 
@@ -1124,7 +1135,7 @@ class SolicitudesController extends Controller{
     /**
     * Metodo que envía sms al usuario informando que lasolicitud fué enviada con éxito.
     */
-    public function enviarCorreo($sol_nombre){
+    public function enviarSms($sol_nombre){
 
         //Iniciar config de idioma y zona horaria
         setlocale(LC_ALL,"es_ES");
@@ -1135,7 +1146,7 @@ class SolicitudesController extends Controller{
 
             //$phone_number = $request->telefono;
         $phone_number = '57' . Session('usu_telefono');
-        $message = "\n\n Gesol te informa que tu solicitud " . $sol_nombre . " fué recibida correctamente el día: " . date("l") ." " . date("Y/m/d") . " a las " . date("h:i a") . ". \n Saludos!;
+        $message = "\n\n Gesol te informa que tu solicitud " . $sol_nombre . " fué recibida correctamente el día: " . date("l") ." " . date("Y/m/d") . " a las " . date("h:i a") . ". \n Saludos!";
         $message_type = "ARN";
 
         $messaging = new MessagingClient($customer_id, $api_key);
