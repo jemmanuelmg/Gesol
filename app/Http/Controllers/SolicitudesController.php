@@ -829,8 +829,8 @@ class SolicitudesController extends Controller{
         $Direccion = $_POST["direccion"];
         $Telefono = $_POST["telefono"];
         $Estudios = $_POST["estudios"];
-        $Tematicos = $_POST["tematicos"];
         $Folios = $_POST["folios"];
+        $Tematicos = $_POST["tematicos"];
         $Folios2 = $_POST["folios2"];
         $Dia = $_POST["dia"];
         $Mes = $_POST["mes"];
@@ -904,6 +904,8 @@ class SolicitudesController extends Controller{
         $pdf->Write(0, $Mes);
         $pdf->SetXY(42, 140);
         $pdf->Write(0, $Año);
+
+        
 
         //si el usuario decide añadir recibo
         if(isset($request['imgRecibo'])){

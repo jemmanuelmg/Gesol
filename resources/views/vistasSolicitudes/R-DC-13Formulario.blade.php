@@ -16,7 +16,9 @@
                 <div class="col-md-12">
 
                     <h1 class="encabezado-solicitudes"><b><center>Autorización Examen de Autouficiencia</center><b></h1>
+                    
                     <br>    
+                    
                     <hr class="linea-encabezado">
 
                     <br>
@@ -108,9 +110,7 @@
                         <p class="form-control-static">Si lo desea, puede adjuntar el recibo de pago para un trámite mas rápido.</p>
 
                         <input type="file" id="imgRecibo" name="imgRecibo" class="form-control-file" accept=".jpg, .jpeg, .png, .gif">
-                        
-
-                                    
+                                   
                     </div>
 
                     <hr>
@@ -124,7 +124,7 @@
                     <input class="btn btn-primary btn-enviar-sol" type="submit" value="Generar">
 
                     {!!Form::close()!!}
-                    
+
                     <div id="contenedor-error-load">
                         <p><i><span class="badge badge-danger" id="span-tel">info</span> Porfavor, rellena todos los campos para continuar</i>&nbsp;&nbsp;&nbsp;<i class="far fa-hand-point-up fa-1x"></i></p>
                     </div>
@@ -148,9 +148,9 @@
     <!-- FIN DEL CONTENEDOR PARA FORMULARIO R-DC-13 -->
 
 
-@section('javascript')
-    @parent
-    <script type="text/javascript" src="{{ URL::asset('js/script-cargando.js') }}"></script>
+    @section('javascript')
+        @parent
+        <script type="text/javascript" src="{{ URL::asset('js/script-cargando.js') }}"></script>
+    @stop
+    
 @stop
-    
-    
