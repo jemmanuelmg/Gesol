@@ -12,12 +12,68 @@ use Gesol\respuestas;
 use DB;
 use Charts;
 
+
+
+
 class MetricasController extends Controller
 {
 
+    /*
     public function __construct(){
         $this->middleware('secretario');
     }
+    */
+
+
+
+
+
+    /**
+    * Gráfico que muestra las solicitudes pendientes vs 
+    * solicitudes atendidas. Se plantea dotarlo de 
+    * ajax para permitir filtrar el resultado usando fechas
+    */
+    public function procesarGrafico1(){
+
+
+        if($request->ajax()){
+            $fechaIni = $_GET['fechaIni'];
+
+            dd($fechaIni);
+        }
+
+
+
+
+
+
+        $cantAtendidas = DB::table('solicitudes')
+        ->where('sol_estado', '=', 'Atendida')
+        ->count();
+
+        $cantPendientes = DB::table('solicitudes')
+        ->where('sol_estado', '=', 'Pendiente')
+        ->count();
+
+        $chart1 = Charts::create('pie', 'highcharts')
+            ->title('Comparacion solicitudes atendidas y pendientes')
+            ->labels(['Solicitudes atendidas', 'Solicitudes pendientes'])
+            ->values([$cantAtendidas, $cantPendientes])
+            ->dimensions(1000,500)
+            ->colors(['#88CC88', '#D46A6A'])
+            ->responsive(true);
+
+        return view('tests.graficoTest', compact('chart1'));
+
+    }
+
+
+
+
+
+
+
+
 
     public function generarMetricas()
     {
@@ -39,16 +95,6 @@ class MetricasController extends Controller
             ->dimensions(1000,500)
             ->colors(['#88CC88', '#D46A6A'])
             ->responsive(true);
-
-        
-        /*$chart = Charts::create('line', 'highcharts')
-            ->title('My nice chart')
-            ->labels(['First', 'Second', 'Third'])
-            ->values([5,10,20])
-            ->dimensions(1000,500)
-            ->responsive(false);*/
-
-
 
         //Grafico productividad por administrativo
         $admins= DB::select(DB::raw("SELECT count(respuestas.res_id) as cuenta, usuarios.usu_nombres

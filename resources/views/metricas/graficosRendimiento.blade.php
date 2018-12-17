@@ -4,7 +4,6 @@
 @section('estilos')
 	@parent
 	{!! Charts::assets() !!}
-	{!!Html::style('css/footer.css')!!}
 
 @stop
 

@@ -2,23 +2,6 @@
 
 
 
-	@section('estilos')
-
-      {!!Html::style('css/footer.css')!!}
-
-      {!!Html::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css')!!}
-
-  @show
-
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
-
-
-
-
   @section('contenido')
 
   <!-- CONTENEDOR PRUEBA-->
@@ -39,7 +22,7 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <h2>Ingresa a GESOL&nbsp;&nbsp;&nbsp;<i class="fa fa-sign-in" aria-hidden="true"></i>
+                <h2>Ingresa a gesol&nbsp;&nbsp;&nbsp;<i class="fa fa-sign-in" aria-hidden="true"></i>
 </h2>
                 <hr>
             </div>

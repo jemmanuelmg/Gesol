@@ -75,8 +75,10 @@ Route::get('metricas', 'MetricasController@generarMetricas');
 Route::get('confirmarSms/{telefono}', 'SmsController@enviarSmsConfirmacion');
 
 
+/*Tests*/
+Route::get('test/grafico', 'MetricasController@probarAjax');
 
-Route::get('test/', function(){
-	return view('tests.test_load_icon');
+Route::get('test/cargar', function(){
+	return view('tests.iconoTest');
 });
 

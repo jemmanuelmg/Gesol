@@ -120,14 +120,16 @@
                     </p>
 
                     <br>
+                    <div id="contenedor-error-load">
+                        <p><i><span class="badge badge-danger" id="span-tel">info</span> Porfavor, rellena todos los campos para continuar</i>&nbsp;&nbsp;&nbsp;<i class="far fa-hand-point-up fa-1x"></i></p>
+                    </div>
+                    <br>
 
                     <input class="btn btn-primary btn-enviar-sol" type="submit" value="Generar">
 
                     {!!Form::close()!!}
 
-                    <div id="contenedor-error-load">
-                        <p><i><span class="badge badge-danger" id="span-tel">info</span> Porfavor, rellena todos los campos para continuar</i>&nbsp;&nbsp;&nbsp;<i class="far fa-hand-point-up fa-1x"></i></p>
-                    </div>
+                    
                     
 
                 </div><!--/span-->

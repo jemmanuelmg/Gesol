@@ -19,44 +19,52 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
+
+
+    
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
+
       <div class="carousel-item active" style="background-image: url('../images/slider-gesol-1.jpeg')">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="titulo-carrusel">Bienvenido a gesol!</h3>
+          <h3 class="titulo-carrusel"><b>Bienvenido a gesol!</b></h3>
           <p>El gestor de solicitudes ideal para Instituciones Educativas</p>
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url('../images/slider-gesol-2.jpg')">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="titulo-carrusel">Entrega tus papeles desde tu casa!</h3>
+          <h3 class="titulo-carrusel"><b>Entrega tus papeles desde tu casa!</b></h3>
           <p>...y espera tu respuesta en tu bandeja de entrada. Así de simple.</p>
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url('../images/slider-gesol-3.jpeg')">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="titulo-carrusel">Disfrutalo en tu movil.</h3>
+          <h3 class="titulo-carrusel"><b>Disfrutalo en tu movil.</b></h3>
           <p>Haz solicitudes desde la palma de tu mano.</p>
         </div>
       </div>
 
       <div class="carousel-item" style="background-image: url('../images/slider-gesol-4.jpg')">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="titulo-carrusel">Para tu comunidad</h3>
+          <h3 class="titulo-carrusel"><b>Para tu comunidad</b></h3>
           <p>Disfruta de la comodidad que te brindan las TIC.</p>
         </div>
       </div>
     </div>
+    
+
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
+
     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
+
   </div>
 </header>
 
@@ -75,19 +83,33 @@
       <h2>Caracteristicas</h2>
       <p>Gesol es una plataforma innovadora para la comunidad, la cual permite gestionar de manera mas eficiente y rápida casi cualquiet trámite que requieran los estudiantes.</p>
       <ul>
+
         <li>
-          <i class="fas fa-bolt fa-2x" aria-hidden="true"></i> 
-        &nbsp;&nbsp;&nbsp;&nbsp;No mas filas!:</strong> Con Gesol puedes diligenciar cualquier solicitud académica (cambio de jornada, revision de notas, tranferencia interna, etc.) <strong>desde la comodida de tu casa!,</strong> Todo se enviará automáticamente a tu bandeja de entrada ;).</li>
-        <li><i class="fab fa-envira fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-        100% ecológico: Gracias a Gesol logramos reducir el uso de tinta y papel a 0.</li>
-        <li><i class="fas fa-cloud-download-alt fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-        Todo estará alojado en la nube: tus solicitudes y respuestas se guardarán aquí, para que las veas cuando quieras.</li>
-        <li><i class="fas fa-id-card-alt fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-        Tus datos personales están a salvo gracias a mecanismos de potección virtual de alta tecnología.</li>
-        <li><i class="fas fa-comments fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-        Servicios de ayuda, manuales, recuperación de contraseña y muchas cosas mas a tu disposición: ¡Que esperas!</li>
+          <i class="fas fa-bolt fa-2x" aria-hidden="true"></i>  &nbsp;&nbsp;&nbsp;&nbsp;  No mas filas!: </strong> Con Gesol puedes diligenciar cualquier solicitud académica (cambio de jornada, revision de notas, tranferencia interna, etc.) <strong>desde la comodida de tu casa!,</strong> Todo se enviará automáticamente a tu bandeja de entrada ;).
+        </li>
+
+        <li>
+          <i class="fab fa-envira fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;  100% ecológico: Gracias a Gesol logramos reducir el uso de tinta y papel a 0.
+        </li>
+
+        <li>
+          <i class="fas fa-cloud-download-alt fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp; Todo estará alojado en la nube: tus solicitudes y respuestas se guardarán aquí, para que las veas cuando quieras.
+        </li>
+
+        <li>
+          <i class="fas fa-id-card-alt fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp; Tus datos personales están a salvo gracias a mecanismos de potección virtual de alta tecnología.
+        </li>
+
+        <li>
+          <i class="fas fa-comments fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp; Servicios de ayuda, chats, manuales, recuperación de contraseña y muchas cosas mas a tu disposición: ¡Que esperas!
+        </li>
+
       </ul>
-      <p>Pensado en tu comodidad y bienestar hemos desarrollado esta aplicación. Nuestro mayor logro es que cada vez mas estudiantes disfruten de estos beneficios. Únete ahora mismo a esta comunidad y disfruta de todo lo que ofrece!. Desarrollado <strong>para ayudar a estudiantes.</strong></p>
+
+      <p>
+        Pensado en tu comodidad y bienestar hemos desarrollado esta aplicación. Nuestro mayor logro es que cada vez mas estudiantes disfruten de estos beneficios. Únete ahora mismo a esta comunidad y disfruta de todo lo que ofrece!. Desarrollado <strong>para ayudar a estudiantes.</strong>
+      </p>
+
     </div>
 
     <div class="col-lg-6">
@@ -97,6 +119,8 @@
   <!-- /.row -->
   
   <!-- Portfolio Section -->
+  <br>
+  <br>
   <h2>Haz una solicitud en 3 sencillos pasos</h2>
 
   <div class="row">

@@ -46,7 +46,7 @@ class SellerResetPasswordNotification extends Notification
         return (new MailMessage)
         ->line('Estas recibiendo este email porque se nos ha solicitado un reestablecimiento de contraseña a casua de olvido.')
         ->action('Cambiar contrasena', url('seller_password/reset', $this->token))
-        ->line('Si no solicitaste un cambio de contraseña, simplemente ignora este mensaje');
+        ->line('Si no solicitaste un cambio de contraseña, simplemente ignora este mensaje. Un felíz día, -el equipo Gesol.');
     }
 
 }
