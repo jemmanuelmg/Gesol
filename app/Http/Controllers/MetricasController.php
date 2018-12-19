@@ -33,13 +33,40 @@ class MetricasController extends Controller
     * solicitudes atendidas. Se plantea dotarlo de 
     * ajax para permitir filtrar el resultado usando fechas
     */
-    public function procesarGrafico1(){
+
+
+    public function procesarGrafico1(Request $request){
 
 
         if($request->ajax()){
-            $fechaIni = $_GET['fechaIni'];
 
-            dd($fechaIni);
+            //Obtener las fechas y volverlas un timestamp
+            //ya que la columna fechaCreacion contiene tambien la hora
+            $ini = $_GET['fechaIni'];
+            $fin = $_GET['fechaFin'];
+            //Cambiar el orden para que quede en formato Y-m-d (viene d-m-Y)
+            $fechaIni = explode('/', $ini);
+            $fechaFin = explode('/', $fin);
+            $fechaIni = $fechaIni[2] . '-' . $fechaIni[1] . '-' . $fechaIni[0] . ' ' . '00:00:00';
+            $fechaFin = $fechaFin[2] . '-' . $fechaFin[1] . '-' . $fechaFin[0] . ' ' . '00:00:00';
+
+            $cantAtendidas = DB::table('solicitudes')
+            ->where('sol_estado', '=', 'Atendida')
+            ->whereBetween('sol_fechaCreacion', [$fechaIni, $fechaFin])
+            ->count();
+
+            $cantPendientes = DB::table('solicitudes')
+            ->where('sol_estado', '=', 'Pendiente')
+            ->whereBetween('sol_fechaCreacion', [$fechaIni, $fechaFin])
+            ->count();
+
+            
+            
+            return json_encode(array(
+                'cantAtendidas '=> $cantAtendidas,
+                'cantPendientes' => $cantPendientes
+            ));
+
         }
 
 
@@ -66,13 +93,6 @@ class MetricasController extends Controller
         return view('tests.graficoTest', compact('chart1'));
 
     }
-
-
-
-
-
-
-
 
 
     public function generarMetricas()

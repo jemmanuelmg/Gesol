@@ -183,7 +183,6 @@ Registrarse Gesol
 <!--Script ajax para enviar SMS-->
 <script type="text/javascript" src="{{ URL::asset('js/verificar-tel-ajax.js') }}"></script>
 
-<!--Script para añadir token de seguridad-->
 
 @stop
 
