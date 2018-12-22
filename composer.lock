@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fd8aaeb8f12c79c298b51b00eb76a80d",
+    "content-hash": "0908eebd8189bca14e34347b7e5864f3",
     "packages": [
         {
             "name": "codedge/laravel-fpdf",
@@ -1847,6 +1847,54 @@
                 "schedule"
             ],
             "time": "2017-01-23T04:29:33+00:00"
+        },
+        {
+            "name": "muhamadrezaar/highcharts",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/julles/laravel-highcharts.git",
+                "reference": "efe473406b32e55e8f5eac4f79b6193da0abc013"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/julles/laravel-highcharts/zipball/efe473406b32e55e8f5eac4f79b6193da0abc013",
+                "reference": "efe473406b32e55e8f5eac4f79b6193da0abc013",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RezaAr\\Highcharts\\Provider"
+                    ],
+                    "aliases": {
+                        "Chart": "RezaAr\\Highcharts\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RezaAr\\Highcharts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muhamad Reza Abdul Rohim",
+                    "email": "reza.wikrama3@gmail.com"
+                }
+            ],
+            "description": "Laravel Highcarts Packages",
+            "keywords": [
+                "highcharts",
+                "laravel",
+                "packages"
+            ],
+            "time": "2018-10-18T14:54:03+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -5256,7 +5304,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "muhamadrezaar/highcharts": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

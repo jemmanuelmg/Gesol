@@ -76,9 +76,12 @@ Route::get('confirmarSms/{telefono}', 'SmsController@enviarSmsConfirmacion');
 
 
 /*Tests*/
-Route::get('test/grafico', 'MetricasController@procesarGrafico1');
+
+Route::get('grafico1', 'MetricasController@procesarG1');
+
 
 Route::get('test/cargar', function(){
 	return view('tests.iconoTest');
 });
+
 

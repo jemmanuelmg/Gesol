@@ -15,6 +15,7 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
+        "muhamadrezaar/highcharts": "dev-master",
         "myclabs/deep-copy": "^1.7",
         "nexmo/laravel": "^1.0",
         "telesign/telesign": "^2.2"

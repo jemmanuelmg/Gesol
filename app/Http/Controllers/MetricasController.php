@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Gesol\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
 use Gesol\solicitudes;
 use Gesol\usuarios;
 use Gesol\respuestas;
 use DB;
 use Charts;
+use Chart;
 
 
 
@@ -18,61 +20,7 @@ use Charts;
 class MetricasController extends Controller
 {
 
-    /*
-    public function __construct(){
-        $this->middleware('secretario');
-    }
-    */
-
-
-
-
-
-    /**
-    * Gráfico que muestra las solicitudes pendientes vs 
-    * solicitudes atendidas. Se plantea dotarlo de 
-    * ajax para permitir filtrar el resultado usando fechas
-    */
-
-
-    public function procesarGrafico1(Request $request){
-
-
-        if($request->ajax()){
-
-            //Obtener las fechas y volverlas un timestamp
-            //ya que la columna fechaCreacion contiene tambien la hora
-            $ini = $_GET['fechaIni'];
-            $fin = $_GET['fechaFin'];
-            //Cambiar el orden para que quede en formato Y-m-d (viene d-m-Y)
-            $fechaIni = explode('/', $ini);
-            $fechaFin = explode('/', $fin);
-            $fechaIni = $fechaIni[2] . '-' . $fechaIni[1] . '-' . $fechaIni[0] . ' ' . '00:00:00';
-            $fechaFin = $fechaFin[2] . '-' . $fechaFin[1] . '-' . $fechaFin[0] . ' ' . '00:00:00';
-
-            $cantAtendidas = DB::table('solicitudes')
-            ->where('sol_estado', '=', 'Atendida')
-            ->whereBetween('sol_fechaCreacion', [$fechaIni, $fechaFin])
-            ->count();
-
-            $cantPendientes = DB::table('solicitudes')
-            ->where('sol_estado', '=', 'Pendiente')
-            ->whereBetween('sol_fechaCreacion', [$fechaIni, $fechaFin])
-            ->count();
-
-            
-            
-            return json_encode(array(
-                'cantAtendidas '=> $cantAtendidas,
-                'cantPendientes' => $cantPendientes
-            ));
-
-        }
-
-
-
-
-
+    public function procesarG1(Request $request){
 
         $cantAtendidas = DB::table('solicitudes')
         ->where('sol_estado', '=', 'Atendida')
@@ -82,17 +30,18 @@ class MetricasController extends Controller
         ->where('sol_estado', '=', 'Pendiente')
         ->count();
 
-        $chart1 = Charts::create('pie', 'highcharts')
-            ->title('Comparacion solicitudes atendidas y pendientes')
-            ->labels(['Solicitudes atendidas', 'Solicitudes pendientes'])
-            ->values([$cantAtendidas, $cantPendientes])
-            ->dimensions(1000,500)
-            ->colors(['#88CC88', '#D46A6A'])
-            ->responsive(true);
-
-        return view('tests.graficoTest', compact('chart1'));
+        return view('tests.graficoTest', ['cantAtendidas' => $cantAtendidas, 'cantPendientes' => $cantPendientes]);
 
     }
+
+
+
+
+
+
+
+
+
 
 
     public function generarMetricas()

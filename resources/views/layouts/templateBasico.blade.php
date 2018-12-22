@@ -201,6 +201,11 @@
     <!--Aquí va el contenido en general de todas las paginas hijas-->
     @show
 
+    
+    @section('graficos')
+      <!--Por si alguna vista necesita situar su gráfico, se pondrá aquí-->
+    @show
+
     <!-- FOOTER -->
     <footer class="footer">
 

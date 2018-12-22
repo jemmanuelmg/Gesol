@@ -179,6 +179,8 @@ return [
         Codedge\Fpdf\FpdfServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         Nexmo\Laravel\NexmoServiceProvider::class,
+        RezaAr\Highcharts\Provider::class,
+
 
     ],
 
@@ -233,6 +235,7 @@ return [
         'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class,
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
         'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
+        'Chart' => RezaAr\Highcharts\Facade::class,
 
     ],
 
