@@ -47,26 +47,39 @@
 					</div>             	
 				</div>
 			</div>
-			
-
-
-
 			<br>
 			<br>
 			<br>
 			<br>
 			<br>
-
-
-
-
 		</div>
 
 		<div class="row">
-			<div id="container" style="width:100%; height:400px;"></div>
+			<div class="col-md-10">
+				<!--Grafico-->
+				<div id="container" style="width:100%; height:400px;"></div>
+			</div>
+			<div class="col-md-2">
 
-			<!--Grafico-->
-			<script type="text/javascript">
+				<h6>Seleccionar estilo de grafico.</h6>
+
+				<select id="estilo-grafico" class="custom-select"> 
+					<option selected value="pie">Torta</option> 
+					<option value="bar">Barras</option> 
+					<option value="column">Columnas</option>
+					<option value="scatter">Dispersion</option>  
+				</select>
+
+			</div>
+		</div>
+
+
+
+
+										<!--SCRIPTS AJAX G1-->
+
+		<!--Script del grafico-->
+		<script type="text/javascript">
 
 				
 				var chart = Highcharts.chart('container', {
@@ -75,24 +88,27 @@
 				        plotBackgroundColor: null,
 				        plotBorderWidth: null,
 				        plotShadow: false,
-				        type: 'pie'
+				        type: 'pie',
 				    },
 				    title: {
 				        text: 'Cantidad solicitudes atentidas Vs pendientes'
 				    },
+
+				    
 				    subtitle:{
 				    	text: 'Registro completo'
 				    },
 				    tooltip: {
-				        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+				        pointFormat: '{series.name}: <b>{point.y} ({point.percentage:.1f}) %</b>'
 				    },
+
 				    plotOptions: {
 				        pie: {
 				            allowPointSelect: true,
 				            cursor: 'pointer',
 				            dataLabels: {
 				                enabled: true,
-				                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+				                format: '<b>{point.name}</b>:{point.y} {point.percentage:.1f} %',
 				                style: {
 				                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
 				                }
@@ -116,70 +132,271 @@
 				        	]
 				    }]
 				});
+		</script>
 
-			</script>
+		<!--Actualziar gráfico cuado se cambie una de las fechas-->
+		<script>
 
-			<!--Actualziar gráfico cuado se cambie una de las fechas-->
-			<script>
-				$(':input[id=fechaIni]').change(function(){
-				
-					var atendidas;
-					var pendientes;
-					$.ajax({
-						url: 'http://127.0.0.1:8000/grafico1X',
-						type:'GET',
-						async:true,
-						dataType:'json',
+			var ini = $("#fechaIni").val();
+			var fin = $("#fechaFin").val();
+		
+			$.ajax({
+				url: 'http://127.0.0.1:8000/grafico1',
+				type:'GET',
+				async:true,
+				dataType:'json',
+				data: {
+					fechaIni: ini,
+					fechaFin: fin
+				},
 
-						success: function(data){
-						alert('Pasó a success') // result o tambien llamado data
+				success: function(data){
 
-							atendidas = data.cantAtendidas;
-							alert(atendidas);
-							pendientes = data.cantPendientes;
-							alert(pendientes);
+					chart.update({
+						subtitle:{
+							text: 'desde ' + ini + ' hasta ' + fin
 						},
-
-						error: function(xhr, textStatus, errorThrown) {
-							alert("Error en el AJAX Gesol");
-							console.log(JSON.stringify(xhr));
-							console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-						},
-					});
-				
-				});
-			</script>
-
-
-			<!--Opción invertir grafico-->
-			<script type="text/javascript">
-
-				$('#inverted').click(function () {
-				    chart.update({
-
 				        series: [{
 					        name: 'Cantidad',
 					        colorByPoint: true,
 					        data:[
 					        {
 					            name: 'Solicitudes atendidas',
-					            y: 80,
+					            y: data.cantAtendidas,
 					            sliced: true,
 					            selected: true
 					        }, 
 					        {
 					            name: 'Solicitudes pendientes',
-					            y: 90
+					            y: data.cantPendientes
 					        }, 
 			        		]
 				    	}]
+		    		});
+					
+				},
 
-				    });
-				});
-			</script>
-			
+				error: function(xhr, textStatus, errorThrown) {
+					alert("Error en el AJAX Gesol");
+					console.log(JSON.stringify(xhr));
+					console.log('AJAX error: ' + textStatus + ' : ' + errorThrown);
+				},
+			});
+		</script>
+
+		<!--Cambiar tipo de grafico-->
+		<script>
+
+			var estiloGrafico = $('#estilo-grafico');
+
+			estiloGrafico.change(function() {
+				
+				var tipo = estiloGrafico.val();
+
+				chart.update({
+						chart:{
+							type: tipo
+						},
+		    		});
+
+			});
+		</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<br>
+		<br>
+		<br>
+		<br>
+		<hr>
+
+		<h3 class="subencabezado">Ingrese periodo deseado</h3>
+		<br>
+		<div class="row">
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label" for="fechaNac">Fecha de inicio (dia/mes/año)*</label>
+					<div class="input-group">
+						<div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-calendar-alt"></i></div>
+
+						<input name="fechaIni" id="fechaIni" type="date" value="2017-01-01" class="form-control"/>
+
+					</div>             	
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label" for="fechaNac">Fecha de finalización (dia/mes/año)*</label>
+					<div class="input-group">
+						<div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-calendar-alt"></i></div>
+
+						<input name="fechaFin" id="fechaFin" type="date" value="{{date('Y-m-d')}}" class="form-control"/>
+
+					</div>             	
+				</div>
+			</div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+		<div class="row">
+			<div class="col-md-10">
+				<!--Grafico-->
+				<div id="container2" style="width:100%; height:400px;"></div>
+			</div>
+			<div class="col-md-2">
+
+				<h6>Seleccionar estilo de grafico.</h6>
+
+				<select id="estilo-grafico" class="custom-select"> 
+					<option selected value="pie">Torta</option> 
+					<option value="bar">Barras</option> 
+					<option value="column">Columnas</option>
+					<option value="scatter">Dispersion</option>  
+				</select>
+
+			</div>
 		</div>
 
+		<!--Script del grafico-->
+		<script type="text/javascript">
+
+				
+				var chart = Highcharts.chart('container2', {
+
+				    chart: {
+				        plotBackgroundColor: null,
+				        plotBorderWidth: null,
+				        plotShadow: false,
+				        type: 'pie',
+				    },
+				    title: {
+				        text: 'Cantidad solicitudes atentidas Vs pendientes'
+				    },
+
+				    
+				    subtitle:{
+				    	text: 'Registro completo'
+				    },
+				    tooltip: {
+				        pointFormat: '{series.name}: <b>{point.y} ({point.percentage:.1f}) %</b>'
+				    },
+
+				    plotOptions: {
+				        pie: {
+				            allowPointSelect: true,
+				            cursor: 'pointer',
+				            dataLabels: {
+				                enabled: true,
+				                format: '<b>{point.name}</b>:{point.y} {point.percentage:.1f} %',
+				                style: {
+				                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+				                }
+				            }
+				        }
+				    },
+				    series: [{
+				        name: 'Cantidad',
+				        colorByPoint: true,
+				        data: [
+						        {
+						            name: 'Solicitudes atendidas',
+						            y: {{$cantAtendidas}},
+						            sliced: true,
+						            selected: true
+						        }, 
+						        {
+						            name: 'Solicitudes pendientes',
+						            y: {{$cantPendientes}}
+						        }, 
+				        	]
+				    }]
+				});
+		</script>
+
+		<!--Actualziar gráfico cuado se cambie una de las fechas-->
+		<script>
+
+			var ini = $("#fechaIni").val();
+			var fin = $("#fechaFin").val();
+		
+			$.ajax({
+				url: 'http://127.0.0.1:8000/grafico1',
+				type:'GET',
+				async:true,
+				dataType:'json',
+				data: {
+					fechaIni: ini,
+					fechaFin: fin
+				},
+
+				success: function(data){
+
+					chart.update({
+						subtitle:{
+							text: 'desde ' + ini + ' hasta ' + fin
+						},
+				        series: [{
+					        name: 'Cantidad',
+					        colorByPoint: true,
+					        data:[
+					        {
+					            name: 'Solicitudes atendidas',
+					            y: data.cantAtendidas,
+					            sliced: true,
+					            selected: true
+					        }, 
+					        {
+					            name: 'Solicitudes pendientes',
+					            y: data.cantPendientes
+					        }, 
+			        		]
+				    	}]
+		    		});
+					
+				},
+
+				error: function(xhr, textStatus, errorThrown) {
+					alert("Error en el AJAX Gesol");
+					console.log(JSON.stringify(xhr));
+					console.log('AJAX error: ' + textStatus + ' : ' + errorThrown);
+				},
+			});
+		</script>
+
+		<!--Cambiar tipo de grafico-->
+		<script>
+
+			var estiloGrafico = $('#estilo-grafico');
+
+			estiloGrafico.change(function() {
+				
+				var tipo = estiloGrafico.val();
+
+				chart.update({
+						chart:{
+							type: tipo
+						},
+		    		});
+
+			});
+		</script>
+
+	<!--CIERRA CONTAINER-->
 	</div>
 
 @stop

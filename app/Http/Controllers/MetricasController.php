@@ -19,21 +19,54 @@ use Chart;
 
 class MetricasController extends Controller
 {
+    public function lala(){
+
+        $query1= DB::select(DB::raw("SELECT count(solicitudes.sol_id) as cantidad
+                    FROM solicitudes
+                    WHERE solicitudes.sol_estado ='Atendida' 
+                        AND sol_fechaCreacion BETWEEN '" . '2001-01-01' . "' AND '" . '2018-12-01' . "'" 
+                    ));
+            
+
+        dd($query1);
+
+    }
 
     public function procesarG1(Request $request){
 
         if($request->ajax()){
 
+            $fechaIni = $_GET['fechaIni'];
+
+            $fechaFin = $_GET['fechaFin'];
+
+            $query= DB::select(DB::raw("SELECT count(solicitudes.sol_id) as cantidad
+                    FROM solicitudes
+                    WHERE solicitudes.sol_estado ='Atendida' 
+                        AND sol_fechaCreacion BETWEEN '" . $fechaIni . "' AND '" . $fechaFin . "'" 
+                    ));
+
+            $cantAtendidas = $query[0]->cantidad;
+
+
+            $query= DB::select(DB::raw("SELECT count(solicitudes.sol_id) as cantidad
+                    FROM solicitudes
+                    WHERE solicitudes.sol_estado ='Pendiente' 
+                        AND sol_fechaCreacion BETWEEN '" . $fechaIni . "' AND '" . $fechaFin . "'" 
+                    ));
+
             
+            $cantPendientes = $query[0]->cantidad;
 
-            $cantAtendidas = DB::table('solicitudes')
-            ->where('sol_estado', '=', 'Atendida')
-            ->count();
+            return json_encode(array(
+                
+                'cantAtendidas'=> $cantAtendidas,
+                'cantPendientes' => $cantPendientes
+                
+            ));
 
-            $cantPendientes = DB::table('solicitudes')
-            ->where('sol_estado', '=', 'Pendiente')
-            ->count();
-
+            
+            
         }
 
         $cantAtendidas = DB::table('solicitudes')

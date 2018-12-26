@@ -84,4 +84,4 @@ Route::get('test/cargar', function(){
 	return view('tests.iconoTest');
 });
 
-
+Route::get('lala', 'MetricasController@lala');
