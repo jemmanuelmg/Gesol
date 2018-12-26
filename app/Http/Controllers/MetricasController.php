@@ -20,7 +20,29 @@ use Chart;
 class MetricasController extends Controller
 {
    
+    public function lala(){
 
+        $solicitudes= DB::select(DB::raw("
+
+            SELECT count(sol_id) as cuenta, sol_nombre
+
+            FROM solicitudes
+
+            GROUP BY sol_nombre
+
+        "));
+
+        $size = count($solicitudes);
+        $nombres = array($size);
+        $puntos = array($size);
+        $i=0;
+        foreach ($solicitudes as $solicitud) {
+            $nombres2[$i] = $solicitud->sol_nombre;
+            $puntos2[$i] = $solicitud->cuenta;
+            $i++;
+        }
+
+    }
     public function procesarG1(Request $request){
 
         if($request->ajax()){
@@ -71,7 +93,6 @@ class MetricasController extends Controller
     }
 
     
-
     public function procesarG2(Request $request){
 
         if($request->ajax()){
@@ -145,6 +166,71 @@ class MetricasController extends Controller
         
 
         return view('metricas.grafico2', compact('size', 'nombres', 'puntos'));
+
+    }
+
+    public function procesarG3(Request $request){
+    
+        if($request->ajax()){
+
+            $fechaIni = $_GET['fechaIni'];
+
+            $fechaFin = $_GET['fechaFin'];
+
+            $solicitudes = DB::select(DB::raw("
+
+                    SELECT count(sol_id) as cuenta, sol_nombre
+
+                    FROM solicitudes
+
+                    WHERE sol_fechaCreacion BETWEEN '" . $fechaIni . "' AND '" . $fechaFin . "'" .
+
+                    "GROUP BY sol_nombre
+
+            "));
+
+            $tamano = count($solicitudes);
+            $nombres = array($tamano);
+            $puntos = array($tamano);
+            $i=0;
+            foreach ($solicitudes as $solicitud) {
+                $nombres[$i] = $solicitud->sol_nombre;
+                $puntos[$i] = $solicitud->cuenta;
+                $i++;
+            }
+
+            return json_encode(array(
+                
+                'tamano'=> $tamano,
+                'nombres' => $nombres,
+                'puntos'=> $puntos
+                
+            ));
+
+        }
+
+        $solicitudes= DB::select(DB::raw("
+
+            SELECT count(sol_id) as cuenta, sol_nombre
+
+            FROM solicitudes
+
+            GROUP BY sol_nombre
+
+        "));
+
+        $size = count($solicitudes);
+        $nombres = array($size);
+        $puntos = array($size);
+        $i=0;
+        foreach ($solicitudes as $solicitud) {
+            $nombres[$i] = $solicitud->sol_nombre;
+            $puntos[$i] = $solicitud->cuenta;
+            $i++;
+        }
+
+        return view('metricas.grafico3', compact('size', 'nombres', 'puntos'));
+
 
 
     }

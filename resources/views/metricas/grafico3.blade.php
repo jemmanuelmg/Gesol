@@ -86,7 +86,7 @@
 				        plotBackgroundColor: null,
 				        plotBorderWidth: null,
 				        plotShadow: false,
-				        type: 'pie',
+				        type: 'column',
 				    },
 				    title: {
 				        text: 'Cantidad solicitudes atentidas Vs pendientes'
@@ -117,16 +117,13 @@
 				        name: 'Cantidad',
 				        colorByPoint: true,
 				        data: [
+				        		@for ($i = 0; $i < $size; $i++)
 						        {
-						            name: 'Solicitudes atendidas',
-						            y: {{$cantAtendidas}},
+						            name: '{{ $nombres[$i] }}',
+						            y: {{ $puntos[$i] }},
 						            sliced: true,
-						            selected: true
-						        }, 
-						        {
-						            name: 'Solicitudes pendientes',
-						            y: {{$cantPendientes}}
-						        }, 
+						        },
+						        @endfor
 				        	]
 				    }]
 				});
@@ -141,8 +138,9 @@
 				var ini = $("#fechaIni").val();
 				var fin = $("#fechaFin").val();
 
+	            
 				$.ajax({
-					url: 'http://127.0.0.1:8000/grafico1',
+					url: 'http://127.0.0.1:8000/grafico3',
 					type:'GET',
 					async:true,
 					dataType:'json',
@@ -153,27 +151,42 @@
 
 					success: function(data){
 
+						//convertir la info obtenida en un arreglo json
+						//para reemplazar las series existentes
+
+						var processed_json = new Array();
+			            for (i = 0; i < data.tamano; i++) {
+
+			            	//.push({name:'Mario', y:25})
+			            	//.push({name:'Andrea', y:12})
+			            	//.push({name:'Brandon', y:34})
+
+			            	//Realmente, esto es un arreglo de objetos. Los obj
+			            	//en javascript se definen entre {}. 
+			            	//Si estan dentro de un arreglo
+			            	//son un arreglo de objetos, y así se construyen
+			            	//los gráficos higcharts, con las opciónes convertidas
+			            	//en objetos dentro de arreglos. Series es un arreglo
+			            	//que tiene un objeto adentro
+			            	//y este objeto maestro es un contenedor para los demás objetos
+			            	//cada valor de la serie es un objeto! claro.
+
+
+			                processed_json.push({ name:data.nombres[i],  y:data.puntos[i] });
+			            }
+
+	            		console.log(processed_json);
+
 						chart.update({
 							subtitle:{
 								text: 'desde ' + ini + ' hasta ' + fin
 							},
 					        series: [{
-						        name: 'Cantidad',
-						        colorByPoint: true,
-						        data:[
-						        {
-						            name: 'Solicitudes atendidas',
-						            y: data.cantAtendidas,
-						            sliced: true,
-						            selected: true
-						        }, 
-						        {
-						            name: 'Solicitudes pendientes',
-						            y: data.cantPendientes
-						        }, 
-				        		]
+						        data: processed_json
 					    	}]
 			    		});
+
+			    		
 						
 					},
 
@@ -183,6 +196,8 @@
 						console.log('AJAX error: ' + textStatus + ' : ' + errorThrown);
 					},
 				});
+				
+				
 
 			});
 		</script>

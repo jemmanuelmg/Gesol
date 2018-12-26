@@ -52,9 +52,21 @@
             @if(session('rol_id') == 3)
 
             <!-- VER METRICAS -->
-            <li class="nav-item">
-              {!! link_to('/metricas', $title = 'Ver metricas', $attributes = ['class'=>'nav-link btn btn-link']); !!}
-            </li>
+            <div class="dropdown">
+
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Informes
+              </button>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                <a class="dropdown-item" >{!! link_to('grafico1', $title = 'Solicitudes atendidas Vs pendientes', $attributes = ['class'=>'dropdown-item']); !!}</a>
+
+                <a class="dropdown-item" >{!! link_to('grafico2', $title = 'Atencion por administrativo', $attributes = ['class'=>'dropdown-item']); !!}</a>
+
+                <a class="dropdown-item" >{!! link_to('grafico3', $title = 'Cantidad de solicitudes', $attributes = ['class'=>'dropdown-item']); !!}</a>
+              </div>
+
+            </div>
 
             <!-- MENU DESPLEGABLE DE ADMINISTRAR -->
             <div class="dropdown">
