@@ -80,8 +80,6 @@
 
 		<!--Script del grafico-->
 		<script type="text/javascript">
-
-				
 				var chart = Highcharts.chart('container', {
 
 				    chart: {
@@ -136,51 +134,54 @@
 
 		<!--Actualziar gráfico cuado se cambie una de las fechas-->
 		<script>
-
 			var ini = $("#fechaIni").val();
 			var fin = $("#fechaFin").val();
-		
-			$.ajax({
-				url: 'http://127.0.0.1:8000/grafico1',
-				type:'GET',
-				async:true,
-				dataType:'json',
-				data: {
-					fechaIni: ini,
-					fechaFin: fin
-				},
 
-				success: function(data){
+			$(':date').change(function(){
 
-					chart.update({
-						subtitle:{
-							text: 'desde ' + ini + ' hasta ' + fin
-						},
-				        series: [{
-					        name: 'Cantidad',
-					        colorByPoint: true,
-					        data:[
-					        {
-					            name: 'Solicitudes atendidas',
-					            y: data.cantAtendidas,
-					            sliced: true,
-					            selected: true
-					        }, 
-					        {
-					            name: 'Solicitudes pendientes',
-					            y: data.cantPendientes
-					        }, 
-			        		]
-				    	}]
-		    		});
-					
-				},
+				$.ajax({
+					url: 'http://127.0.0.1:8000/grafico1',
+					type:'GET',
+					async:true,
+					dataType:'json',
+					data: {
+						fechaIni: ini,
+						fechaFin: fin
+					},
 
-				error: function(xhr, textStatus, errorThrown) {
-					alert("Error en el AJAX Gesol");
-					console.log(JSON.stringify(xhr));
-					console.log('AJAX error: ' + textStatus + ' : ' + errorThrown);
-				},
+					success: function(data){
+
+						chart.update({
+							subtitle:{
+								text: 'desde ' + ini + ' hasta ' + fin
+							},
+					        series: [{
+						        name: 'Cantidad',
+						        colorByPoint: true,
+						        data:[
+						        {
+						            name: 'Solicitudes atendidas',
+						            y: data.cantAtendidas,
+						            sliced: true,
+						            selected: true
+						        }, 
+						        {
+						            name: 'Solicitudes pendientes',
+						            y: data.cantPendientes
+						        }, 
+				        		]
+					    	}]
+			    		});
+						
+					},
+
+					error: function(xhr, textStatus, errorThrown) {
+						alert("Error en el AJAX Gesol");
+						console.log(JSON.stringify(xhr));
+						console.log('AJAX error: ' + textStatus + ' : ' + errorThrown);
+					},
+				});
+
 			});
 		</script>
 
