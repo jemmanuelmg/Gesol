@@ -22,6 +22,20 @@ class MetricasController extends Controller
 
     public function procesarG1(Request $request){
 
+        if($request->ajax()){
+
+            
+
+            $cantAtendidas = DB::table('solicitudes')
+            ->where('sol_estado', '=', 'Atendida')
+            ->count();
+
+            $cantPendientes = DB::table('solicitudes')
+            ->where('sol_estado', '=', 'Pendiente')
+            ->count();
+
+        }
+
         $cantAtendidas = DB::table('solicitudes')
         ->where('sol_estado', '=', 'Atendida')
         ->count();

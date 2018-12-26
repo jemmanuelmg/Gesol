@@ -57,38 +57,16 @@
 			<br>
 			<br>
 
+
+
+
 		</div>
 
 		<div class="row">
 			<div id="container" style="width:100%; height:400px;"></div>
 
+			<!--Grafico-->
 			<script type="text/javascript">
-
-				/*
-				var atendidas;
-				var pendientes;
-				$.ajax({
-					url: 'http://127.0.0.1:8000/grafico1X',
-					type:'GET',
-					async:true,
-					dataType:'json',
-
-					success: function(data){
-					alert('Pasó a success') // result o tambien llamado data
-
-						atendidas = data.cantAtendidas;
-						alert(atendidas);
-						pendientes = data.cantPendientes;
-						alert(pendientes);
-					},
-
-					error: function(xhr, textStatus, errorThrown) {
-						alert("Error en el AJAX Gesol");
-						console.log(JSON.stringify(xhr));
-						console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-					},
-				});
-				*/
 
 				
 				var chart = Highcharts.chart('container', {
@@ -141,6 +119,39 @@
 
 			</script>
 
+			<!--Actualziar gráfico cuado se cambie una de las fechas-->
+			<script>
+				$(':input[id=fechaIni]').change(function(){
+				
+					var atendidas;
+					var pendientes;
+					$.ajax({
+						url: 'http://127.0.0.1:8000/grafico1X',
+						type:'GET',
+						async:true,
+						dataType:'json',
+
+						success: function(data){
+						alert('Pasó a success') // result o tambien llamado data
+
+							atendidas = data.cantAtendidas;
+							alert(atendidas);
+							pendientes = data.cantPendientes;
+							alert(pendientes);
+						},
+
+						error: function(xhr, textStatus, errorThrown) {
+							alert("Error en el AJAX Gesol");
+							console.log(JSON.stringify(xhr));
+							console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+						},
+					});
+				
+				});
+			</script>
+
+
+			<!--Opción invertir grafico-->
 			<script type="text/javascript">
 
 				$('#inverted').click(function () {
