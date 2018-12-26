@@ -19,18 +19,7 @@ use Chart;
 
 class MetricasController extends Controller
 {
-    public function lala(){
-
-        $query1= DB::select(DB::raw("SELECT count(solicitudes.sol_id) as cantidad
-                    FROM solicitudes
-                    WHERE solicitudes.sol_estado ='Atendida' 
-                        AND sol_fechaCreacion BETWEEN '" . '2001-01-01' . "' AND '" . '2018-12-01' . "'" 
-                    ));
-            
-
-        dd($query1);
-
-    }
+   
 
     public function procesarG1(Request $request){
 
@@ -77,18 +66,88 @@ class MetricasController extends Controller
         ->where('sol_estado', '=', 'Pendiente')
         ->count();
 
-        return view('tests.graficoTest', ['cantAtendidas' => $cantAtendidas, 'cantPendientes' => $cantPendientes]);
+        return view('metricas.grafico1', ['cantAtendidas' => $cantAtendidas, 'cantPendientes' => $cantPendientes]);
 
     }
 
+    
+
+    public function procesarG2(Request $request){
+
+        if($request->ajax()){
+
+            $fechaIni = $_GET['fechaIni'];
+
+            $fechaFin = $_GET['fechaFin'];
+
+            $admins= DB::select(DB::raw("
+
+                SELECT  count(respuestas.res_id) as cuenta, 
+                        usuarios.usu_nombres, 
+                        roles.rol_nombre
+
+                FROM respuestas JOIN usuarios ON respuestas.usu_cedula = usuarios.usu_cedula
+                                JOIN roles ON usuarios.rol_id = roles.rol_id
+
+                WHERE respuestas.res_fechaRespuesta BETWEEN '" . $fechaIni . "' AND '" . $fechaFin . "'" .                 
+
+                "GROUP BY usuarios.usu_nombres,
+                         roles.rol_nombre 
+
+            "));
+
+            $tamano = count($admins);
+            $nombres = array($tamano);
+            $puntos = array($tamano);
+            $i=0;
+            foreach ($admins as $admin) {
+                $nombres[$i] = $admin->usu_nombres . ' (' . $admin->rol_nombre . ')';
+                $puntos[$i] = $admin->cuenta;
+                $i++;
+            }
+
+            return json_encode(array(
+                
+                'tamano'=> $tamano,
+                'nombres' => $nombres,
+                'puntos'=> $puntos
+                
+            ));
 
 
+        }
+
+        
+
+        $admins= DB::select(DB::raw("
+
+            SELECT  count(respuestas.res_id) as cuenta, 
+                    usuarios.usu_nombres, 
+                    roles.rol_nombre
+
+            FROM respuestas JOIN usuarios ON respuestas.usu_cedula = usuarios.usu_cedula
+                            JOIN roles ON usuarios.rol_id = roles.rol_id
+
+            GROUP BY usuarios.usu_nombres,
+                     roles.rol_nombre 
+
+        "));
+
+        $size = count($admins);
+        $nombres = array($size);
+        $puntos = array($size);
+        $i=0;
+        foreach ($admins as $admin) {
+            $nombres[$i] = $admin->usu_nombres . ' (' . $admin->rol_nombre . ')';
+            $puntos[$i] = $admin->cuenta;
+            $i++;
+        }
+        
+
+        return view('metricas.grafico2', compact('size', 'nombres', 'puntos'));
 
 
-
-
-
-
+    }
 
 
     public function generarMetricas()
