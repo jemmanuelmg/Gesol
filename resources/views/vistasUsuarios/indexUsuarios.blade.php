@@ -4,9 +4,7 @@
 @section('estilos')
 	@parent
 	
-	
-	{!!Html::style('css/footer.css')!!}
-	{!!Html::style('css/font-awesome.min.css')!!}
+
 	{!!Html::style('js/DataTables/media/css/jquery.dataTables.css')!!}
 
 @stop
@@ -14,6 +12,9 @@
 @section('titulo') Gesol - Listado de usuarios @stop
 
 @section('contenido')
+	<br>
+	<br>
+	<br>
 	<br>
 
 	<div class="jumbotron text-center" style="margin: 0 1em; padding: 2em 0;">
@@ -62,7 +63,7 @@
 						<!--En parameters se escribe las variables que llevará el metodo GET. En atributes cosas como la clase css, id, etc. Entre corchetes por que es un array-->
 
 						<td style="text-align: center;">
-							{!! link_to_route('usuarios.edit', $title = '', $parameters = $usuario->usu_cedula, $attributes = ['class'=>'fa fa-pencil btn btn-outline-primary']); !!}
+							{!! link_to_route('usuarios.edit', $title = '', $parameters = $usuario->usu_cedula, $attributes = ['class'=>'fas fa-pencil-alt btn btn-outline-primary']); !!}
 						</td>
 					</tr>
 					@endforeach

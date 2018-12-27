@@ -5,12 +5,13 @@
 	@parent
 	
 	{!!Html::style('js/DataTables/media/css/jquery.dataTables.css')!!}
-	{!!Html::style('css/footer.css')!!}
-	{!!Html::style('css/font-awesome.min.css')!!}
 
 @stop
 
 @section('contenido')
+	<br>
+	<br>
+	<br>
 	<br>
 
 	<div class="jumbotron text-center" style="margin: 0 1em; padding: 2em 0;">
@@ -53,13 +54,13 @@
 					<!--En parameters se escribe las variables que llevará el metodo GET. En atributes cosas como la clase css, id, etc. Entre corchetes por que es un array-->
 					<td style="width:14%">
 						
-						{!! link_to('solicitudesPDF/'.$solicitud->sol_formato, $title = '', $attributes = ['class'=>'fa fa-file-pdf-o btn btn-outline-danger','target'=>'_blank']); !!}
+						{!! link_to('solicitudesPDF/'.$solicitud->sol_formato, $title = '', $attributes = ['class'=>'fas fa-file-pdf btn btn-outline-danger','target'=>'_blank']); !!}
 
 						@if(session('rol_id') == 3) <!--solo admin coordinador puede editar solicitud-->
-							{!! link_to_route('solicitudes.edit', $title = '', $parameters = $solicitud->sol_id, $attributes = ['class'=>'fa fa-pencil btn btn-outline-primary']); !!}
+							{!! link_to_route('solicitudes.edit', $title = '', $parameters = $solicitud->sol_id, $attributes = ['class'=>'fas fa-pencil-alt btn btn-outline-primary']); !!}
 						@endif
 
-						{!! link_to('redactarRespuesta/'.$solicitud->sol_nombre.'/'.$solicitud->sol_formato.'/'.$solicitud->sol_id, $title = '', $attributes = ['class'=>'fa fa-pencil-square-o btn btn-outline-info']); !!}
+						{!! link_to('redactarRespuesta/'.$solicitud->sol_nombre.'/'.$solicitud->sol_formato.'/'.$solicitud->sol_id, $title = '', $attributes = ['class'=>'fas fa-pen-square btn btn-outline-info']); !!}
 
 					</td>
 				</tr>

@@ -124,62 +124,89 @@
   <h2>Haz una solicitud en 3 sencillos pasos</h2>
 
   <div class="row">
-   <div class="col-lg-4 col-sm-6 portfolio-item">
-    <div class="card h-100">
-      <a href="#"><img class="card-img-top" src="../images/gesol-inicio-unirse.jpeg" alt="Gesol UTS unirse a gesol"></a>
-      <div class="card-body">
-        <h4 class="card-title">
-          <a href="#">Project One</a>
-        </h4>
-        <p class="card-text">Registrate en nuestro sistema con tus datos personales</p>
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="../images/gesol-inicio-unirse.jpeg" alt="Gesol UTS unirse a gesol"></a>
+        <div class="card-body">
+          <h4 class="card-title">
+          </h4>
+          <p class="card-text">Registrate en nuestro sistema con tus datos personales</p>
+        </div>
       </div>
     </div>
-  </div>
 
 
 
-  <div class="col-lg-4 col-sm-6 portfolio-item">
-    <div class="card h-100">
-      <a href="#"><img class="card-img-top" src="../images/gesol-inicio-solicitar.jpeg" alt="Gesol UTS hacer una solicitud academica"></a>
-      <div class="card-body">
-        <h4 class="card-title">
-          <a href="#">Project One</a>
-        </h4>
-        <p class="card-text">Realiza una solicitud completando los campos requeridos</p>
+    <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="../images/gesol-inicio-solicitar.jpeg" alt="Gesol UTS hacer una solicitud academica"></a>
+        <div class="card-body">
+          <h4 class="card-title">
+          </h4>
+          <p class="card-text">Realiza una solicitud completando los campos requeridos</p>
+        </div>
       </div>
     </div>
-  </div>
 
 
-  <div class="col-lg-4 col-sm-6 portfolio-item">
-    <div class="card h-100">
-      <a href="#"><img class="card-img-top" src="../images/gesol-inicio-esperar.jpeg" alt="Gesol UTS comodidad tramite virtual"></a>
-      <div class="card-body">
-        <h4 class="card-title">
-          <a href="#">Project One</a>
-        </h4>
-        <p class="card-text">Espera por una respuesta enviada a tu correo electrónico, <strong> sin filas, sin desplazarse, sin problemas!</strong></p>
+    <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="../images/felices.jpeg" alt="Gesol UTS comodidad tramite virtual"></a>
+        <div class="card-body">
+          <h4 class="card-title">
+          </h4>
+          <p class="card-text">Espera por una respuesta enviada a tu correo electrónico, <strong> sin filas, sin desplazarse, sin problemas!</strong></p>
+        </div>
       </div>
     </div>
-  </div>
 
-</div>
+  </div>
 <!-- /.row -->
 
-<hr>
+  <hr>
 
-<!-- Call to Action Section -->
-<div class="row mb-4">
-  <div class="col-md-8">
-    <p>Para empezar tu experiencia usando GESOL, porfavor registrate dando clic en el siguiente boton. Es la manera mas eficiente de solicitudar cualquier servicio. ¡No te quedes atras!</p>
+  <!-- Call to Action Section -->
+  <div class="row mb-4">
+    <div class="col-md-8">
+      <p>Para empezar tu experiencia usando GESOL, porfavor registrate dando clic en el siguiente boton. Es la manera mas eficiente de solicitudar cualquier servicio. ¡No te quedes atras!</p>
 
+    </div>
+    <div class="col-md-4">
+      <a class="btn btn-primary btn-lg" href="/usuarios/create">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registrarse&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-thumbs-up fa-2x" aria-hidden="true"></i></a>
+    </div>
   </div>
-  <div class="col-md-4">
-    <a class="btn btn-primary btn-lg" href="/usuarios/create">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registrarse&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-thumbs-up fa-2x" aria-hidden="true"></i></a>
-  </div>
-</div>
+
+  <br>
+  <br>
+  <br>
+  <h2>Nuestros clientes</h2>
+  <br>
+
 
 </div>
 <!-- /.container -->
 
+  <div class="parallax">
+    <br>
+    <br>
+    <br>
+    <div class="customer-logos">
+      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image1.png"></div>
+      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image2.png"></div>
+      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image3.png"></div>
+      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image4.png"></div>
+      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image5.png"></div>
+      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image6.png"></div>
+      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image7.png"></div>
+      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image8.png"></div>
+    </div>
+  </div>
+
+@stop
+
+@section('javascript')
+  @parent
+  
+  <script type="text/javascript" src="{{ URL::asset('js/slick.min.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/brand-carousell.js') }}"></script>
 @stop

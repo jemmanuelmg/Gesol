@@ -63,6 +63,8 @@ Route::get('resetPassword/reset', 'resetPassword\ForgotPasswordController@showLi
 Route::post('resetPassword/email', 'resetPassword\ForgotPasswordController@sendResetLinkEmail');
 Route::get('resetPassword/reset/{token}', 'resetPassword\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('resetPassword/reset', 'resetPassword\ResetPasswordController@reset');
+Route::post('enviarPassword', 'SmsController@enviarPassword');
+
 
 	/**
 	 * Rutas metricas software
@@ -75,14 +77,17 @@ Route::get('metricas', 'MetricasController@generarMetricas');
 Route::get('confirmarSms/{telefono}', 'SmsController@enviarSmsConfirmacion');
 
 
-/*Tests*/
+	/**
+	* Rutas para gráficos o métricas
+	*/
 
 Route::get('grafico1', 'MetricasController@procesarG1');
 Route::get('grafico2', 'MetricasController@procesarG2');
 Route::get('grafico3', 'MetricasController@procesarG3');
-Route::get('lala', 'MetricasController@lala');
 
-
+	/**
+	* Rutas para test
+	*/
 
 Route::get('test/cargar', function(){
 	return view('tests.iconoTest');

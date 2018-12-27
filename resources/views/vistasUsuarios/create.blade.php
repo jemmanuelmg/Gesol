@@ -117,8 +117,11 @@ Registrarse Gesol
 						<p class="texto-gris"> 
 							<span class="badge badge-info" id="span-tel">info</span> Para confirmar tu cuenta debes introducir tu número celular al cual le será enviado un código de confirmación. Será valido por los siguientes 10 minutos.
 						</p>
+
+						<div class="input-group mb-2 mr-sm-2 mb-sm-0">
 						<div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-mobile-alt"></i></div>
 						<input type="number" id="input-telefono" class="form-control" name="telefono" placeholder="Introduzca su telefono" />
+						</div>
 
 						<button id="btn-telefono"class="btn btn-primary btn-sm" type="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Verificando.." data-content="Se enviará un mensaje de texto al número">
 							

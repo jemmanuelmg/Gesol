@@ -1,4 +1,6 @@
 @if(Session::has('mensaje-exito'))
+<br/>
+<br/>
 <div class='alert alert-success  alert-dismissible' role='alert'>
 	<br/>
 	<br/>

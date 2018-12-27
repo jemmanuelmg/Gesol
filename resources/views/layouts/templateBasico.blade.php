@@ -31,7 +31,7 @@
 
       <div class="container">        
         <!-- LOGO -->
-        <a class="navbar-brand" href="/"><img src={{asset('images/gesol_logo_new2.png')}} alt="Logo" height="55px"></a>
+        <a class="navbar-brand" href="/"><img src="{{asset('images/gesol_logo_new2.png')}}" alt="Logo" height="55px"></a>
         <!-- FIN LOGO-->
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -213,27 +213,72 @@
     <!--Aquí va el contenido en general de todas las paginas hijas-->
     @show
 
-    
-    @section('graficos')
-      <!--Por si alguna vista necesita situar su gráfico, se pondrá aquí-->
-    @show
+    <!--FOOTER-->
+    <div class="footer">
+      <div class="row">
+        
+        <div class="col-md-3 col-lg-3 alinear-izquierda col-footer">
 
-    <!-- FOOTER -->
-    <footer class="footer">
+        <center>
 
-      <br>
-      <br>
+        <img src="{{asset('images/gesol_logo_new2.png')}}" width="110px">
 
-      <div class="brand">
-
-        <div class="container">
-
+        
+        <div class="redes">
+            <div class="email"><a href="#"></a></div>
+            <div class="facebook"><a href="#"></a></div>
+            <div class="twitter"><a href="#"></a></div>
+            <div class="youtube"><a href="#"></a></div>
         </div>
+        
+
+        </center>
+        
+      </div>
+
+      <div class="col-md-3 col-lg-3 alinear-izquierda col-footer">
+          <center>
+          Gesol 2019 ® 
+          Todos los derechos reservados <br><br>
+
+          Avenida No. 45A #56-89, Medellín -Antioquia.
+          </center>
+
+
+      </div>        
+
+      <div class="col-md-3 col-lg-3 alinear-izquierda col-footer">
+          
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex evaborum.
+
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis <br> <br>
+
+          nostrud exercitation ullamco laboris nisi ut aliquip ex evaborum.
+          tempor incidi quis nostrud exercitation ullamco laboris nisi ut aliquip ex evaborum.
+          tempor incidi 
+          
+          
 
       </div>
 
-    </footer>
-    <!-- FIN FOOTER -->
+      <div class="col-md-3 col-lg-3 alinear-izquierda col-footer">
+
+          
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqt in voluptatet laborum.
+
+          <br> <br>
+
+          magna aliqt in voluptatet laborum. magna aliqt in voluptatet laborum.
+          
+
+            </div>
+        </div>
+    </div>
+    <!--./FOOTER-->
 
     @section('javascript')
 
