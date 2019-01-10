@@ -162,6 +162,19 @@ class UsuarioController extends Controller
      */
     public function update(ValidaUsuarioUpdateRequest $request, $usu_cedula)
     {
+
+        //Comprobación y guardado de foto (en caso de que haya adjuntado una)
+        if(isset($request['foto'])){
+
+            $encoded_data = $request['foto'];
+            $binary_data = base64_decode( $encoded_data );
+
+            // save to server (beware of permissions)
+            $result = file_put_contents( '../../public/images/fotos_usuarios/' . Session('usu_cedula') . 'jpg', $binary_data );
+            
+        }
+
+
         //En caso de que el admin especifique el rol
         if(isset($request['rol'])){
             $usuario = new Usuarios();

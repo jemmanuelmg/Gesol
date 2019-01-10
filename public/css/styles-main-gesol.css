@@ -397,22 +397,29 @@ a:hover{
     -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
+
+
 .btn-secondary {
-    color: #fff;
+    /*color: #fff;*/
     background-color: #BBD035;
     border-color: transparent;
 }
+
+
+
 .btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
-  color: #fff;
+  /*color: #fff;*/
   background-color: #BBD035;
   border-color: #FFF;
 }
+
 .btn-secondary:not([disabled]):not(.disabled).active, .btn-secondary:not([disabled]):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
-    color: #fff;
-    background-color: transparent;
+    /*color: #fff;*/
+    /*background-color: transparent;*/
     border-color: #FFF;
     box-shadow: 0 0 0 0 white;
 }
+
 /* FIN CSS DEL NAVBAR */
 
 
@@ -798,5 +805,48 @@ code {
   font-family: 'Century Gothic';
   src:url(/fonts/Raleway-Regular.ttf) format('truetype');
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*ESTILOS WEBCAM USUARIOS*/
+
+#my_camera{
+  width: 310px; 
+  height:240px;
+  margin-bottom: 20px;
+  
+}
+
+video{
+  border-radius: 30%;
+}
+
+.result_img{
+  width:310px; 
+  height:240px;
+  border-radius: 30%;
+  margin-top: 20px;  
+}
+
+.delete-container{
+  border-style: solid;
+  border-radius:6px;
+  padding: 10px; 
+  border-width: 1px;
+  border-color: #DC3545;
+}
+
+
+
 
 
