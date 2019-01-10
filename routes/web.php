@@ -89,8 +89,6 @@ Route::get('grafico3', 'MetricasController@procesarG3');
 	* Rutas para test
 	*/
 
-Route::get('test/cargar', function(){
-	return view('tests.iconoTest');
+Route::get('foto', function(){
+	return view('tests.fotoTest');
 });
-
-Route::get('lala', 'MetricasController@lala');
