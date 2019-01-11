@@ -53,7 +53,7 @@
 
 				        <h4 class="card-title texto-azul">Teléfono móvil</h4>
 
-				        <p class="card-text">Recibe tu contraseña olvidada directamente al teléfono que usaste para registrarte en gesol.</p>
+				        <p class="card-text">Recibe una contraseña provisional al teléfono que usaste para registrarte en gesol. Despues podrás cambiarla de nuevo.</p>
 
 				        <br>
 
@@ -118,7 +118,7 @@
 			        </div>
 
 					<p style="color: #BBD035;">
-						<b>En un momento te será enviada tu contraseña olvidada a tu teléfono vía SMS. <br> No añadas prefijos (no +57), solo tus 10 dígitos </b>
+						<b>En un momento te será enviada una contraseña provisional a tu teléfono vía SMS, para que la cambies despues de iniciar sesión con ella. <br> No añadas prefijos (no +57), solo tus 10 dígitos </b>
 					</p>
 
 			        <input type="submit" value="Enviar correo" class="btn btn-primary btn-lg">

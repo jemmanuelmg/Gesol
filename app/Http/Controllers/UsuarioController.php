@@ -212,6 +212,8 @@ class UsuarioController extends Controller
 
             $usuario->save();
 
+            $request->session()->put('usu_foto', Session('usu_cedula') . '.' . $ext);
+
             Session::flash('mensaje-exito', 'Se ha actualizado exitosamente');
             return Redirect::to('/');
 
