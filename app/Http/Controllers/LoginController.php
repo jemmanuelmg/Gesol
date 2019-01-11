@@ -74,6 +74,7 @@ class LoginController extends Controller
             $request->session()->put('usu_telefono', $usuarioLoggeado->usu_telefono);
 
             $request->session()->put('usu_foto', $usuarioLoggeado->usu_foto);
+            //dd($usuarioLoggeado->usu_foto);
 
             //Determinar nombre del rol
             if ($usuarioLoggeado->rol_id == 3) {

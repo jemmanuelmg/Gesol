@@ -139,7 +139,7 @@
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                     @if(session()->has('usu_foto'))
-                    <img src="{{asset('images/fotos_usuarios/' . Session('usu_foto'))}}" class="avatar-nav">
+                    <img src="../images/fotos_usuarios/{{Session('usu_foto')}}" class="avatar-nav">
                     @else
                     <img src="/images/icono-perfil.png" class="ImagenPerfil" height="20px" width="20px">
                     @endif
