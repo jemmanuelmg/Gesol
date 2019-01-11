@@ -12,74 +12,14 @@
 
     	<div class="jumbotron">
 
-    		
-
-    		<h2 class="display-4"><center><strong>Editar Usuario</strong></center></h2>
-    		<br>
-
-    		<center>
-    		<div class="switch">
-	    		<div class="btn-group btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-secondary active">
-						<input type="radio" name="opcion_foto" value="si"> Sin foto
-					</label>
-
-					<label class="btn btn-secondary">
-						<input type="radio" name="opcion_foto" value="no"> Con foto
-					</label>
-				</div>
-			</div>	
-			</center>
-			<br>
-
-
-			{!!Form::open(['route' => ['usuarios.update', $usuario->usu_cedula], 'files' => true, 'enctype' => 'multipart/form-data', 'method'=>'PUT'])!!}
-
 	      	<div class="row">
 
-	      		<div id="foto_container" class="col-md-5">
-
-	      			<h5>Foto de usuario</h5>
-
-					<script type="text/javascript" src="{{ URL::asset('js/webcam/webcam.js') }}"></script>
-
-					<div id="my_camera" class="circleBase"></div>
-
-					<a href="javascript:void(take_snapshot())" class="btn btn-primary btn-sm">Tomar foto</a>
-
-					<div id="my_result"></div>
-
-					Ó selecciona una foto: <input type="file" name="foto2" class="form-control-file" accept=".jpg, .jpeg, .png, .gif">
-
-					<script language="JavaScript">
-					    Webcam.attach( '#my_camera' );
-					    
-					    function take_snapshot() {
-					        Webcam.snap( function(data_uri) {
-
-					        	var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
-					        	document.getElementById('foto').value = raw_image_data;
-
-					            document.getElementById('my_result').innerHTML = '<img class="result_img" src="'+data_uri+'"/>';
-
-					        } );
-					    }
-					</script>
-
-				</div>
-
-
-
-
-
-
-
-
-	        	<div id="datos_container" class="col-md-12">
-
-	        		<input id="foto" type="hidden" name="foto" value=""/>
+	        	<div class="col-md-12">
 	        		
-	         		
+	         		<h2 class="display-4"><center><strong>Editar Usuario</strong></center></h2>
+
+		          	{!!Form::open(['route' => ['usuarios.update', $usuario->usu_cedula], 'method'=>'PUT'])!!}    
+
 		          	<div class="form-group">
 			          <label class="control-label" for="cedula">Cedula</label>
 			          	<div class="input-group">
@@ -106,7 +46,7 @@
 				      <div class="col-sm-10">
 				        <div class="form-check-inline">
 				          <label class="form-check-label">
-				            <input class="form-check-input" type="radio" name="genero" value="Masculino" checked>
+				            <input class="form-check-input" type="radio" name="genero" value="Masculino">
 				            Masculino
 				          </label>
 				        </div>
@@ -155,9 +95,11 @@
 			        </div>
 
 			        
+
 					<!--Solo usuario con rol 3 (admin) puede editar roles, y no puede editar
 					su propio rol. Por eso el email con que inicio sesion debe ser != al email
 					de este formulario-->
+
 					@if(session('rol_id') == 3 && session('email') != $usuario->email)
 						<div id='rolUsuario'>
 							<label for="rol" class="mr-sm-2">Rol de usuario</label>
@@ -171,97 +113,52 @@
 
 					<br>
 
-					<center>
-					<input type="submit" value="Actualizar" class="btn btn-primary btn-lg">
+			        <div class="container">
+				        <div class="row">
+				        	<div class="col-sm"></div>
+						    <div class="col-sm">
+						    	<input type="submit" value="Actualizar" class="btn btn-primary btn-lg">
+						    </div>
+						    <div class="col-sm"></div>
+						</div>
+			        </div>
 
-					
-					</center>
-						 
+		          	{!!Form::close()!!}
+
 		          	<br>
 
-		      	</div>
+					@if(session('rol_id') == 3)
+
+					<!--Formulario eliminar. Necesario usar un formulario completo para indicar el método DELETE en el submit-->
+						{!!Form::open(['route' => ['usuarios.destroy', $usuario->usu_cedula], 'method'=>'DELETE'])!!}
+
+							<div class="container">
+						        <div class="row">
+						        	<div class="col-sm"></div>
+								    <div class="col-sm">
+								    	<input type="submit" value="Eliminar" class="btn btn-danger btn-lg" style="position: relative; bottom: 62px; left: 150px">	
+								    </div>
+								    <div class="col-sm"></div>
+								</div>
+					        </div>
+
+							<hr>
+
+							<p style="color: #BBD035;">
+								Al eliminar una cuenta se removerán todos los registros de la base de datos relacionados a la misma, lo cual obligará al usuario a registrarse de nuevo con un rol por defecto de 'Estudiante'.								
+							</p>
+							
+						{!!Form::close()!!}
+
+					@endif
+
+		      	</div><!--/span-->
 
 			</div><!--/row-->
-
-			{!!Form::close()!!}
-
-			<br>
-			<br>
-
-			<div class="delete-container">
-				<h2 class="display-4"><center><strong>Eliminar cuenta</strong></center></h2>
-	    		<br>
-
-				@if(session('rol_id') == 3)
-				{!!Form::open(['route' => ['usuarios.destroy', $usuario->usu_cedula], 'method'=>'DELETE'])!!}
-
-				<div class="row">
-					<div class="col-md-12">
-					<!--Formulario eliminar. Necesario usar un formulario completo para indicar el método DELETE en el submit-->
-						
-						<center>
-						<input type="submit" value="Eliminar" class="btn btn-danger btn-lg">
-						</center>
-
-						<hr>
-
-						<p style="color: #DC3545;">
-							<span class="badge badge-danger" id="span-tel">info</span>  Al eliminar una cuenta se removerán todos los registros de la base de datos relacionados a la misma.								
-						</p>
-					</div>
-				</div><!--/row-->
-				
-				{!!Form::close()!!}
-				@endif
-			</div>
 
 		</div>
 
 	</div>
-
 	<!-- FIN DEL CONTENEDOR EDITAR USUARIO -->
 
-@stop
-
-
-@section('javascript')
-	@parent
-	<script type="text/javascript">
-
-		$(document).ready(function() {
-
-			var foto_container = $('#foto_container');
-			var datos_container = $('#datos_container');
-
-			//Pudo ser :radio name=foto pero no funciona. El name=foto siempre funka
-			var radio_foto = $("[name='opcion_foto']");
-
-			foto_container.hide();
-			var flag = 0;
-
-			radio_foto.change(function(){
-				
-				if(flag == 0){
-
-					datos_container.removeClass("col-md-12");
-					datos_container.addClass("col-md-7");
-
-					foto_container.show(350);
-
-					flag = 1;
-
-				}else{
-
-					foto_container.hide(350);
-
-					datos_container.removeClass("col-md-7");
-					datos_container.addClass("col-md-12");
-
-					flag = 0;
-				}
-
-			})
-
-		});
-	</script>
 @stop

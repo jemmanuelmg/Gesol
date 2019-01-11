@@ -14,7 +14,7 @@ class AnadirCampoFotoUsuarios extends Migration
     public function up()
     {
         Schema::table('usuarios', function (Blueprint $table) {
-            $table->string('foto')->nullable();
+            $table->string('usu_foto')->nullable();
         });
     }
 
@@ -25,6 +25,8 @@ class AnadirCampoFotoUsuarios extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('usuarios', function (Blueprint $table) {
+            $table->dropColumn('usu_foto');
+        });
     }
 }

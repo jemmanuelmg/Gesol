@@ -47,17 +47,13 @@ class ValidaUsuarioUpdateRequest extends FormRequest
 
         return [
 
-            'cedula'=> 'required','numeric','unique:usuarios,usu_cedula,'.Session('usu_cedula'),
-
-            'nombres'=>'required|string|min:3',
-            'apellidos'=>'required|string|min:3',
-            'genero'=>'required|string|in:Femenino,Masculino',
-            'fechaNac'=>'required',
-            'telefono'=>'required|numeric',
-
-            'correo'=> 'required','email','unique:usuarios,email,'.Session('usu_cedula'),
-
-            'password'=>'required|string|min:4|same:repetirContraseña',
+            'cedula'=> 'numeric','unique:usuarios,usu_cedula,'.Session('usu_cedula'),
+            'nombres'=>'string|min:3',
+            'apellidos'=>'string|min:3',
+            'genero'=>'string|in:Femenino,Masculino',
+            'telefono'=>'numeric',
+            'email','unique:usuarios,email,'.Session('usu_cedula'),
+            'password'=>'string|min:4|same:repetirContraseña',
             'rol'=>'numeric|in:1,2,3,4,5'
             
         ];

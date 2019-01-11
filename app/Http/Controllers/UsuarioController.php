@@ -164,41 +164,42 @@ class UsuarioController extends Controller
     {
 
         //Comprobación y guardado de foto (en caso de que haya adjuntado una)
-        if(isset($request['foto'])){
+        $ext = "";
+        if(!empty($request['foto'])){
 
+            $ext = ".jpg";
             $encoded_data = $request['foto'];
             $binary_data = base64_decode( $encoded_data );
 
             // save to server (beware of permissions)
-            $result = file_put_contents( '../../public/images/fotos_usuarios/' . Session('usu_cedula') . 'jpg', $binary_data );
+            $result = file_put_contents(  base_path() . '/public/images/fotos_usuarios/' . Session('usu_cedula') . '.jpg', $binary_data );
             
         }
 
+        if (isset($request['foto2'])){
+
+            $ext = explode( '/',$_FILES['foto2']['type'])[1];
+
+            $targetfile = base_path() . '/public/images/fotos_usuarios/'. Session('usu_cedula') . '.' . $ext;
+
+            move_uploaded_file($_FILES['foto2']['tmp_name'], $targetfile);
+
+        }
+
+        $usuario = new Usuarios();
+        $usuario = usuarios::find(Session('usu_cedula'));
+
+        //En caso de que quiera cambiar su contraseña
+        if (isset($request['password'])) {
+            $usuario->password = \Hash::make($request['password']);
+        }
 
         //En caso de que el admin especifique el rol
         if(isset($request['rol'])){
-            $usuario = new Usuarios();
-            $usuario = usuarios::find(Session('usu_cedula'));
-
-            $usuario->usu_cedula = $request['cedula'];
-            $usuario->usu_nombres = $request['nombres'];
-            $usuario->usu_apellidos = $request['apellidos'];
-            $usuario->usu_genero = $request['genero'];
-            $usuario->usu_fechaNac = $request['fechaNac'];
-            $usuario->usu_telefono = $request['telefono'];
-            $usuario->email = $request['correo'];
-            $usuario->password = \Hash::make($request['password']);
+            
             $usuario->rol_id = $request['rol'];
 
-            $usuario->save();
-
-
-            Session::flash('mensaje-exito', 'Se ha actualizado exitosamente por ADMIN');
-            return Redirect::to('/usuarios');
-
         }else{
-            $usuario = new Usuarios();
-            $usuario = usuarios::find(Session('usu_cedula'));
 
             $usuario->usu_cedula = $request['cedula'];
             $usuario->usu_nombres = $request['nombres'];
@@ -207,7 +208,7 @@ class UsuarioController extends Controller
             $usuario->usu_fechaNac = $request['fechaNac'];
             $usuario->usu_telefono = $request['telefono'];
             $usuario->email = $request['correo'];
-            $usuario->password = \Hash::make($request['password']);
+            $usuario->usu_foto = Session('usu_cedula') . $ext;
 
             $usuario->save();
 
