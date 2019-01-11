@@ -135,9 +135,18 @@
               <!-- MENU DESPLEGABLE DE PERFIL, siempre se muestra si esta loggeado
                 ; no importa que rol tenga el usuario -->
                 <div class="dropdown">
+
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                    @if(session()->has('usu_foto'))
+                    <img src="{{asset('images/fotos_usuarios/' . Session('usu_foto'))}}" class="avatar-nav">
+                    @else
                     <img src="/images/icono-perfil.png" class="ImagenPerfil" height="20px" width="20px">
+                    @endif
+
                   </button>
+
+
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">
                       <i class="fa fa-user" aria-hidden="true"></i>

@@ -167,7 +167,7 @@ class UsuarioController extends Controller
         $ext = "";
         if(!empty($request['foto'])){
 
-            $ext = ".jpg";
+            $ext = "jpg";
             $encoded_data = $request['foto'];
             $binary_data = base64_decode( $encoded_data );
 
@@ -190,7 +190,7 @@ class UsuarioController extends Controller
         $usuario = usuarios::find(Session('usu_cedula'));
 
         //En caso de que quiera cambiar su contraseña
-        if (isset($request['password'])) {
+        if (!empty($request['password'])) {
             $usuario->password = \Hash::make($request['password']);
         }
 
@@ -208,7 +208,7 @@ class UsuarioController extends Controller
             $usuario->usu_fechaNac = $request['fechaNac'];
             $usuario->usu_telefono = $request['telefono'];
             $usuario->email = $request['correo'];
-            $usuario->usu_foto = Session('usu_cedula') . $ext;
+            $usuario->usu_foto = Session('usu_cedula') . '.' . $ext;
 
             $usuario->save();
 

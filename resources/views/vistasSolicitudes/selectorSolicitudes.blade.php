@@ -54,6 +54,14 @@
 
 		</div>
 
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
 	</div>
 	<!-- FIN DEL CONTENEDOR PARA SELECCIONAR SOLICITUDES -->
 

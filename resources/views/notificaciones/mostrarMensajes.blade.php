@@ -14,6 +14,7 @@
 <div class='alert alert-danger  alert-dismissible' role='alert'>
 	<br/>
 	<br/>
+	<br>
 	<button type="button" class="close" data-dismiss='alert' aria-label="close"><span aria-hidden="true">&times;</span></button>
 	<strong><h3>Atención:</h3></strong>
 	{!!Session::get('mensaje-error')!!}

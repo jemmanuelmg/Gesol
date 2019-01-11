@@ -785,8 +785,8 @@ code {
 }
 
 #oscurecer{
-  z-index: 10000;
-  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.5);
   position: absolute;
   top: 0;
   left: 0;
@@ -797,6 +797,7 @@ code {
 
 .fa-spinner{
   color:#4169E1;
+  z-index: 10000;
 }
 
 #letra-pequena-load{
@@ -844,6 +845,15 @@ video{
   padding: 10px; 
   border-width: 1px;
   border-color: #DC3545;
+}
+
+.avatar-nav{
+  height:45px;
+  width: 45px;
+  border-style: solid;
+  border-radius: 100%;
+  border-width: 2px;
+  border-color: #ffff;
 }
 
 

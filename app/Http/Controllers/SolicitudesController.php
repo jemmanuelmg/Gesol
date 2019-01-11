@@ -1151,7 +1151,7 @@ class SolicitudesController extends Controller{
 
             //$phone_number = $request->telefono;
         $phone_number = '57' . Session('usu_telefono');
-        $message = "\n\n Gesol te informa que tu solicitud " . $sol_nombre . " fué recibida correctamente el día: " . date("l") ." " . date("Y/m/d") . " a las " . date("h:i a") . ". \n Saludos!";
+        $message = "\n\n Gesol: Sol. " . $sol_nombre . " recibida correctamente en fecha:" . date("Y/m/d") . " a las " . date("h:i a") . ". Saludos!";
         $message_type = "ARN";
 
         $messaging = new MessagingClient($customer_id, $api_key);

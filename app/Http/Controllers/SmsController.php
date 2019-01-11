@@ -67,7 +67,7 @@ class SmsController extends Controller
 
 
 			Session::flash('mensaje-exito', 'Se ha enviado un SMS con tu contraseña provisional. Revisala');
-            return Redirect::to('/');
+            return Redirect::to('/login');
 
 		}
 
