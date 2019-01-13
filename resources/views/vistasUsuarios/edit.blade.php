@@ -45,11 +45,12 @@
 
 					<div id="my_camera" class="circleBase"></div>
 
-					<a href="javascript:void(take_snapshot())" class="btn btn-primary btn-sm">Tomar foto</a>
+					<a href="javascript:void(take_snapshot())" class="btn btn-primary btn-sm"><i class="fas fa-camera-retro"></i> &nbsp;&nbsp; Tomar foto</a>
 
 					<div id="my_result"></div>
 
-					Ó selecciona una foto: <input type="file" name="foto2" class="form-control-file" accept=".jpg, .jpeg, .png, .gif">
+					Ó selecciona una foto: <i class="fas fa-upload"></i> &nbsp;&nbsp; <input type="file" name="foto2" class="form-control-file" accept=".jpg, .jpeg, .png, .gif">
+					<input type="hidden" name="MAX_FILE_SIZE" value="1228800" />
 
 					<script language="JavaScript">
 					    Webcam.attach( '#my_camera' );

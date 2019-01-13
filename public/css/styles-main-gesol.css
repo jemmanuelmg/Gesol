@@ -726,6 +726,7 @@ code {
   border-radius:6px;
   padding: 10px; 
   border-width: 1px;
+  margin-top: 15px;
 }
 
 .texto-gris{
@@ -845,6 +846,10 @@ video{
   padding: 10px; 
   border-width: 1px;
   border-color: #DC3545;
+}
+
+#foto_container{
+  margin-bottom: 20px;
 }
 
 .avatar-nav{

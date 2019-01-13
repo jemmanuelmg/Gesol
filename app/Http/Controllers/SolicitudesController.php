@@ -1142,20 +1142,24 @@ class SolicitudesController extends Controller{
     */
     public function enviarSms($sol_nombre){
 
-        //Iniciar config de idioma y zona horaria
-        setlocale(LC_ALL,"es_ES");
-        date_default_timezone_set("America/Bogota");
+        if(Session('usu_telefono') != null || !empty(Session('usu_telefono'))){
 
-        $customer_id = "44153ECC-F0AD-4D45-9F23-E95431EC8C63";
-        $api_key = "orub9TGHNbP1itCRoF1lFINssYfy+VHYJI8FnXNp2hhzc2/S9QOGmZyQQHVR1qmbaIxfVQjgsgInHrz9JymGHQ==";
+            //Iniciar config de idioma y zona horaria
+            setlocale(LC_ALL,"es_ES");
+            date_default_timezone_set("America/Bogota");
 
-            //$phone_number = $request->telefono;
-        $phone_number = '57' . Session('usu_telefono');
-        $message = "\n\n Gesol: Sol. " . $sol_nombre . " recibida correctamente en fecha:" . date("Y/m/d") . " a las " . date("h:i a") . ". Saludos!";
-        $message_type = "ARN";
+            $customer_id = "44153ECC-F0AD-4D45-9F23-E95431EC8C63";
+            $api_key = "orub9TGHNbP1itCRoF1lFINssYfy+VHYJI8FnXNp2hhzc2/S9QOGmZyQQHVR1qmbaIxfVQjgsgInHrz9JymGHQ==";
 
-        $messaging = new MessagingClient($customer_id, $api_key);
-        $response = $messaging->message($phone_number, $message, $message_type);
+                //$phone_number = $request->telefono;
+            $phone_number = '57' . Session('usu_telefono');
+            $message = "\n\n Gesol: Sol. " . $sol_nombre . " recibida correctamente en fecha:" . date("Y/m/d") . " a las " . date("h:i a") . ". Saludos!";
+            $message_type = "ARN";
+
+            $messaging = new MessagingClient($customer_id, $api_key);
+            $response = $messaging->message($phone_number, $message, $message_type);
+
+        }
 
     }
 }

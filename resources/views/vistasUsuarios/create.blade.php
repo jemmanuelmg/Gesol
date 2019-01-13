@@ -114,6 +114,7 @@ Registrarse Gesol
 				</div>
 				@endif
 
+				@if(session('rol_id') == 1)
 				<div id="contenedor-tel">
 					<div class="form-group">
 						<label class="control-label" id="label-telefono" for="telefono">Telefono:</label>
@@ -144,6 +145,7 @@ Registrarse Gesol
 					</div>
 
 				</div>
+				@endif
 
 				<br>
 

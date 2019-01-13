@@ -164,7 +164,7 @@ class UsuarioController extends Controller
     {
 
         //Comprobación y guardado de foto (en caso de que haya adjuntado una)
-        $ext = "";
+        $ext = "jpg";
         if(!empty($request['foto'])){
 
             $ext = "jpg";
@@ -228,6 +228,27 @@ class UsuarioController extends Controller
      */
     public function destroy($usu_cedula)
     {
+
+        $listaSols = \DB::table('solicitudes')
+        ->select('sol_formato')
+        ->where('usu_cedula', '=', $usu_cedula)
+        ->get();
+
+        
+
+        //Eliminar todas los archvos PDF creados por ese usuario
+
+        if ($listaSols != null) {
+            
+            foreach ($listaSols as $solicitud) {
+                //dd(base_path() . '/public/solicitudesPDF/' . $solicitud->sol_formato);
+
+               unlink( base_path() . '/public/solicitudesPDF/' . $solicitud->sol_formato);
+            
+                    
+            }
+
+        }
 
         usuarios::destroy($usu_cedula);
 
