@@ -3,8 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script defer type="text/javascript"  src="http://localhost:8000/resources/views/layouts/pwa-assets.js"></script>
+  <script defer type="text/javascript"  src="http://localhost:8000/resources/views/layouts/crypto.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="http://localhost:8000/resources/views/layouts/manifest.json" />
   <title>@section('titulo') Gesol - Inicio @show   </title>
+
+  <!--PWA-->
+  <!--
+    pwa-assets.js
+    crypto.js
+    manifiest.json
+  -->
 
   <!--CSS: BOOTSTRAP, ESTILOS Y FONTAWESOME-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -16,7 +26,7 @@
   <link rel="icon" href="{{ asset('images/favicon-32x32.ico') }}" type="image/x-icon">
 
   @section('estilos')
-
+    <!--Estilos adicionales aquí-->
   @show   
 
 </head>
@@ -299,6 +309,8 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+
 
     @show
 
