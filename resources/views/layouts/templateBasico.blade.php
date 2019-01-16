@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html>
+
+<!--<script type="text/javascript" src="{{ asset('js/push-crew.js') }}"></script>-->
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <script defer type="text/javascript"  src="http://localhost:8000/resources/views/layouts/pwa-assets.js"></script>
-  <script defer type="text/javascript"  src="http://localhost:8000/resources/views/layouts/crypto.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="http://localhost:8000/resources/views/layouts/manifest.json" />
+  
   <title>@section('titulo') Gesol - Inicio @show   </title>
 
-  <!--PWA-->
-  <!--
-    pwa-assets.js
-    crypto.js
-    manifiest.json
-  -->
+  <link rel="manifest" href="{{ asset('pwa/manifest.webmanifest') }}" />
+  
+
 
   <!--CSS: BOOTSTRAP, ESTILOS Y FONTAWESOME-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -24,6 +22,13 @@
   <!--FAVICON-->
   <link rel="shortcut icon" href="{{ asset('images/favicon-32x32.ico') }}" type="image/x-icon">
   <link rel="icon" href="{{ asset('images/favicon-32x32.ico') }}" type="image/x-icon">
+
+  <!--ADD TO HOMESCREEN-->
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/addtohomescreen.css') }}">
+  <script src="{{ asset('js/addtohomescreen.js') }}"></script>
+  <script>
+  addToHomescreen();
+  </script>
 
   @section('estilos')
     <!--Estilos adicionales aquí-->
@@ -160,7 +165,9 @@
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">
                       <i class="fa fa-user" aria-hidden="true"></i>
-                      {{ " " .session('usu_nombres') . " " . session('usu_apellidos')}}
+                      {{ " " .session('usu_nombres')}}
+                      <br>
+                      {{" " . session('usu_apellidos')}}
                     </a>
 
                     <a class="dropdown-item" href="#">
@@ -231,6 +238,10 @@
     @section('contenido')
     <!--Aquí va el contenido en general de todas las paginas hijas-->
     @show
+
+
+    <!--PWA BUTTON-->
+    <button class="add-button">Add to home screen</button>
 
     <!--FOOTER-->
     <div class="footer">
@@ -310,7 +321,7 @@
 
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
-
+      <script type="text/javascript" src="{{ asset('pwa/pwa-assets.js') }}"></script>
 
     @show
 

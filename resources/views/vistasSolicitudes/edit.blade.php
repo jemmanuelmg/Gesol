@@ -71,7 +71,7 @@
 
 		          	<br>
 
-					@if(session('rol_id') == 3 || session('rol_id') == 2)
+					@if(session('rol_id') == 3)
 						<!--Formulario eliminar. Necesario usar un formulario completo para indicar el método DELETE en el submit-->
 						{!!Form::open(['route' => ['solicitudes.destroy', $solicitud->sol_id], 'method'=>'DELETE'])!!}
 

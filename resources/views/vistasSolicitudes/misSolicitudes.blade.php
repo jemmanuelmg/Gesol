@@ -6,12 +6,14 @@
 	
 	{!!Html::style('js/DataTables/media/css/jquery.dataTables.css')!!}
 	{!!Html::style('https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css')!!}
-	{!!Html::style('css/footer.css')!!}
-	{!!Html::style('css/font-awesome.min.css')!!}
+	
 
 @stop
 
 @section('contenido')
+	<br>
+	<br>
+	<br>
 	<br>
 
 	<div class="jumbotron text-center" style="margin: 0 1em; padding: 2em 0;">

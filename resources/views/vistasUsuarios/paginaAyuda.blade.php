@@ -15,7 +15,7 @@
 
                 <h2 class="display-4">
                     <center>
-                        Pagina de ayuda&nbsp;&nbsp; <i class="fa fa-ambulance fa-2x" aria-hidden="true"></i>
+                        Pagina de ayuda&nbsp;&nbsp; <i class="fa fa-ambulance fa-1x" aria-hidden="true"></i>
                     </center>
                 </h2>
 

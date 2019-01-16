@@ -114,7 +114,7 @@ Registrarse Gesol
 				</div>
 				@endif
 
-				@if(session('rol_id') == 1)
+				@if(session('rol_id') != 3 || session('rol_id') == null)
 				<div id="contenedor-tel">
 					<div class="form-group">
 						<label class="control-label" id="label-telefono" for="telefono">Telefono:</label>

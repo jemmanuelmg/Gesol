@@ -2,13 +2,6 @@
 
 @section('title') Gesol : Solicitudes @stop
 
-@section('estilos')
-	@parent
-	<!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
-	{!!Html::script('https://www.google.com/recaptcha/api.js');!!}
-	{!!Html::style('css/footer.css')!!}
-
-@stop
 
 @section('contenido')
 
@@ -17,13 +10,20 @@
 	<!-- CONTENEDOR PARA SELECCIONAR SOLICITUDES -->
     <div class="container">
 
+    	<br>
+    	<br>
+
     	<div class="jumbotron">
 
 	      	<div class="row">
 
 	        	<div class="col-md-12">
 
-	         		<h2 class="display-4 text-center"><strong>Seleccionar solicitud</strong></h2>
+	        		<center>
+	         		<h1><strong>Seleccionar solicitud</strong></h1>
+	         		<br>
+	         		<i class="fas fa-pen-alt fa-2x"></i>
+	         		</center>
 
 	         		<br><br>
 
@@ -44,7 +44,7 @@
 
 						<br><br><br>
 
-						<input type="submit" value="Enviar" class="btn btn-primary btn-lg mx-4">
+						<input type="submit" value="Enviar" class="btn btn-primary btn-lg mx-4 btn-noti">
 
 					</form>
 

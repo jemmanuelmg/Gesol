@@ -130,7 +130,7 @@
         <div class="card-body">
           <h4 class="card-title">
           </h4>
-          <p class="card-text">Registrate en nuestro sistema con tus datos personales</p>
+          <p class="">Registrate en nuestro sistema con tus datos personales</p>
         </div>
       </div>
     </div>
@@ -143,7 +143,7 @@
         <div class="card-body">
           <h4 class="card-title">
           </h4>
-          <p class="card-text">Realiza una solicitud completando los campos requeridos</p>
+          <p class="">Realiza una solicitud completando los campos requeridos</p>
         </div>
       </div>
     </div>
@@ -155,7 +155,7 @@
         <div class="card-body">
           <h4 class="card-title">
           </h4>
-          <p class="card-text">Espera por una respuesta enviada a tu correo electrónico, <strong> sin filas, sin desplazarse, sin problemas!</strong></p>
+          <p class="">Espera por una respuesta enviada a tu correo electrónico, <strong> sin filas, sin desplazarse, sin problemas!</strong></p>
         </div>
       </div>
     </div>

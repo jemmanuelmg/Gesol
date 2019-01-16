@@ -34,6 +34,11 @@ $(document).ready(function() {
 			oscurecer.show(200);
 			divLoading.show(300);
 
+			setTimeout(function() {
+			    oscurecer.hide();
+			    divLoading.hide();
+			}, 18000);
+
 		}else{
 			
 			contenedorError.show(300);
