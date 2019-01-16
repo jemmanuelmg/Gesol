@@ -743,6 +743,16 @@ code {
   margin-bottom: 7px;
 }
 
+#input-token{
+  letter-spacing: 4px;
+  text-align:center;
+  width: 130px;
+}
+
+#envoltorio-input-token{
+  width: 130px;
+}
+
 #btn-telefono{
   float: right;
 }

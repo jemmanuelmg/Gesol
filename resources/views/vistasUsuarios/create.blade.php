@@ -139,7 +139,16 @@ Registrarse Gesol
 					<div id="div-verificar-tel"> 
 						<label id="lbl-token" class="control-label" for="token">Código:</label> 
 
-						<input type="number" id="input-token" name="token" class="form-control" placeholder="Introduzce tu codigo de confirmación" />
+						<center>
+						<div id="envoltorio-input-token">
+						
+							<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+							<div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-check-square"></i></div>
+							<input type="text" size="4" maxlength="4" id="input-token" name="token" class="form-control" />
+							</div>
+						
+						</div>
+						</center>
 
 						<input type="hidden" id="input-token-res" name="tokenRes" value="">
 					</div>
