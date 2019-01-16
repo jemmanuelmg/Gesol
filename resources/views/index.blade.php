@@ -82,6 +82,7 @@
     <div class="col-lg-6">
       <h2>Caracteristicas</h2>
       <p>Gesol es una plataforma innovadora para la comunidad, la cual permite gestionar de manera mas eficiente y rápida casi cualquiet trámite que requieran los estudiantes.</p>
+
       <ul>
 
         <li>

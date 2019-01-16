@@ -2,7 +2,10 @@
   "name": "Gestor de solicitudes academicas",
   "short_name": "Gesol mobile",
   "display": "standalone",
-  "start_url": "/",
+  "related_applications": [{
+    "platform": "web"
+  }],
+  "start_url": ".",
   "theme_color": "#673ab6",
   "background_color": "#111111",
   "theme_color": "#808080",

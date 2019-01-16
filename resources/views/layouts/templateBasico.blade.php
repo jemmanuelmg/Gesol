@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<!--<script type="text/javascript" src="{{ asset('js/push-crew.js') }}"></script>-->
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,12 +8,12 @@
   
   <title>@section('titulo') Gesol - Inicio @show   </title>
 
-  <link rel="manifest" href="{{ asset('pwa/manifest.webmanifest') }}" />
+  <link rel="manifest" href="{{ asset('manifest.json') }}" />
   
 
 
   <!--CSS: BOOTSTRAP, ESTILOS Y FONTAWESOME-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('css/styles-main-gesol.css') }}" />
   <link rel="stylesheet" href="{{ URL::asset('fonts/fontawesome/css/all.css') }}" />
 
@@ -23,12 +21,6 @@
   <link rel="shortcut icon" href="{{ asset('images/favicon-32x32.ico') }}" type="image/x-icon">
   <link rel="icon" href="{{ asset('images/favicon-32x32.ico') }}" type="image/x-icon">
 
-  <!--ADD TO HOMESCREEN-->
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/addtohomescreen.css') }}">
-  <script src="{{ asset('js/addtohomescreen.js') }}"></script>
-  <script>
-  addToHomescreen();
-  </script>
 
   @section('estilos')
     <!--Estilos adicionales aquí-->
@@ -240,8 +232,7 @@
     @show
 
 
-    <!--PWA BUTTON-->
-    <button class="add-button">Add to home screen</button>
+    
 
     <!--FOOTER-->
     <div class="footer">
@@ -312,7 +303,7 @@
 
     @section('javascript')
 
-      <!--JQUERY NORMAL, SLIM, POPPER Y BOOTSTRAP.JS-->
+      <!--JQUERY NORMAL, SLIM, POPPER Y BOOTSTRAP.JS   VIEJOS
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
       <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -322,6 +313,17 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
       <script type="text/javascript" src="{{ asset('pwa/pwa-assets.js') }}"></script>
+      -->
+
+      <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.slim.min.js') }}"></script>
+
+      <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+
+      <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+
+      <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+      <script type="text/javascript" src="{{ asset('pwa-assets.js') }}"></script>
 
     @show
 
