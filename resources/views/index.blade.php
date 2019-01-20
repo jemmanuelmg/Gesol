@@ -210,4 +210,5 @@
   
   <script type="text/javascript" src="{{ URL::asset('js/slick.min.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/brand-carousell.js') }}"></script>
+
 @stop

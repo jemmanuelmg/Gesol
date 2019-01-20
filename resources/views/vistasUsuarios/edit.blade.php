@@ -189,32 +189,34 @@
 			<br>
 			<br>
 
+
+			@if(session('rol_id') == 3 && session()->has('rol_id'))
+			{!!Form::open(['route' => ['usuarios.destroy', $usuario->usu_cedula], 'method'=>'DELETE'])!!}
+
 			<div class="delete-container">
-				<h2 class="display-4"><center><strong>Eliminar cuenta</strong></center></h2>
-	    		<br>
+			<h2 class="display-4"><center><strong>Eliminar cuenta</strong></center></h2>
+    		<br>
 
-				@if(session('rol_id') == 3)
-				{!!Form::open(['route' => ['usuarios.destroy', $usuario->usu_cedula], 'method'=>'DELETE'])!!}
+			<div class="row">
+				<div class="col-md-12">
+				<!--Formulario eliminar. Necesario usar un formulario completo para indicar el método DELETE en el submit-->
+					
+					<center>
+					<input type="submit" value="Eliminar" class="btn btn-danger btn-lg">
+					</center>
 
-				<div class="row">
-					<div class="col-md-12">
-					<!--Formulario eliminar. Necesario usar un formulario completo para indicar el método DELETE en el submit-->
-						
-						<center>
-						<input type="submit" value="Eliminar" class="btn btn-danger btn-lg">
-						</center>
+					<hr>
 
-						<hr>
-
-						<p style="color: #DC3545;">
-							<span class="badge badge-danger" id="span-tel">info</span>  Al eliminar una cuenta se removerán todos los registros de la base de datos relacionados a la misma.								
-						</p>
-					</div>
-				</div><!--/row-->
-				
-				{!!Form::close()!!}
-				@endif
+					<p style="color: #DC3545;">
+						<span class="badge badge-danger" id="span-tel">info</span>  Al eliminar una cuenta se removerán todos los registros de la base de datos relacionados a la misma.								
+					</p>
+				</div>
+			</div><!--/row-->
 			</div>
+			
+			{!!Form::close()!!}
+			@endif
+			
 
 		</div>
 
