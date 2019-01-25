@@ -8,9 +8,9 @@
   
   <title>@section('titulo') Gesol - Inicio @show   </title>
 
+  <!--MANIFEST-->
   <link rel="manifest" href="{{ asset('manifest.json') }}" />
   
-
 
   <!--CSS: BOOTSTRAP, ESTILOS Y FONTAWESOME-->
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">

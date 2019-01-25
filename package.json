@@ -20,6 +20,7 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
-    "localforage": "^1.7.3"
+    "localforage": "^1.7.3",
+    "push.js": "^1.0.9"
   }
 }

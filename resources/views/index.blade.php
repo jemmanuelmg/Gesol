@@ -27,28 +27,28 @@
 
       <div class="carousel-item active" style="background-image: url('../images/slider-gesol-1.jpeg')">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="titulo-carrusel"><b>Bienvenido a gesol!</b></h3>
+          <h3 class="texto-azul"><b>Bienvenido a gesol!</b></h3>
           <p>El gestor de solicitudes ideal para Instituciones Educativas</p>
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url('../images/slider-gesol-2.jpg')">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="titulo-carrusel"><b>Entrega tus papeles desde tu casa!</b></h3>
+          <h3 class="texto-azul"><b>Entrega tus papeles desde tu casa!</b></h3>
           <p>...y espera tu respuesta en tu bandeja de entrada. Así de simple.</p>
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url('../images/slider-gesol-3.jpeg')">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="titulo-carrusel"><b>Disfrutalo en tu movil.</b></h3>
+          <h3 class="texto-azul"><b>Disfrutalo en tu movil.</b></h3>
           <p>Haz solicitudes desde la palma de tu mano.</p>
         </div>
       </div>
 
       <div class="carousel-item" style="background-image: url('../images/slider-gesol-4.jpg')">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="titulo-carrusel"><b>Para tu comunidad</b></h3>
+          <h3 class="texto-azul"><b>Para tu comunidad</b></h3>
           <p>Disfruta de la comodidad que te brindan las TIC.</p>
         </div>
       </div>
@@ -129,7 +129,8 @@
       <div class="card h-100">
         <a href="#"><img class="card-img-top" src="../images/gesol-inicio-unirse.jpeg" alt="Gesol UTS unirse a gesol"></a>
         <div class="card-body">
-          <h4 class="card-title">
+          <h4 class="card-title texto-azul">
+            Paso 1
           </h4>
           <p class="">Registrate en nuestro sistema con tus datos personales</p>
         </div>
@@ -142,7 +143,8 @@
       <div class="card h-100">
         <a href="#"><img class="card-img-top" src="../images/gesol-inicio-solicitar.jpeg" alt="Gesol UTS hacer una solicitud academica"></a>
         <div class="card-body">
-          <h4 class="card-title">
+          <h4 class="card-title texto-azul">
+            Paso 2:
           </h4>
           <p class="">Realiza una solicitud completando los campos requeridos</p>
         </div>
@@ -154,7 +156,8 @@
       <div class="card h-100">
         <a href="#"><img class="card-img-top" src="../images/felices.jpeg" alt="Gesol UTS comodidad tramite virtual"></a>
         <div class="card-body">
-          <h4 class="card-title">
+          <h4 class="card-title texto-azul">
+            Paso 3:
           </h4>
           <p class="">Espera por una respuesta enviada a tu correo electrónico, <strong> sin filas, sin desplazarse, sin problemas!</strong></p>
         </div>
@@ -173,7 +176,7 @@
 
     </div>
     <div class="col-md-4">
-      <a class="btn btn-primary btn-lg" href="/usuarios/create">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registrarse&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-thumbs-up fa-2x" aria-hidden="true"></i></a>
+      <a class="btn btn-primary btn-lg push" href="/usuarios/create">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registrarse&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-thumbs-up fa-2x" aria-hidden="true"></i></a>
     </div>
   </div>
 
@@ -188,18 +191,15 @@
 <!-- /.container -->
 
   <div class="parallax">
-    <br>
-    <br>
-    <br>
     <div class="customer-logos">
-      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image1.png"></div>
-      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image2.png"></div>
-      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image3.png"></div>
-      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image4.png"></div>
-      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image5.png"></div>
-      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image6.png"></div>
-      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image7.png"></div>
-      <div class="slide"><img src="https://www.solodev.com/assets/carousel/image8.png"></div>
+      <!--Ojo, estilos en slick.js-->
+      <div class="slide"><img src="{{ URL::asset('images/itm-logo.png') }}"></div>
+      <div class="slide"><img src="{{ URL::asset('images/pascual-bravo-logo.png') }}" class="marca-aux"></div>
+      <div class="slide"><img src="{{ URL::asset('images/colegio-mayor-logo.png') }}" class="marca-aux"></div>
+      <div class="slide"><img src="{{ URL::asset('images/colegio-logo.png') }}" class="foto-marca"></div>
+      <div class="slide"><img src="{{ URL::asset('images/salesianos-logo.png') }}" class="foto-marca"></div>
+      <div class="slide"><img src="{{ URL::asset('images/udea-logo.png') }}"></div>
+      <div class="slide"><img src="{{ URL::asset('images/harvard-logo.png') }}" class="foto-marca"></div>
     </div>
   </div>
 
@@ -210,5 +210,7 @@
   
   <script type="text/javascript" src="{{ URL::asset('js/slick.min.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/brand-carousell.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/push.min.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/push-notifications.js') }}"></script>
 
 @stop

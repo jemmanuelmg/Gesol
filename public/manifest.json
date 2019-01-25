@@ -1,10 +1,8 @@
 {
-  "name": "Gesol",
+  "name": "Gesol Mobile",
   "short_name": "Gesol Mobile",
   "display": "standalone",
-  "start_url": ".",
-  "theme_color": "#673ab6",
-  "background_color": "#111111",
+  "start_url": "/",
   "theme_color": "#808080",
   "background_color": "#808080",
   "icons": [

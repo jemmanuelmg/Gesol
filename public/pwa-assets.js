@@ -4,6 +4,7 @@ if ('serviceWorker' in navigator) {
 }
 */
 
+
 if ('serviceWorker' in navigator && 'PushManager' in window) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
@@ -15,3 +16,4 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
         });
     });
 }
+
