@@ -13,11 +13,13 @@
             <!--Jumbotron-->
             <div class="jumbotron">
 
-                <h2 class="display-4">
+                <h3>
                     <center>
-                        Pagina de ayuda&nbsp;&nbsp; <i class="fa fa-ambulance fa-1x" aria-hidden="true"></i>
+                        <strong>
+                            Pagina de ayuda &nbsp;&nbsp; <i class="fa fa-ambulance fa-2x" aria-hidden="true"></i>
+                        </strong>
                     </center>
-                </h2>
+                </h3>
 
                 <br>
 

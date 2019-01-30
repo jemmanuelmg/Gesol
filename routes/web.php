@@ -89,10 +89,4 @@ Route::get('grafico1', 'MetricasController@procesarG1');
 Route::get('grafico2', 'MetricasController@procesarG2');
 Route::get('grafico3', 'MetricasController@procesarG3');
 
-	/**
-	* Rutas para test
-	*/
 
-Route::get('foto', function(){
-	return view('tests.fotoTest');
-});
