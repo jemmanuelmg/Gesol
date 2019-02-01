@@ -33,6 +33,14 @@ Route::resource('usuarios','UsuarioController');
 Route::get('iniciarSesion','UsuarioController@formIniciarSesion');
 
 	/**
+	 * Rutas dashboard administrador
+	 */
+
+Route::get('ds', function () {
+	return view('layouts.templateAdmin');
+});
+
+	/**
 	 * Rutas de respuestas.
 	 * Para comenzar a redactar respuesta se necesita saber la ruta del archivo pdf para editarlo
 	 * y el nombre de la solicitud para despacharlo a el formulario correspondiente
