@@ -22,6 +22,7 @@
                 </h3>
 
                 <br>
+                <br>
 
                 <p class="lead">
                     Bienvenido a la página de ayuda. Aquí encontrarás respuestas a preguntas frecuentes

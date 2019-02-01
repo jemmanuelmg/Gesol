@@ -17,20 +17,24 @@
     		<h2 class="display-4"><center><strong>Editar Usuario</strong></center></h2>
     		<br>
 
-    		<center>
-    		<div class="switch">
-	    		<div class="btn-group btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-secondary active">
-						<input type="radio" name="opcion_foto" value="si"> Sin foto
-					</label>
-
-					<label class="btn btn-secondary">
-						<input type="radio" name="opcion_foto" value="no"> Con foto
-					</label>
-				</div>
-			</div>	
-			</center>
 			<br>
+
+			<!--Switch para tomar foto o no-->
+			<center>
+        		<h5 class="texto-azul" id="lblFoto"> ¿Quieres añadir una foto a tu perfil?:</h5>
+
+		       	<div class="switch">
+		    		<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-secondary active">
+							<input type="radio" name="opcion_foto" value="si"> Sin foto
+						</label>
+
+						<label class="btn btn-secondary">
+							<input type="radio" name="opcion_foto" value="no" data-toggle="popover" data-trigger="focus" data-placement="right" data-content="Si no funciona la camara, da clic en (&#8520), al lado del botón recargar, y concede permiso para la camara"> Con foto
+						</label>
+					</div>
+				</div>
+		    </center>
 
 
 			{!!Form::open(['route' => ['usuarios.update', $usuario->usu_cedula], 'files' => true, 'enctype' => 'multipart/form-data', 'method'=>'PUT'])!!}
@@ -43,14 +47,22 @@
 
 					<script type="text/javascript" src="{{ URL::asset('js/webcam/webcam.js') }}"></script>
 
-					<div id="my_camera" class="circleBase"></div>
+					<center>
 
-					<a href="javascript:void(take_snapshot())" class="btn btn-primary btn-sm"><i class="fas fa-camera-retro"></i> &nbsp;&nbsp; Tomar foto</a>
+						<div id="my_camera" class="circleBase"></div>
 
-					<div id="my_result"></div>
+						<a href="javascript:void(take_snapshot())" class="btn btn-primary btn-sm"><i class="fas fa-camera-retro"></i> &nbsp;&nbsp; Tomar foto</a>
 
-					Ó selecciona una foto: <i class="fas fa-upload"></i> &nbsp;&nbsp; <input type="file" name="foto2" class="form-control-file" accept=".jpg, .jpeg, .png, .gif">
-					<input type="hidden" name="MAX_FILE_SIZE" value="1228800" />
+						<div id="my_result"></div>
+
+						<br>
+						<p style="text-align: left">
+							Ó selecciona una foto: <i class="fas fa-upload"></i> &nbsp;&nbsp;
+							<input type="file" name="foto2" class="form-control-file" accept=".jpg, .jpeg, .png, .gif">
+							<input type="hidden" name="MAX_FILE_SIZE" value="1228800" />
+						</p> 
+
+					</center>
 
 					<script language="JavaScript">
 					    Webcam.attach( '#my_camera' );
@@ -78,13 +90,14 @@
 
 	        	<div id="datos_container" class="col-md-12">
 
+	        		<!--Input escondido para almacenar la foto codificada-->
 	        		<input id="foto" type="hidden" name="foto" value=""/>
 	        		
 	         		
 		          	<div class="form-group">
 			          <label class="control-label" for="cedula">Cedula</label>
 			          	<div class="input-group">
-			            	<input type="number" value='{{$usuario->usu_cedula}}' class="form-control" name="cedula" placeholder="Introduzca su cedula" />
+			            	<input type="number" value='{{$usuario->usu_cedula}}' class="form-control" name="cedula" id="cedula" placeholder="Introduzca su cedula" />
 			        	</div>             	
 			        </div>  
 
@@ -208,7 +221,7 @@
 					<hr>
 
 					<p style="color: #DC3545;">
-						<span class="badge badge-danger" id="span-tel">info</span>  Al eliminar una cuenta se removerán todos los registros de la base de datos relacionados a la misma.								
+						<span class="badge badge-danger" id="span-tel">info</span>  Al eliminar una cuenta se removerán todos los registros de la base de datos relacionados a la misma., como solicitudes, respuestas, documentos PDF, etc.								
 					</p>
 				</div>
 			</div><!--/row-->
@@ -230,4 +243,9 @@
 @section('javascript')
 	@parent
 	<script type="text/javascript" src="{{ URL::asset('js/script-foto-usuario.js') }}"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('[data-toggle="popover"]').popover()
+	});
+</script>
 @stop

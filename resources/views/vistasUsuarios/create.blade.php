@@ -48,34 +48,6 @@ Registrarse Gesol
 					</div>             	
 				</div>
 
-				<!--
-				<fieldset class="form-group row">
-					<legend class="col-form-legend col-sm-2">Genero</legend>
-					<div class="col-sm-10">
-						<div class="form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="genero" value="Masculino">
-								Masculino
-							</label>
-						</div>
-						<div class="form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="genero" value="Femenino">
-								Femenino
-							</label>
-						</div>
-					</div>
-				</fieldset>
-
-
-				<div class="form-group">
-					<label class="control-label" for="fechaNac">Fecha de nacimiento *</label>
-					<div class="input-group">
-						<input name="fechaNac" type="date" class="form-control"/>
-					</div>             	
-				</div>
-				-->
-
 			</div>
 
 			<div class="col-md-6"> <!--Segunda columnda de inputs-->

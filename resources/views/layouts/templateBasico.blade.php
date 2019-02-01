@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="mobile-web-app-capable" content="yes">
+  <!--<meta name="mobile-web-app-capable" content="yes">-->
   
   <title>@section('titulo') Gesol - Inicio @show   </title>
 
@@ -147,7 +147,7 @@
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                     @if(session()->has('usu_foto'))
-                    <img src="../images/fotos_usuarios/{{Session('usu_foto')}}" class="avatar-nav">
+                    <img src="{{ asset('images/fotos_usuarios/' . Session::get('usu_foto')) }}" class="avatar-nav">
                     @else
                     <img src="/images/icono-perfil.png" class="ImagenPerfil" height="20px" width="20px">
                     @endif
@@ -312,7 +312,7 @@
 
       <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-      <script type="text/javascript" src="{{ asset('pwa-assets.js') }}"></script>
+      <!--<script type="text/javascript" src="{{ asset('pwa-assets.js') }}"></script>-->
 
     @show
 

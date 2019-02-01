@@ -1,5 +1,5 @@
 @if(Session::has('mensaje-exito'))
-<br/>
+
 <br/>
 <br/>
 <br/>
@@ -13,13 +13,10 @@
 @endif
 
 @if(Session::has('mensaje-error'))
+<br/>
+<br/>
+<br/>
 <div class='alert alert-danger  alert-dismissible' role='alert'>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
 	<button type="button" class="close" data-dismiss='alert' aria-label="close"><span aria-hidden="true">&times;</span></button>
 	<strong><h3>Atención:</h3></strong>
 	{!!Session::get('mensaje-error')!!}
@@ -28,13 +25,10 @@
 @endif
 
 @if(Session::has('mensaje-advertencia'))
+<br/>
+<br/>
+<br/>
 <div class='alert alert-info  alert-dismissible' role='alert'>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
 	<button type="button" class="close" data-dismiss='alert' aria-label="close"><span aria-hidden="true">&times;</span></button>
 	<strong><h3>Atención:</h3></strong>
 	{!!Session::get('mensaje-advertencia')!!}
