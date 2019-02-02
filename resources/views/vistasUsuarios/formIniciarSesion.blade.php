@@ -1,6 +1,6 @@
 @extends ('layouts.templateBasico')
 
-
+@section('titulo') Iniciar sesión en Gesol @stop
 
   @section('contenido')
 

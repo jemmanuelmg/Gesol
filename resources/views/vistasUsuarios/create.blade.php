@@ -1,7 +1,7 @@
 @extends('layouts.templateBasico')
 
 @section('titulo')
-Registrarse Gesol
+Registrarse en Gesol
 @stop
 
 @section('estilos')
@@ -28,7 +28,7 @@ Registrarse Gesol
 			<div class="col-md-6"> <!--Primera columnsa de inputs-->
 
 				<div class="form-group">
-					<label class="control-label" for="cedula">Cedula *</label>
+					<label class="control-label" for="cedula">No. Documento *</label>
 					<div class="input-group">
 						<input type="number" class="form-control" name="cedula" placeholder="Introduzca su cedula" />
 					</div>             	
@@ -63,13 +63,6 @@ Registrarse Gesol
 					<label class="control-label" for="password">Contraseña *</label>
 					<div class="input-group">
 						<input type="password" class="form-control" name="password" placeholder="Introduzca su contraseña" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="control-label" for="password">Repetir contraseña *</label>
-					<div class="input-group">
-						<input type="password" class="form-control" name="passwordRepeat" placeholder="Introduzca de nuevo la contraseña" />
 					</div>
 				</div>
 

@@ -1,4 +1,6 @@
-@extends('layouts.templateBasico')
+@extends('layouts.templateDashboard')
+
+@section('titulo') Graficos @stop
 
 @section('estilos')
 	<!--Assets para renderizar graficos. Obligatorio en sección header. Primero jquery-->
@@ -23,7 +25,7 @@
 		<br>
 
 		<div class="row">
-
+			
 			<div class="col-md-6">
 				<div class="form-group">
 					<label class="control-label" for="fechaNac">Fecha de inicio (dia/mes/año)*</label>
@@ -57,7 +59,14 @@
 		<div class="row">
 			<div class="col-md-10">
 				<!--Grafico-->
-				<div id="container" style="width:100%; height:400px;"></div>
+
+				<div class="card shadow mb-4">
+					<div class="card-body">
+
+						<div id="container" style="width:100%; height:400px;"></div>
+
+					</div>
+				</div>
 			</div>
 			<div class="col-md-2">
 
@@ -77,6 +86,8 @@
 
 
 										<!--SCRIPTS AJAX G1-->
+
+
 
 		<!--Script del grafico-->
 		<script type="text/javascript">

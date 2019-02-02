@@ -1,4 +1,7 @@
-@extends('layouts.templateBasico')
+@extends('layouts.templateDashboard')
+
+@section('titulo') Graficos @stop
+
 
 @section('estilos')
 	<!--Assets para renderizar graficos. Obligatorio en sección header. Primero jquery-->
@@ -57,7 +60,15 @@
 		<div class="row">
 			<div class="col-md-10">
 				<!--Grafico-->
-				<div id="container" style="width:100%; height:400px;"></div>
+
+				<div class="card shadow mb-4">
+					<div class="card-body">
+
+						<div id="container" style="width:100%; height:400px;"></div>
+
+					</div>
+				</div>
+
 			</div>
 			<div class="col-md-2">
 

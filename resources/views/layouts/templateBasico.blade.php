@@ -33,6 +33,7 @@
 
   <!-- CONTENEDOR NAVBAR -->
 
+  <div id="master-navbar-container">
   <div id="app">
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #BBD035;">
@@ -59,36 +60,9 @@
             <!-- CUANDO EL USUARIO ES ADMINISTRADOR -->
             @if(session('rol_id') == 3)
 
-            <!-- VER METRICAS -->
-            <div class="dropdown">
-
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Informes
-              </button>
-
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                <a class="dropdown-item" >{!! link_to('grafico1', $title = 'Solicitudes atendidas Vs pendientes', $attributes = ['class'=>'dropdown-item']); !!}</a>
-
-                <a class="dropdown-item" >{!! link_to('grafico2', $title = 'Atencion por administrativo', $attributes = ['class'=>'dropdown-item']); !!}</a>
-
-                <a class="dropdown-item" >{!! link_to('grafico3', $title = 'Cantidad de solicitudes', $attributes = ['class'=>'dropdown-item']); !!}</a>
-              </div>
-
-            </div>
-
-            <!-- MENU DESPLEGABLE DE ADMINISTRAR -->
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Administrar
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">{!! link_to_route('usuarios.index', $title = 'Administrar usuarios', $parameters = '', $attributes = ['class'=>'dropdown-item']); !!}</a>
-
-                <a class="dropdown-item" href="#">{!! link_to_route('solicitudes.index', $title = 'Responder solicitudes', $parameters = '', $attributes = ['class'=>'dropdown-item']); !!}</a>
-
-                <a class="dropdown-item" href="#">{!! link_to_route('respuestas.index', $title = 'Ver respuestas', $parameters = '', $attributes = ['class'=>'dropdown-item']); !!}</a>
-              </div>
-            </div>
+              <li class="nav-item">
+                <a href="/indexDashboard" class="nav-link" id="puerta-dashboard"><button type="button" class="btn btn-primary">Panel de Admin. &nbsp; <i class="fas fa-book-reader"></i></button> </a>
+              </li>
 
             @endif
             <!-- FIN USUARIO ES ADMINISTRADOR -->
@@ -222,6 +196,7 @@
       </nav>
 
     </div>
+  </div>
     <!-- FIN DEL CONTENEDOR NAVBAR -->
 
     <!--Incluir trozo de codigo para informar exito o error-->
@@ -247,10 +222,9 @@
 
         
         <div class="redes">
-            <div class="email"><a href="#"></a></div>
+            <div class="email"><a href="/contacto/create"></a></div>
             <div class="facebook"><a href="#"></a></div>
             <div class="twitter"><a href="#"></a></div>
-            <div class="youtube"><a href="#"></a></div>
         </div>
         
 

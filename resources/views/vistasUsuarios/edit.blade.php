@@ -120,13 +120,13 @@
 				      <div class="col-sm-10">
 				        <div class="form-check-inline">
 				          <label class="form-check-label">
-				            <input class="form-check-input" type="radio" name="genero" value="Masculino" checked>
+				            <input class="form-check-input" type="radio" name="genero" value="m" checked>
 				            Masculino
 				          </label>
 				        </div>
 				        <div class="form-check-inline">
 				          <label class="form-check-label">
-				            <input class="form-check-input" type="radio" name="genero" value="Femenino">
+				            <input class="form-check-input" type="radio" name="genero" value="f">
 				            Femenino
 				          </label>
 				        </div>

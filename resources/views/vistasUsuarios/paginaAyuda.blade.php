@@ -1,6 +1,6 @@
 @extends ('layouts.templateBasico')
 
-@section('titulo') Gesol - Manuales de ayuda FAQ @stop
+@section('titulo') Gesol : Manuales de ayuda FAQ @stop
 
 @section('estilos')
 

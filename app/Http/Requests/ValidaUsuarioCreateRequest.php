@@ -43,7 +43,9 @@ class ValidaUsuarioCreateRequest extends FormRequest
             'token.same:tokenRes' => 'El codigo de confirmación enviado a tu celular no coincide.',
             'correo'=>'required|email|unique:usuarios,email',
             'password'=>'required|string|min:4',
+            /*
             'password.same:passwordRepeat' => 'Las contraseñas no coinciden',
+            */
             'rol'=>'numeric|in:1,2,3,4,5'
         ];
     }

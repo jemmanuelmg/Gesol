@@ -1,13 +1,10 @@
-@extends('layouts.templateBasico')
+@extends(session('rol_id') == 3 ? 'layouts.templateDashboard' : 'layouts.templateBasico');
 
 <!--Adicionar estilos css necesrios para tabla, por eso se menciona la seccion estilos y @parent para sobreescribir-->
 @section('estilos')
 	@parent
 	
 	{!!Html::style('js/DataTables/media/css/jquery.dataTables.css')!!}
-	{!!Html::style('https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css')!!}
-	{!!Html::style('css/footer.css')!!}
-	{!!Html::style('css/font-awesome.min.css')!!}
 
 @stop
 
@@ -28,7 +25,11 @@
 	<div class="container-fluid">
 	<table id="example" class="responstable">
 		<thead>
+			@if(session('rol_id') == 3)
+			<tr class="tr-admin">
+			@else
 			<tr>
+			@endif	
 				<th>Nombre solicitud respondida</th>
 				<th>Fecha de respuesta</th>
 				<th>Nombre administrativo</th>
@@ -53,9 +54,9 @@
 				<td style="text-align: center;">
 					<!-- <a href="{{'solicitudesPDF/' . $respuesta->res_formato}}" class="btn btn-danger" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"> Ver respuesta PDF</i></a> -->
 
-					{!! link_to('solicitudesPDF/'.$respuesta->res_formato, $title = '', $attributes = ['class'=>'fa fa-file-pdf-o btn btn-outline-danger','target'=>'_blank']); !!}
+					{!! link_to('solicitudesPDF/'.$respuesta->res_formato, $title = '', $attributes = ['class'=>'fas fa-file-pdf btn btn-outline-danger','target'=>'_blank']); !!}
 
-					{!! link_to_route('respuestas.edit', $title = '', $parameters = $respuesta->res_id, $attributes = ['class'=>'fa fa-pencil btn btn-outline-primary']); !!}
+					{!! link_to_route('respuestas.edit', $title = '', $parameters = $respuesta->res_id, $attributes = ['class'=>'far fa-edit btn btn-outline-primary']); !!}
 				</td>
 			</tr>
 			@endforeach

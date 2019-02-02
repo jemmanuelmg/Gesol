@@ -1,4 +1,6 @@
-@extends('layouts.templateBasico')
+@extends(session('rol_id') == 3 ? 'layouts.templateDashboard' : 'layouts.templateBasico');
+
+@section('titulo') Gesol - Listado de solicitudes @stop
 
 <!--Adicionar estilos css necesrios para tabla, por eso se menciona la seccion estilos y @parent para sobreescribir-->
 @section('estilos')
@@ -14,6 +16,8 @@
 	<br>
 	<br>
 
+	<div class="container-fluid">
+
 	<div class="jumbotron text-center" style="margin: 0 1em; padding: 2em 0;">
 		<div class="row">
         	<div class="container">
@@ -25,10 +29,14 @@
 	<br>
 	<br>
 
-	<div class="container-fluid">
+	
 		<table id="example" class="responstable">
-			<thead>
+			<thead class="">
+				@if(session('rol_id') == 3)
+				<tr class="tr-admin">
+				@else
 				<tr>
+				@endif	
 					<th>Nombre solicitud</th>
 					<th>Fecha solicitud (aaaa/mm/dd)</th>
 					<th>Nombres estudiante</th>
@@ -57,10 +65,10 @@
 						{!! link_to('solicitudesPDF/'.$solicitud->sol_formato, $title = '', $attributes = ['class'=>'fas fa-file-pdf btn btn-outline-danger','target'=>'_blank']); !!}
 
 						@if(session('rol_id') == 3) <!--solo admin coordinador puede editar solicitud-->
-							{!! link_to_route('solicitudes.edit', $title = '', $parameters = $solicitud->sol_id, $attributes = ['class'=>'fas fa-pencil-alt btn btn-outline-primary']); !!}
+							{!! link_to_route('solicitudes.edit', $title = '', $parameters = $solicitud->sol_id, $attributes = ['class'=>'far fa-edit btn btn-outline-primary']); !!}
 						@endif
 
-						{!! link_to('redactarRespuesta/'.$solicitud->sol_nombre.'/'.$solicitud->sol_formato.'/'.$solicitud->sol_id, $title = '', $attributes = ['class'=>'fas fa-pen-square btn btn-outline-info']); !!}
+						{!! link_to('redactarRespuesta/'.$solicitud->sol_nombre.'/'.$solicitud->sol_formato.'/'.$solicitud->sol_id, $title = '', $attributes = ['class'=>'far fa-arrow-alt-circle-left btn btn-outline-info']); !!}
 
 					</td>
 				</tr>

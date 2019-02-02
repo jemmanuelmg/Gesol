@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Session;
+
 if (env('APP_ENV') === 'production') {
     URL::forceSchema('https');
 }
@@ -36,8 +38,8 @@ Route::get('iniciarSesion','UsuarioController@formIniciarSesion');
 	 * Rutas dashboard administrador
 	 */
 
-Route::get('ds', function () {
-	return view('layouts.templateAdmin');
+Route::get('indexDashboard', function () {
+	return view('vistasUsuarios.indexDashboard');
 });
 
 	/**
@@ -96,5 +98,14 @@ Route::get('confirmarSms/{telefono}', 'SmsController@enviarSmsConfirmacion');
 Route::get('grafico1', 'MetricasController@procesarG1');
 Route::get('grafico2', 'MetricasController@procesarG2');
 Route::get('grafico3', 'MetricasController@procesarG3');
+
+
+	/**
+	* Rutas de error
+	*/
+
+Route::get('404', function () {
+	return view('vistasErrores.404');
+})->name('404');
 
 

@@ -366,51 +366,52 @@ CSS BRAND CAROUSELL
 
 
 /* CSS DEL NAVBAR */
-.btn.focus, .btn:focus {
+#master-navbar-container .btn.focus, #master-navbar-container .btn:focus {
       outline: 0;
       box-shadow: none;
 }
-.navbar-dark .navbar-nav .nav-link,.navbar-dark .navbar-nav .nav-link:hover {
+#master-navbar-container .navbar-dark .navbar-nav .nav-link,#master-navbar-container .navbar-dark .navbar-nav .nav-link:hover {
 /* color: rgba(255,255,255,.5); */
   color: #FFF;
 }
-.dropdown-menu{
+#master-navbar-container .dropdown-menu{
   background-color: #BBD035;
 }
-.dropdown-item{
+#master-navbar-container .dropdown-item{
   color: #FFF;
 }
-.dropdown-item:hover{
+#master-navbar-container .dropdown-item:hover{
   color: rgba(255,255,255,.5);
   background-color: #BBD035;
 }
-.dropdown-item:focus{
+#master-navbar-container .dropdown-item:focus{
   color: rgba(255,255,255,.5);
   background-color: #BBD035;
 }
-a {
+#master-navbar-container a {
     color: #FFF;
     text-decoration: none;
     background-color: transparent;
 }
-a:hover{
+
+#master-navbar-container a:hover{
     color: #FFF;
     text-decoration: none;
     background-color: transparent;
 }
-.btn-link{
+#master-navbar-container .btn-link{
   color: #fff;
   border-color: transparent;
 }
-.btn-link:active, .btn-link:focus, .btn-link:hover {
+#master-navbar-container .btn-link:active, .btn-link:focus, .btn-link:hover {
   color: #fff;
   border-color: #FFF;
 }
-.btn-link.active, .btn-link:active, .btn-link:disabled {
+#master-navbar-container .btn-link.active, .btn-link:active, .btn-link:disabled {
   color: #fff;
   background-color: transparent;
 }
-.btn {
+#master-navbar-container .btn {
     display: inline-block;
     font-weight: 400;
     line-height: 1.25;
@@ -431,7 +432,7 @@ a:hover{
 }
 
 
-.btn-secondary {
+#master-navbar-container .btn-secondary {
     /*color: #fff;*/
     background-color: #BBD035;
     border-color: transparent;
@@ -459,7 +460,28 @@ a:hover{
 
 
 
+/*ESTILOS DASHBOARD*/
+.titulo-dashboard{
+  text-transform: capitalize;
+  font-family: 'Raleway', 'Open Sans', sans-serif;
+}
 
+.imagen-float{
+  float: right;
+}
+
+#img-rotate-screen{
+  width:60px; 
+  height:60px; 
+  margin-left:8px;
+  margin-right:18px;
+  margin-bottom: 15px;
+}
+
+#puerta-dashboard{
+  margin-right: 10px;
+  margin-top: 5px;
+}
 
 
 
@@ -499,10 +521,10 @@ a:hover{
   background: #FFF;
   color: #024457;
   border-radius: 10px;
-  border: 1px solid #167F92;
+  /*border: 1px solid #167F92;*/
 }
 .responstable tr {
-  border: 1px solid #D9E4E6;
+  /*border: 1px solid #D9E4E6;*/
 }
 .responstable tr:nth-child(odd) {
   background-color: #EAF3F3;
@@ -520,6 +542,16 @@ a:hover{
   color: #FFF;
   padding: 1em;
 }
+
+.tr-admin th{
+  display: none;
+  border: 1px solid #FFF;
+  background-color: #FFF;
+  color: #858796;
+  padding: 1em;
+}
+
+
 .responstable th:first-child  {
   display: table-cell;
   text-align: center;
@@ -612,9 +644,6 @@ a:hover{
 
 
 /* CSS DE METRICAS */
-.highcharts-background {
-    fill: #E9ECEF;
-}
 .highcharts-button-symbol {
     stroke: #666666;
     stroke-width: 3px;
@@ -846,8 +875,7 @@ code {
 #letra-pequena-load{
   font-size: 15px;
   color:#4169E1;
-  font-family: 'Century Gothic';
-  src:url(/fonts/Raleway-Regular.ttf) format('truetype');
+  font-family: 'Raleway', 'Open Sans', sans-serif;
 }
 
 
