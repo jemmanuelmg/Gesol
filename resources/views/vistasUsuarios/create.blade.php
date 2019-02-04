@@ -48,6 +48,22 @@ Registrarse en Gesol
 					</div>             	
 				</div>
 
+				<div class="form-group">
+					<label class="control-label" for="institucion">Institución Educativa *</label>
+					<div class="input-group">
+					<select name='institucion' class="custom-select mb-2 mr-sm-2 mb-sm-0">
+						<option value="-1">Seleccione</option>
+						<option value="1">Instituto Tecnológico Metropolitano</option>
+						<option value="2">Colegio Mayor de Antioquia</option>
+						<option value="3">Institución U. Pascual Bravo</option>
+						<option value="4">Colegio Santa Rosa de Lima</option>
+						<option value="5">Colegio Salesiano El Sufragio</option>
+					</select>
+					</div>
+				</div>
+
+				
+
 			</div>
 
 			<div class="col-md-6"> <!--Segunda columnda de inputs-->
@@ -82,39 +98,42 @@ Registrarse en Gesol
 				@if(session('rol_id') != 3 || session('rol_id') == null)
 				<div id="contenedor-tel">
 					<div class="form-group">
+						<!--INDICACIONES-->
 						<label class="control-label" id="label-telefono" for="telefono">Telefono:</label>
 						<p class="texto-gris"> 
 							<span class="badge badge-info" id="span-tel">info</span> Para confirmar tu cuenta debes introducir tu número celular al cual le será enviado un código de confirmación. Será valido por los siguientes 10 minutos.
 						</p>
 
+						<!--PANEL PARA INTRODUCIR TELEFONO-->
 						<div class="input-group mb-2 mr-sm-2 mb-sm-0">
-						<div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-mobile-alt"></i></div>
-						<input type="number" id="input-telefono" class="form-control" name="telefono" placeholder="Introduzca su telefono" />
+							<div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-mobile-alt"></i></div>
+							<input type="number" id="input-telefono" class="form-control" name="telefono" placeholder="Introduzca su telefono" />
 						</div>
 
+						<!--BOTÓN-->
 						<button id="btn-telefono"class="btn btn-primary btn-sm" type="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Verificando.." data-content="Se enviará un mensaje de texto al número">
-							
 							<i class="fas fa-user fa-1x" aria-hidden="true"></i>
 							<div id="div-spin"><i class="fas fa-sync fa-spin fa-1x" aria-hidden="true"></i></div>
-
 						</button>
+
 					</div>
 					<br>
 
+					<!--DIV QUE NO SE VE-->
 					<div id="div-verificar-tel"> 
 						<label id="lbl-token" class="control-label" for="token">Código:</label> 
 
+						<!--input del código-->
 						<center>
 						<div id="envoltorio-input-token">
-						
 							<div class="input-group mb-2 mr-sm-2 mb-sm-0">
 							<div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-check-square"></i></div>
 							<input type="text" size="4" maxlength="4" id="input-token" name="token" class="form-control" />
 							</div>
-						
 						</div>
 						</center>
 
+						<!--HIDDEN PARA ALMACENAR CÓDIGO-->
 						<input type="hidden" id="input-token-res" name="tokenRes" value="">
 					</div>
 
