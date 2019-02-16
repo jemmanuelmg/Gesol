@@ -38,9 +38,7 @@ Route::get('iniciarSesion','UsuarioController@formIniciarSesion');
 	 * Rutas dashboard administrador
 	 */
 
-Route::get('indexDashboard', function () {
-	return view('vistasUsuarios.indexDashboard');
-});
+Route::get('indexDashboard', 'UsuarioController@verDashboard');
 
 	/**
 	 * Rutas de respuestas.

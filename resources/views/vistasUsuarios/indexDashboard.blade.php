@@ -21,7 +21,7 @@
           <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Solicitudes en total</div>
           <div class="row no-gutters align-items-center">
             <div class="col-auto">
-              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">45</div>
+              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$cantSol}}</div>
             </div>
 
             <div class="col">
@@ -50,7 +50,7 @@
       <div class="row no-gutters align-items-center">
         <div class="col mr-2">
           <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Respuestas en total</div>
-          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">34</div>
+          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$cantResp}}</div>
         </div>
         <div class="col-auto">
           <i class="far fa-arrow-alt-circle-left fa-2x text-gray-300"></i>
@@ -69,7 +69,7 @@
           <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Usuarios</div>
           <div class="row no-gutters align-items-center">
             <div class="col-auto">
-              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">120</div>
+              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$cantUsu}}</div>
             </div>
 
           </div>
@@ -91,7 +91,7 @@
       <div class="row no-gutters align-items-center">
         <div class="col mr-2">
           <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Funcionarios</div>
-          <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+          <div class="h5 mb-0 font-weight-bold text-gray-800">{{$cantCompa}}</div>
         </div>
         <div class="col-auto">
           <i class="fas fa-comments fa-2x text-gray-300"></i>

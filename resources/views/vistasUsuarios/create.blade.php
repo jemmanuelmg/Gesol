@@ -53,11 +53,11 @@ Registrarse en Gesol
 					<div class="input-group">
 					<select name='institucion' class="custom-select mb-2 mr-sm-2 mb-sm-0">
 						<option value="-1">Seleccione</option>
-						<option value="1">Instituto Tecnológico Metropolitano</option>
-						<option value="2">Colegio Mayor de Antioquia</option>
-						<option value="3">Institución U. Pascual Bravo</option>
-						<option value="4">Colegio Santa Rosa de Lima</option>
-						<option value="5">Colegio Salesiano El Sufragio</option>
+
+						@foreach ($instituciones as $registro)
+						    <option value="{{$registro->ins_id}}">{{$registro->ins_nombre}}</option>
+						@endforeach						
+
 					</select>
 					</div>
 				</div>

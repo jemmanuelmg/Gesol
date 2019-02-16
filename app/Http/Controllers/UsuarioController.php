@@ -11,6 +11,7 @@ use Gesol\Http\Requests\ValidaUsuarioCreateRequest;
 use Gesol\Http\Requests\ValidaUsuarioUpdateRequest;
 //Importar modelo
 use Gesol\usuarios;
+use DB;
 
 class UsuarioController extends Controller
 {
@@ -21,7 +22,7 @@ class UsuarioController extends Controller
         $this->middleware('autenticado')->except('create', 'store', 'formIniciarSesion');
         /*Segunda proteccion. Los usuarios registrados solo pueden entrar a index de usuario
         si son administradores*/
-        $this->middleware('administrador')->only('index', 'destroy');
+        $this->middleware('administrador')->only('index', 'destroy', 'verDashboard');
 
     }
 
@@ -32,6 +33,24 @@ class UsuarioController extends Controller
      */
     public function formIniciarSesion(){
         return view('vistasUsuarios.formIniciarSesion');
+    }
+
+    /**
+     * Muestra el dashboard para iniciar admiistradores
+     *
+     * @return \iniciarSesion
+     */
+    public function verDashboard(){
+
+        $cantSol=DB::select(DB::raw("SELECT count(sol_id) as cuenta FROM solicitudes JOIN usuarios ON solicitudes.usu_cedula = usuarios.usu_cedula WHERE usuarios.ins_id =" . Session('ins_id') ))[0]->cuenta;
+
+        $cantResp=DB::select(DB::raw("SELECT count(res_id) as cuenta FROM respuestas JOIN usuarios ON respuestas.usu_cedula = usuarios.usu_cedula WHERE usuarios.ins_id =" . Session('ins_id') ))[0]->cuenta;
+
+        $cantUsu=DB::select(DB::raw("SELECT count(usu_cedula) as cuenta FROM usuarios WHERE rol_id = 1 AND ins_id = " . Session('ins_id') ))[0]->cuenta;
+
+        $cantCompa=DB::select(DB::raw("SELECT count(usu_cedula) as cuenta FROM usuarios WHERE rol_id IN (2,4,5) AND ins_id = " . Session('ins_id') ))[0]->cuenta;
+
+        return view('vistasUsuarios.indexDashboard', compact(['cantSol', 'cantResp', 'cantUsu', 'cantCompa']));
     }
 
 
@@ -63,7 +82,11 @@ class UsuarioController extends Controller
     public function create()
     {
 
-        return view('vistasUsuarios.create');
+        $instituciones = \DB::table('instituciones')
+        ->select('ins_id', 'ins_nombre')
+        ->get();
+
+        return view('vistasUsuarios.create', compact('instituciones'));
     }
 
     /**
@@ -89,6 +112,7 @@ class UsuarioController extends Controller
                     'usu_telefono'=>$request['telefono'],
                     'email'=>$request['correo'],
                     'password'=> \Hash::make($request['password']),
+                    'ins_id' =>$request['institucion'],
                     'rol_id'=>$request['rol']
 
                 ]);
@@ -109,7 +133,8 @@ class UsuarioController extends Controller
                     'usu_fechaNac'=>$request['fechaNac'],
                     'usu_telefono'=>$request['telefono'],
                     'email'=>$request['correo'],
-                    'password'=>\Hash::make($request['password'])
+                    'password'=>\Hash::make($request['password']),
+                    'ins_id' =>$request['institucion']
 
                 ]);
 
@@ -163,32 +188,45 @@ class UsuarioController extends Controller
     public function update(ValidaUsuarioUpdateRequest $request, $usu_cedula)
     {
 
+        $usuario = new Usuarios();
+        $usuario = usuarios::find($usu_cedula);
+
         //Comprobación y guardado de foto (en caso de que haya adjuntado una)
         $ext = "jpg";
+        $conFoto = false;
+        $conFirma = false;
+
+        //Si añadió foto a traves de la camara
         if(!empty($request['foto'])){
 
+            $conFoto=true;
             $ext = "jpg";
             $encoded_data = $request['foto'];
             $binary_data = base64_decode( $encoded_data );
 
-            // save to server (beware of permissions)
-            $result = file_put_contents(  base_path() . '/public/images/fotos_usuarios/' . Session('usu_cedula') . '.jpg', $binary_data );
+            $result = file_put_contents(  base_path() . '/public/images/fotos_usuarios/foto_usuario' . Session('usu_cedula') . '.jpg', $binary_data );
             
         }
-
+        //Si añadió foto a traves de archivo
         if (isset($request['foto2'])){
 
+            $conFoto=true;
             $ext = explode( '/',$_FILES['foto2']['type'])[1];
-
-            $targetfile = base_path() . '/public/images/fotos_usuarios/'. Session('usu_cedula') . '.' . $ext;
-
+            $targetfile = base_path() . '/public/images/fotos_usuarios/foto_usuario'. Session('usu_cedula') . '.' . $ext;
             move_uploaded_file($_FILES['foto2']['tmp_name'], $targetfile);
 
         }
+        //Si añadió firma en caso de ser usuario administrativo
+        if (isset($request['firma'])){
 
-        $usuario = new Usuarios();
-        $usuario = usuarios::find(Session('usu_cedula'));
+            $conFirma = true;
+            $ext = explode( '/',$_FILES['firma']['type'])[1];
+            $targetfile = base_path() . '/public/images/firmas_usuarios/firma_usuario'. Session('usu_cedula') . '.' . $ext;
+            move_uploaded_file($_FILES['firma']['tmp_name'], $targetfile);
 
+        }
+
+        
         //En caso de que quiera cambiar su contraseña
         if (!empty($request['password'])) {
             $usuario->password = \Hash::make($request['password']);
@@ -196,28 +234,36 @@ class UsuarioController extends Controller
 
         //En caso de que el admin especifique el rol
         if(isset($request['rol'])){
-            
             $usuario->rol_id = $request['rol'];
-
-        }else{
-
-            $usuario->usu_cedula = $request['cedula'];
-            $usuario->usu_nombres = $request['nombres'];
-            $usuario->usu_apellidos = $request['apellidos'];
-            $usuario->usu_genero = $request['genero'];
-            $usuario->usu_fechaNac = $request['fechaNac'];
-            $usuario->usu_telefono = $request['telefono'];
-            $usuario->email = $request['correo'];
-            $usuario->usu_foto = Session('usu_cedula') . '.' . $ext;
-
-            $usuario->save();
-
-            $request->session()->put('usu_foto', Session('usu_cedula') . '.' . $ext);
-
-            Session::flash('mensaje-exito', 'Se ha actualizado exitosamente');
-            return Redirect::to('/');
-
         }
+
+        //Continuar con la actualización normal
+        $usuario->usu_cedula = $request['cedula'];
+        $usuario->usu_nombres = $request['nombres'];
+        $usuario->usu_apellidos = $request['apellidos'];
+        $usuario->usu_genero = $request['genero'];
+        $usuario->usu_fechaNac = $request['fechaNac'];
+        $usuario->usu_telefono = $request['telefono'];
+        $usuario->email = $request['correo'];
+
+        //Definir si agregar una foto o no
+        if ($conFoto) {
+            $usuario->usu_foto = 'foto_usuario'.Session('usu_cedula') . '.' . $ext;
+            $request->session()->put('usu_foto', 'foto_usuario'.Session('usu_cedula') . '.' . $ext);
+        }
+        //Definir si agregar firma
+        if ($conFirma) {
+            $usuario->usu_firma = 'firma_usuario'.Session('usu_cedula') . '.' . $ext;
+        }
+
+        //terminar
+        $usuario->save();
+        
+        //Poner mensaje informativo
+        Session::flash('mensaje-exito', 'Se ha actualizado exitosamente');
+        return Redirect::to('/');
+
+        
     }
 
     /**

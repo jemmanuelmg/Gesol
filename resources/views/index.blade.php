@@ -4,7 +4,7 @@
 
 @section('estilos')
 
-  <script type="text/javascript" src="{{ URL::asset('js/script-chatbotj.s') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/script-chatbot.js') }}"></script>
 
 @show 
 

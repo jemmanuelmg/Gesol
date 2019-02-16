@@ -168,6 +168,30 @@
 			        	</div>
 			        </div>
 
+			        @if($usuario->rol_id != 1)
+			        <br>
+			        <center>
+			        <div class="alert alert-primary" id="div-firma" role="alert">
+
+			        	<div class="row">
+
+			        		<div class="col-sm-1">
+			        			<i class="fas fa-info-circle fa-2x"></i>
+			        		</div>
+
+			        		<div class="col-sm-11">
+			        			<p>Al ser usuario administrativo, ingrese una imagen que contenga su firma:</p>	
+					  			<input type="file" name="firma" class="form-control-file" accept=".jpg, .jpeg, .png, .gif">			
+					  			<input type="hidden" name="MAX_FILE_SIZE" value="1228800" />
+			        		</div>
+
+			        	</div>		
+			          
+					</div>
+					</center>
+					<br>
+					@endif
+
 			        
 					<!--Solo usuario con rol 3 (admin) puede editar roles, y no puede editar
 					su propio rol. Por eso el email con que inicio sesion debe ser != al email

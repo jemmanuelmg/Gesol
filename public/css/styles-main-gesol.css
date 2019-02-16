@@ -66,6 +66,16 @@ body {
   left: 1px;
 }
 
+#div-firma{
+  width:420px;
+}
+
+#div-firma input{
+  font-size: 13px;
+}
+
+
+
 
 
 /*FIN CSS ESTILOS GENERALES*/
@@ -403,11 +413,11 @@ CSS BRAND CAROUSELL
   color: #fff;
   border-color: transparent;
 }
-#master-navbar-container .btn-link:active, .btn-link:focus, .btn-link:hover {
+#master-navbar-container .btn-link:active, #master-navbar-container .btn-link:focus, #master-navbar-container .btn-link:hover {
   color: #fff;
   border-color: #FFF;
 }
-#master-navbar-container .btn-link.active, .btn-link:active, .btn-link:disabled {
+#master-navbar-container .btn-link.active, #master-navbar-container .btn-link:active, #master-navbar-container .btn-link:disabled {
   color: #fff;
   background-color: transparent;
 }
@@ -440,13 +450,13 @@ CSS BRAND CAROUSELL
 
 
 
-.btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
+#master-navbar-container .btn-secondary:active, #master-navbar-container .btn-secondary:focus, #master-navbar-container .btn-secondary:hover {
   /*color: #fff;*/
   background-color: #BBD035;
   border-color: #FFF;
 }
 
-.btn-secondary:not([disabled]):not(.disabled).active, .btn-secondary:not([disabled]):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+#master-navbar-container .btn-secondary:not([disabled]):not(.disabled).active, #master-navbar-container .btn-secondary:not([disabled]):not(.disabled):active, #master-navbar-container .show>.btn-secondary.dropdown-toggle {
     /*color: #fff;*/
     /*background-color: transparent;*/
     border-color: #FFF;
