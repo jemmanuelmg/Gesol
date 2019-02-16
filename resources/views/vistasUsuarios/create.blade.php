@@ -71,9 +71,18 @@ Registrarse en Gesol
 				<div class="form-group">
 					<label class="control-label" for="correo">Correo Electrónico *</label>
 					<div class="input-group">
-						<input type="email" class="form-control" name="correo" placeholder="Introduzca su correo electrónico" />
+						<input type="email" id="input-email" class="form-control" name="correo" placeholder="Introduzca su correo electrónico" />
 					</div>
 				</div>
+
+				<!--PANEL PARA INTRODUCIR TELEFONO-->
+				<div class="form-group">
+					<label class="control-label" for="correo">Teléfono *</label>
+					<div class="input-group">
+						<input type="number" id="input-telefono" class="form-control" name="telefono" placeholder="Introduzca su telefono" />
+					</div>
+				</div>
+
 
 				<div class="form-group">
 					<label class="control-label" for="password">Contraseña *</label>
@@ -95,32 +104,35 @@ Registrarse en Gesol
 				</div>
 				@endif
 
-				@if(session('rol_id') != 3 || session('rol_id') == null)
+				
 				<div id="contenedor-tel">
 					<div class="form-group">
 						<!--INDICACIONES-->
-						<label class="control-label" id="label-telefono" for="telefono">Telefono:</label>
+						<label class="control-label" id="label-telefono" for="telefono">Comprobar cuenta:</label>
 						<p class="texto-gris"> 
-							<span class="badge badge-info" id="span-tel">info</span> Para confirmar tu cuenta debes introducir tu número celular al cual le será enviado un código de confirmación. Será valido por los siguientes 10 minutos.
+							<span class="badge badge-info" id="span-tel">info</span> Debes introducir tu numero de celular o email donde quieres que sea enviado un código de confirmación, que luego podrás ingresar aquí para validar tus datos.
 						</p>
 
-						<!--PANEL PARA INTRODUCIR TELEFONO-->
-						<div class="input-group mb-2 mr-sm-2 mb-sm-0">
-							<div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-mobile-alt"></i></div>
-							<input type="number" id="input-telefono" class="form-control" name="telefono" placeholder="Introduzca su telefono" />
-						</div>
+						<div>
+						<center>
+						<i class="fas fa-mobile-alt fa-1x"></i>&nbsp;&nbsp;<input type="radio" name="opc-verif" id="opc-tel"> Con teléfono &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<i class="fas fa-envelope fa-1x"></i>&nbsp;&nbsp;<input type="radio" name="opc-verif" id="opc-email"> Con Email
+						</center>
+						
 
+						
 						<!--BOTÓN-->
-						<button id="btn-telefono"class="btn btn-primary btn-sm" type="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Verificando.." data-content="Se enviará un mensaje de texto al número">
+						<button id="btn-telefono"class="btn btn-primary btn-sm" type="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Verificando.." data-content="Se intentará enviar un mensaje al número o email">
 							<i class="fas fa-user fa-1x" aria-hidden="true"></i>
 							<div id="div-spin"><i class="fas fa-sync fa-spin fa-1x" aria-hidden="true"></i></div>
 						</button>
+						</div>
 
 					</div>
 					<br>
 
 					<!--DIV QUE NO SE VE-->
-					<div id="div-verificar-tel"> 
+					<div id="div-ingresar-token"> 
 						<label id="lbl-token" class="control-label" for="token">Código:</label> 
 
 						<!--input del código-->
@@ -138,7 +150,6 @@ Registrarse en Gesol
 					</div>
 
 				</div>
-				@endif
 
 				<br>
 

@@ -20,9 +20,8 @@
 	        	<div class="col-md-12">
 
 	        		<center>
-	         		<h1><strong>Seleccionar solicitud</strong></h1>
-	         		<br>
-	         		<i class="fas fa-pen-alt fa-2x"></i>
+	         		<h1><strong>Seleccionar solicitud</strong></h1><i class="fas fa-pen-alt fa-2x"></i>
+	         		
 	         		</center>
 
 	         		<br><br>

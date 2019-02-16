@@ -11,6 +11,8 @@ use Gesol\Http\Requests\ValidaCorreoContactoRequest;
 
 class CorreoController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -136,5 +138,32 @@ class CorreoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function enviarCorreoConfirmacion($email){
+
+        $token = rand(1000, 9999);
+
+        
+        $datosMensaje = [
+        'token' => $token
+        ];
+
+        
+        Mail::send('correos.plantillaEnviaToken', $datosMensaje, function (Message $msj) use ($email){
+
+            $msj->to($email)
+            ->from('gesol.uts@gmail.com',  'Gesol')
+            ->subject('Gesol - Confirma tu cuenta');
+        
+        });
+        
+
+        
+
+        return json_encode(array(
+            'status'=> 'success',
+            'token' => $token
+        ));
     }
 }

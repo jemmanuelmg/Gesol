@@ -89,6 +89,7 @@ Route::get('metricas', 'MetricasController@generarMetricas');
 	* Rutas para nexmo sms
 	*/
 Route::get('confirmarSms/{telefono}', 'SmsController@enviarSmsConfirmacion');
+Route::get('confirmarConEmail/{email}', 'CorreoController@enviarCorreoConfirmacion');
 
 
 	/**

@@ -35,6 +35,8 @@ class SmsController extends Controller
 
 	}
 
+	
+
 	public function enviarPassword(Request $request){
 
 		$telefono = $request['telefono'];
