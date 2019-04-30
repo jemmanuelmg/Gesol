@@ -26,7 +26,7 @@
 
             <div class="col">
               <div class="progress progress-sm mr-2">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar bg-info" role="progressbar" style="width: {{$cantSol . '%'}}" aria-valuenow="{{$cantSol}}" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               
             </div>
@@ -113,9 +113,7 @@
       <h6 class="m-0 font-weight-bold text-primary">Bienvenido al panel de Admin.</h6>
     </div>
     <div class="card-body">
-      <div class="text-center">
-        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
-      </div>
+      
       <p style="text-align: justify;">
 
         En este apartado podrás disponer de todas las funcionalidades reservadas para 

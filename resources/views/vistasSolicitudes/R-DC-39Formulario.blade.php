@@ -56,14 +56,9 @@
 
                     <div class="form-group">
                       <label class="control-label" for="programa">Programa Academico *</label>
-                        <div class="input-group">
-                            <select name="programa" class="custom-select mb-2 mr-sm-2 mb-sm-0">
-                                <option value="Seleccione">Seleccione</option>
-                                <option value="Desarrollo de sistemas informaticos">Desarrollo de sistemas informaticos</option>
-                                <option value="Deportiva">Tecnologia en Deportes</option>
-                            </select>
-                        </div>              
+                        <input type="text" name="programa" size="30" class="form-control" placeholder="Introduzca su programa académico" required>           
                     </div>
+
 
                     <div class="form-group">
                       <label class="control-label" for="semestre">Semestre *</label>
@@ -100,12 +95,11 @@
                     <div class="form-group">
                         <label class="control-label" for="telefono">Telefono *</label>
                         <div class="input-group">
-                            <input type="number" name="telefono" value="{{session('usu_cedula')}}" size="30" class="form-control" readonly >
+                            <input type="number" name="telefono" value="{{session('usu_telefono')}}" size="30" class="form-control" readonly >
                         </div>              
                     </div>
 
                     <br>
-                    <hr>
                     <br>
 
                     <div class="form-group">
@@ -126,10 +120,12 @@
                         Dependiendo de la seleccion previa, complete solo los campos que necesite.
                     </p>
 
+                    <hr>
+
                     <div class="form-group">
                       <label class="control-label" for="programa2">Programa al que aspira *</label>
                         <div class="input-group">
-                            <input type="text" name="programa2" size="30" class="form-control" placeholder="Introduzca el programa al que aspira" required>
+                            <input type="text" name="programa2" size="30" class="form-control" placeholder="Introduzca el programa al que aspira">
                         </div>              
                     </div>
 
@@ -162,14 +158,14 @@
                     <div class="form-group">
                       <label class="control-label" for="NombreA">Asignatura *</label>
                         <div class="input-group">
-                            <input type="text" name="NombreA" size="30" class="form-control" placeholder="Introduzca el nombre de la asignatura" required>
+                            <input type="text" name="NombreA" size="30" class="form-control" placeholder="Introduzca el nombre de la asignatura">
                         </div>              
                     </div>
 
                     <div class="form-group">
                       <label class="control-label" for="CodigoA">Codigo Asignatura *</label>
                         <div class="input-group">
-                            <input type="text" name="CodigoA" size="30" class="form-control" placeholder="Introduzca el codigo de la asignatura" required>
+                            <input type="text" name="CodigoA" size="30" class="form-control" placeholder="Introduzca el codigo de la asignatura">
                         </div>              
                     </div>
 
@@ -180,7 +176,7 @@
                     <div class="form-group">
                       <label class="control-label" for="motivo">Observaciones *</label>
                         <div class="input-group">
-                            <textarea name="motivo" rows="4" cols="50" class="form-control" placeholder="Introduzca una observacion"></textarea>
+                            <textarea name="Observaciones" rows="4" cols="50" maxlength="112" class="form-control" placeholder="Introduzca una observacion"></textarea>
                         </div>              
                     </div>
 
@@ -207,7 +203,7 @@
                     <div class="form-group">
                       <label class="control-label" for="otroMotivo">¿Otro motivo? *</label>
                         <div class="input-group">
-                            <input type="text" name="otroMotivo" size="30" maxlength="95" class="form-control" placeholder="Introduzca otro motivo, maximo 95 caracteres" required>
+                            <input type="text" name="otroMotivo" size="30" maxlength="95" class="form-control" placeholder="Introduzca otro motivo, maximo 95 caracteres">
                         </div>              
                     </div>
 
@@ -255,7 +251,7 @@
 
     @section('javascript')
         @parent
-        <script type="text/javascript" src="{{ URL::asset('js/script-cargando.js') }}"></script>
+        <!--<script type="text/javascript" src="{{ URL::asset('js/script-cargando.js') }}"></script>-->
     @stop
             
 @stop

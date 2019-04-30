@@ -62,13 +62,21 @@
 					<!--En parameters se escribe las variables que llevará el metodo GET. En atributes cosas como la clase css, id, etc. Entre corchetes por que es un array-->
 					<td style="width:14%">
 						
-						{!! link_to('solicitudesPDF/'.$solicitud->sol_formato, $title = '', $attributes = ['class'=>'fas fa-file-pdf btn btn-outline-danger','target'=>'_blank']); !!}
+						<a href="{{'/solicitudesPDF/' . $solicitud->sol_formato}}" class="btn btn-outline-danger" target="_blank"><i class="far fa-file-pdf"></i> &nbsp;Ver</a>
 
 						@if(session('rol_id') == 3) <!--solo admin coordinador puede editar solicitud-->
-							{!! link_to_route('solicitudes.edit', $title = '', $parameters = $solicitud->sol_id, $attributes = ['class'=>'far fa-edit btn btn-outline-primary']); !!}
+						
+							<!--
+							Este link se puede cambiar por el otro normal, fijandose en la ruta a la que va con php:artisan route:list
+							sin tener que usar solicitudes.edit
+							{!! link_to_route('solicitudes.edit', $title = 'Editar', $parameters = $solicitud->sol_id, $attributes = ['class'=>'far fa-edit btn btn-outline-primary']); !!}-->
+
+							<a href="{{'/solicitudes/' . $solicitud->sol_id . '/edit'}}" class="btn btn-outline-primary" target="_blank"><i class="far fa-edit"></i>&nbsp;Edit</a>
+
 						@endif
 
-						{!! link_to('redactarRespuesta/'.$solicitud->sol_nombre.'/'.$solicitud->sol_formato.'/'.$solicitud->sol_id, $title = '', $attributes = ['class'=>'far fa-arrow-alt-circle-left btn btn-outline-info']); !!}
+
+						<a href="{{'/redactarRespuesta/' . $solicitud->sol_nombre . '/' . $solicitud->sol_formato . '/' . $solicitud->sol_id}}" class="btn btn-outline-info" target="_blank"><i class="far fa-arrow-alt-circle-left"></i> &nbsp;Resp</a>
 
 					</td>
 				</tr>

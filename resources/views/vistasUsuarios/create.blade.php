@@ -18,6 +18,7 @@ Registrarse en Gesol
 	<div class="jumbotron">
 
 		<h2 class="display-4"><center><strong>Registro&nbsp;&nbsp;&nbsp;<i class="fas fa-edit" aria-hidden="true"></i></strong></center></h2>
+		<br>
 
 		{!!Form::open(['route'=>'usuarios.store', 'method'=>'POST'])!!}   
 
@@ -75,7 +76,7 @@ Registrarse en Gesol
 					</div>
 				</div>
 
-				<!--PANEL PARA INTRODUCIR TELEFONO-->
+				<!--PANEL PARA INTRODUCIR TELEFONO o correo-->
 				<div class="form-group">
 					<label class="control-label" for="correo">Teléfono *</label>
 					<div class="input-group">
@@ -90,6 +91,7 @@ Registrarse en Gesol
 						<input type="password" class="form-control" name="password" placeholder="Introduzca su contraseña" />
 					</div>
 				</div>
+				<!--//PANEL PARA INTRODUCIR TELEFONO o correo-->
 
 				@if(session('rol_id') == 3)
 				<div id='rolUsuario'>
@@ -107,35 +109,46 @@ Registrarse en Gesol
 				
 				<div id="contenedor-tel">
 					<div class="form-group">
-						<!--INDICACIONES-->
+
+						<!--INICIA INDICACIONES-->
 						<label class="control-label" id="label-telefono" for="telefono">Comprobar cuenta:</label>
 						<p class="texto-gris"> 
 							<span class="badge badge-info" id="span-tel">info</span> Debes introducir tu numero de celular o email donde quieres que sea enviado un código de confirmación, que luego podrás ingresar aquí para validar tus datos.
 						</p>
+						<!--FIN INDICACIONES-->
+						
 
+						<!--INICIA DIV VISIBLE SELECCIONAR EMAIL O TELEFONO-->	
 						<div>
-						<center>
-						<i class="fas fa-mobile-alt fa-1x"></i>&nbsp;&nbsp;<input type="radio" name="opc-verif" id="opc-tel"> Con teléfono &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<i class="fas fa-envelope fa-1x"></i>&nbsp;&nbsp;<input type="radio" name="opc-verif" id="opc-email"> Con Email
-						</center>
-						
 
-						
-						<!--BOTÓN-->
-						<button id="btn-telefono"class="btn btn-primary btn-sm" type="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Verificando.." data-content="Se intentará enviar un mensaje al número o email">
-							<i class="fas fa-user fa-1x" aria-hidden="true"></i>
-							<div id="div-spin"><i class="fas fa-sync fa-spin fa-1x" aria-hidden="true"></i></div>
-						</button>
+							<!--INICIA RADIO BUTTONS EMAIL TELEFONO-->	
+							<center>
+							<i class="fas fa-mobile-alt fa-1x" id="icono-tel"></i>&nbsp;&nbsp;<input type="radio" name="opc-verif" id="opc-tel"> Con teléfono &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fas fa-envelope fa-1x" id="icono-email"></i>&nbsp;&nbsp;<input type="radio" name="opc-verif" id="opc-email"> Con Email
+							</center>
+							<!--FIN RADIO BUTTONS EMAIL TELEFONO-->	
+							
+
+							
+							<!--INICIA BOTÓN ENVIAR CODIGO-->
+							<button id="btn-telefono"class="btn btn-primary btn-sm" type="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Verificando.." data-content="Se intentará enviar un mensaje al número o email">
+								<i class="fas fa-user fa-1x" aria-hidden="true"></i>
+								<div id="div-spin"><i class="fas fa-sync fa-spin fa-1x" aria-hidden="true"></i></div>
+							</button>
+							<!--FIN BOTÓN ENVIAR CODIGO-->
+
 						</div>
+						<!--TERMINA DIV VISIBLE SELECCIONAR EMAIL O TELEFONO-->	
 
 					</div>
 					<br>
 
-					<!--DIV QUE NO SE VE-->
-					<div id="div-ingresar-token"> 
+					<!--INICIA DIV INVISIBLE PARA INGRESAR EL TOKEN-->
+					<div id="div-ingresar-token">
+
 						<label id="lbl-token" class="control-label" for="token">Código:</label> 
 
-						<!--input del código-->
+						<!--INICIA INPUT DEL TOKEN-->
 						<center>
 						<div id="envoltorio-input-token">
 							<div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -144,10 +157,13 @@ Registrarse en Gesol
 							</div>
 						</div>
 						</center>
+						<!--TERMINA INPUT DEL TOKEN-->
 
 						<!--HIDDEN PARA ALMACENAR CÓDIGO-->
 						<input type="hidden" id="input-token-res" name="tokenRes" value="">
+
 					</div>
+					<!--TERMINA DIV PARA INGRESAR EL TOKEN-->
 
 				</div>
 

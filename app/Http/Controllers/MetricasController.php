@@ -43,6 +43,8 @@ class MetricasController extends Controller
         }
 
     }
+
+
     public function procesarG1(Request $request){
 
         if($request->ajax()){

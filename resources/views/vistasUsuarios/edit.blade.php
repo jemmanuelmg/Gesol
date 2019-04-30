@@ -57,7 +57,13 @@
 
 						<br>
 						<p style="text-align: left">
+
+							
+							<hr>
+
+							<br>
 							Ó selecciona una foto: <i class="fas fa-upload"></i> &nbsp;&nbsp;
+							<br>
 							<input type="file" name="foto2" class="form-control-file" accept=".jpg, .jpeg, .png, .gif">
 							<input type="hidden" name="MAX_FILE_SIZE" value="1228800" />
 						</p> 
@@ -245,7 +251,7 @@
 					<hr>
 
 					<p style="color: #DC3545;">
-						<span class="badge badge-danger" id="span-tel">info</span>  Al eliminar una cuenta se removerán todos los registros de la base de datos relacionados a la misma., como solicitudes, respuestas, documentos PDF, etc.								
+						<span class="badge badge-danger" id="span-tel">info</span>  Al eliminar ésta cuenta se removerán todos los registros de la base de datos relacionados a la misma., como solicitudes, respuestas, documentos PDF, etc.								
 					</p>
 				</div>
 			</div><!--/row-->

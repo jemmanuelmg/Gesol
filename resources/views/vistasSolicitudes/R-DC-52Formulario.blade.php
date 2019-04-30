@@ -25,7 +25,7 @@
 
                     <h3 class="subencabezado">Ingresar Datos</h3>
 
-                    {!!Form::open(['route' => ['solicitudes.store'], 'method'=>'POST'])!!}     
+                    {!!Form::open(['route' => ['solicitudes.store'], 'files' => true, 'method'=>'POST'])!!}     
 
                     <div class="form-group">
                         <div class="input-group">
@@ -56,13 +56,7 @@
 
                     <div class="form-group">
                       <label class="control-label" for="programa">Programa Academico *</label>
-                        <div class="input-group">
-                            <select name="programa" class="custom-select mb-2 mr-sm-2 mb-sm-0">
-                                <option value="Seleccione">Seleccione</option>
-                                <option value="Desarrollo de sistemas informaticos">Desarrollo de sistemas informaticos</option>
-                                <option value="Deportiva">Tecnologia en Deportes</option>
-                            </select>
-                        </div>              
+                        <input type="text" name="programa" size="30" class="form-control" placeholder="Introduzca su programa académico" required>           
                     </div>
 
                     <div class="form-group">
@@ -86,7 +80,7 @@
                     <div class="form-group">
                         <label class="control-label" for="telefono">Telefono *</label>
                         <div class="input-group">
-                            <input type="number" name="telefono" value="{{session('usu_cedula')}}" size="30" class="form-control" readonly >
+                            <input type="number" name="telefono" value="{{session('usu_telefono')}}" size="30" class="form-control" readonly >
                         </div>              
                     </div>
 
@@ -148,6 +142,17 @@
                         <div class="input-group">
                             <input type="number" name="valor" size="30" class="form-control" placeholder="Introduzca el valor pagado" required>
                         </div>              
+                    </div>
+
+                    <div class="form-group">
+                        <b>
+                        <label class="control-label" for="imgRecibo">Seleccionar imagen con escaneo de pago </label>
+                        
+                        <p class="form-control-static">Si lo desea, puede adjuntar el recibo de pago para un trámite mas rápido.</p>
+                    </b></b>
+
+                        <input type="file" id="imgRecibo" name="imgRecibo" class="form-control-file" accept=".jpg, .jpeg, .png, .gif">
+                                   
                     </div>
 
                     <div class="form-group">

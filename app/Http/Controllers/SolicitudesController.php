@@ -323,56 +323,59 @@ class SolicitudesController extends Controller{
         $CodigoA = $request["CodigoA"];
         $Observaciones = $request["Observaciones"];
         $Modificacion2 = $request["modificacion2"];
-        $Dia = $request["Dia"];
-        $Mes = $request["Mes"];
-        $Año = $request["Año"];
+        
+        $fecha = explode('-', $_POST["fechaSol"]);
+        $Año = $fecha[0];
+        $Mes = $fecha[1];
+        $Dia = $fecha[2];
+
         $otroMotivo = $request["otroMotivo"];
 
 
         //Renglon 1
 
-        $pdf->SetXY(14, 51);
+        $pdf->SetXY(14, 42);
         $pdf->Write(0, $Apellidos);
 
-        $pdf->SetXY(89, 51);
+        $pdf->SetXY(96, 42);
         $pdf->Write(0,  $Nombres);
 
-        $pdf->SetXY(157, 51);
+        $pdf->SetXY(169, 42);
         $pdf->Write(0, $Cedula);
 
         //Renglon 2
 
-        $pdf->SetXY(14, 61);
+        $pdf->SetXY(14, 51);
         $pdf->Write(0,  $Programa);
 
-        $pdf->SetXY(89, 61);
+        $pdf->SetXY(99, 51);
         $pdf->Write(0, $Semestre);
 
-        $pdf->SetXY(157, 61);
+        $pdf->SetXY(170, 51);
         $pdf->Write(0, $Jornada);
 
         //Renglon 3
 
-        $pdf->SetXY(14, 70);
+        $pdf->SetXY(29, 56);
         $pdf->Write(0, $Direccion);
 
-        $pdf->SetXY(89, 70);
+        $pdf->SetXY(108, 56);
         $pdf->Write(0, $EMail);
 
-        $pdf->SetXY(157, 70);
+        $pdf->SetXY(183, 56);
         $pdf->Write(0, $Telefono);
 
         //Programa al que aspira
-        $pdf->SetXY(16, 111);
+        $pdf->SetXY(16, 101.5);
         $pdf->Write(0, $Programa2);
 
         //Tipo de Modificacion
 
         if ($Modificacion=='Cancelacion') {
-            $pdf->SetXY(76.5, 84);
+            $pdf->SetXY(76.5, 84.5);
             $pdf->Write(0, 'x');
         }elseif ($Modificacion=='Aplazamiento') {
-            $pdf->SetXY(76.5, 88.4);
+            $pdf->SetXY(76.5, 89.4);
             $pdf->Write(0, 'x');
         }elseif ($Modificacion=='CambioJornada') {
             $pdf->SetXY(76.5, 93.3);
@@ -390,10 +393,10 @@ class SolicitudesController extends Controller{
 
         //Jornada 
 
-        if ($Jornada2=='diurna') {
-            $pdf->SetXY(49, 119);
+        if ($Jornada2=='Diurna') {
+            $pdf->SetXY(45.5, 109.5);
             $pdf->Write(0, 'X');
-        }elseif ($Jornada2=='nocturna') {
+        }elseif ($Jornada2=='Nocturna') {
             $pdf->SetXY(80.5, 119);
             $pdf->Write(0, 'X');
         }else{
@@ -405,13 +408,13 @@ class SolicitudesController extends Controller{
 
         if ($Asignaturas=='Inclusion') {
             //Inclusion Asignatura
-            $pdf->SetXY(162.5, 84.5);
+            $pdf->SetXY(176, 71.5);
             $pdf->Write(0, 'X');
             //Nombre de la asignatura
-            $pdf->SetXY(135, 93);
+            $pdf->SetXY(150, 80.3);
             $pdf->Write(0, $NombreA);
             //Codigo asignatura
-            $pdf->SetXY(135, 98);
+            $pdf->SetXY(150, 85.3);
             $pdf->Write(0, $CodigoA);
         }elseif ($Asignaturas=='Cancelacion'){
             //Inclusion Asignatura
@@ -429,12 +432,12 @@ class SolicitudesController extends Controller{
         }
 
         //Observaciones
-        $pdf->SetXY(14, 138);
+        $pdf->SetXY(14, 122);
         $pdf->Write(0, $Observaciones);
 
         //Motivo de la modificacíón
         if ($Modificacion2=='DificultadAcademica') {
-            $pdf->SetXY(79.5, 152.5);
+            $pdf->SetXY(79.5, 150.2);
             $pdf->Write(0, 'X');
         }elseif ($Modificacion2=='Traslado') {
             $pdf->SetXY(79.5, 157.5);
@@ -471,16 +474,16 @@ class SolicitudesController extends Controller{
             $pdf->Write(0, '');
         }
 
-        $pdf->SetXY(26, 181.5);
+        $pdf->SetXY(26, 163.5);
         $pdf->Write(0, $otroMotivo);
 
         //Fecha de solicitud 
 
-        $pdf->SetXY(50, 191);
+        $pdf->SetXY(50, 176);
         $pdf->Write(0, $Dia);
-        $pdf->SetXY(60, 191);
+        $pdf->SetXY(60, 176);
         $pdf->Write(0, $Mes);
-        $pdf->SetXY(68, 191);
+        $pdf->SetXY(68, 176);
         $pdf->Write(0, $Año);
 
         $pdf->Close();
@@ -500,6 +503,7 @@ class SolicitudesController extends Controller{
         * Tomo la cedula de la sesion iniciada por ser mas confiable 
         * que la ingreasda en formulario
         */
+        
 
         solicitudes::create([
 
@@ -605,7 +609,7 @@ class SolicitudesController extends Controller{
 
         //Renglon 3
 
-        $pdf->SetXY(83, 81);
+        $pdf->SetXY(87, 81);
         $pdf->Write(0, $Consignacion);
 
         $pdf->SetXY(158, 81);
@@ -636,6 +640,8 @@ class SolicitudesController extends Controller{
         }
 
         $pdf->Close();
+        
+        
 
         //Crear nombre del  pdf para guardar localmente en server
         $sol_formato = Session('usu_cedula') . '-R-DC-13' . 'No' . $cuantasVeces . '.pdf';
@@ -655,6 +661,8 @@ class SolicitudesController extends Controller{
 
         //Enviar mensaje de texto
         $this->enviarSms($sol_nombre);
+
+        
 
         $pdf->Output($rutaGuardar, 'F');
         $pdf->Output($sol_formato, 'I'); 
@@ -706,61 +714,76 @@ class SolicitudesController extends Controller{
         $Periodo = $_POST["periodo"];
         $Docente = $_POST["docente"];
         $Motivo = $_POST["motivo"];
-        $Dia = $_POST["dia"];
-        $Mes = $_POST["mes"];
-        $Año = $_POST["año"];
 
+        
+        $resultado1 = substr($Motivo, 0, 62);
+        $resultado2 = substr($Motivo, 62, 108);
+        $resultado3 = substr($Motivo, 170, 118);
+
+        $lala = array($resultado1, $resultado2, $resultado3);
+   
+        $fecha = explode('-', $_POST["fechaSol"]);
+        $Año = $fecha[0];
+        $Mes = $fecha[1];
+        $Dia = $fecha[2];
 
         //Renglon 1
-        $pdf->SetXY(14, 57);
+        $pdf->SetXY(14, 48);
         $pdf->Write(0, $Apellidos);
 
-        $pdf->SetXY(78, 57);
+        $pdf->SetXY(78, 48);
         $pdf->Write(0,  $Nombres);
 
-        $pdf->SetXY(132, 57);
+        $pdf->SetXY(132, 48);
         $pdf->Write(0, $Cedula);
 
         //Renglon 2
-        $pdf->SetXY(14, 69);
+        $pdf->SetXY(14, 61);
         $pdf->Write(0,  $Programa);
 
-        $pdf->SetXY(133, 69);
+        $pdf->SetXY(162, 61);
         $pdf->Write(0, $Jornada);
 
-        $pdf->SetXY(14, 78);
+        $pdf->SetXY(14, 72);
         $pdf->Write(0, $Direccion);
 
-        $pdf->SetXY(133, 78);
+        $pdf->SetXY(133, 72);
         $pdf->Write(0, $Telefono);
 
-        $pdf->SetXY(36, 86);
+        $pdf->SetXY(36, 79);
         $pdf->Write(0, $Asignatura);
 
-        $pdf->SetXY(154, 86);
+        $pdf->SetXY(156.5, 79);
         $pdf->Write(0, $CodigoA);
 
-        $pdf->SetXY(103, 93);
+        $pdf->SetXY(103, 86);
         $pdf->Write(0, $Periodo);
 
-        $pdf->SetXY(136, 93);
+        $pdf->SetXY(136, 86);
         $pdf->Write(0, $Docente);
 
-        $pdf->SetXY(14, 106);
-        $pdf->Write(0, $Motivo);
+        $pdf->SetXY(100, 92.5);
+        $pdf->Write(0, $resultado1);
+
+        $pdf->SetXY(15, 98.5);
+        $pdf->Write(0, $resultado2);
+
+        $pdf->SetXY(15, 104.5);
+        $pdf->Write(0, $resultado3);
 
         //Fecha de solicitud 
-        $pdf->SetXY(58, 129);
+        $pdf->SetXY(58, 122);
         $pdf->Write(0, $Dia);
-        $pdf->SetXY(67, 129);
+        $pdf->SetXY(67, 122);
         $pdf->Write(0, $Mes);
-        $pdf->SetXY(76, 129);
+        $pdf->SetXY(76, 122);
         $pdf->Write(0, $Año);
 
         $pdf->Close();
 
         //Crear nombre del  pdf para guardar localmente en server
         $sol_formato = Session('usu_cedula') . '-R-DC-14' . 'No' . $cuantasVeces . '.pdf';
+    
         $rutaGuardar = '../public/solicitudesPDF/' . $sol_formato;
 
 
@@ -832,77 +855,74 @@ class SolicitudesController extends Controller{
         $Folios = $_POST["folios"];
         $Tematicos = $_POST["tematicos"];
         $Folios2 = $_POST["folios2"];
-        $Dia = $_POST["dia"];
-        $Mes = $_POST["mes"];
-        $Año = $_POST["año"];
+
+        $fecha = explode('-', $_POST["fechaSol"]);
+        $Año = $fecha[0];
+        $Mes = $fecha[1];
+        $Dia = $fecha[2];
+
 
 
         //Renglon 1
 
-        $pdf->SetXY(14, 58);
+        $pdf->SetXY(14, 58-5);
         $pdf->Write(0, $Apellidos);
 
-        $pdf->SetXY(88, 58);
+        $pdf->SetXY(88, 58-5);
         $pdf->Write(0,  $Nombres);
 
-        $pdf->SetXY(149, 58);
+        $pdf->SetXY(149, 58-5);
         $pdf->Write(0, $Cedula);
 
         //Renglon 2
 
-        $pdf->SetXY(14, 69);
+        $pdf->SetXY(14, 69-5);
         $pdf->Write(0,  $Programa);
 
-        $pdf->SetXY(149, 69);
+        $pdf->SetXY(149, 69-5);
         $pdf->Write(0, $Jornada);
 
 
-        $pdf->SetXY(14, 80);
+        $pdf->SetXY(14, 80-5);
         $pdf->Write(0, $Consignacion);
 
-        $pdf->SetXY(82, 80);
+        $pdf->SetXY(82, 80-5);
         $pdf->Write(0, $Entidad);
 
-        $pdf->SetXY(149, 80);
+        $pdf->SetXY(149, 80-5);
         $pdf->Write(0, $Valor);
 
-        $pdf->SetXY(14, 91);
+        $pdf->SetXY(14, 91-5);
         $pdf->Write(0, $Educativa);
 
-        $pdf->SetXY(82, 91);
+        $pdf->SetXY(82, 91-5);
         $pdf->Write(0, $Direccion);
 
-        $pdf->SetXY(149, 91);
+        $pdf->SetXY(149, 91-5);
         $pdf->Write(0, $Telefono);
 
         if ($Estudios== true) {
-            $pdf->SetXY(103.5, 117.5);
+            $pdf->SetXY(103.5, 114);
             $pdf->Write(0, "X");
-        }else{
-            $pdf->SetXY(0, 0);
-            $pdf->Write(0, "");
         }
 
         if ($Tematicos== true) {
-            $pdf->SetXY(103.5, 123.5);
+            $pdf->SetXY(103.5, 120);
             $pdf->Write(0, "X");
-        }else{
-            $pdf->SetXY(0, 0);
-            $pdf->Write(0, "");
         }
 
-        $pdf->SetXY(151, 117);
+        $pdf->SetXY(151, 117-3);
         $pdf->Write(0, $Folios);
 
-        $pdf->SetXY(151, 123);
+        $pdf->SetXY(151, 123-3);
         $pdf->Write(0, $Folios2);
 
         //Fecha de solicitud 
-        $pdf->SetXY(27, 140);
+        $pdf->SetXY(27, 140-3);
         $pdf->Write(0, $Dia);
-        $pdf->SetXY(35, 140);
+        $pdf->SetXY(35, 140-3);
         $pdf->Write(0, $Mes);
-        $pdf->SetXY(42, 140);
+        $pdf->SetXY(42, 140-3);
         $pdf->Write(0, $Año);
 
         
@@ -935,6 +955,8 @@ class SolicitudesController extends Controller{
 
         //Crear nombre del  pdf para guardar localmente en server
         $sol_formato = Session('usu_cedula') . '-R-DC-40' . 'No' . $cuantasVeces . '.pdf';
+
+
         $rutaGuardar = '../public/solicitudesPDF/' . $sol_formato;
 
         //Guardar registro en BD
@@ -1005,9 +1027,13 @@ class SolicitudesController extends Controller{
         $Cuenta = $_POST["cuenta"];
         $Valor = $_POST["valor"];
         $Liquidacion = $_POST["liquidacion"];
-        $Dia = $_POST["dia"];
-        $Mes = $_POST["mes"];
-        $Año = $_POST["año"];
+        
+        $fecha = explode('-', $_POST["fechaSol"]);
+        $Año = $fecha[0];
+        $Mes = $fecha[1];
+        $Dia = $fecha[2];
+
+
 
 
         //Renglon 1
@@ -1026,11 +1052,11 @@ class SolicitudesController extends Controller{
         $pdf->SetXY(14, 72);
         $pdf->Write(0,  $Programa);
 
-        if ($Jornada=='diurna') {
-            $pdf->SetXY(165, 67);
+        if ($Jornada=='Diurna') {
+            $pdf->SetXY(165, 68.4);
             $pdf->Write(0, 'X');
-        }elseif ($Jornada=='nocturna') {
-            $pdf->SetXY(195, 67);
+        }elseif ($Jornada=='Nocturna') {
+            $pdf->SetXY(195, 68.4);
             $pdf->Write(0, 'X');
         }else{
             $pdf->SetXY(76.5, 123.3);
@@ -1045,10 +1071,10 @@ class SolicitudesController extends Controller{
         $pdf->Write(0, $Telefono);
 
         if ($Autoriza=='si') {
-            $pdf->SetXY(165, 84);
+            $pdf->SetXY(165, 86);
             $pdf->Write(0, 'X');
         }elseif ($Autoriza=='no') {
-            $pdf->SetXY(195, 84);
+            $pdf->SetXY(195, 86);
             $pdf->Write(0, 'X');
         }else{
             $pdf->SetXY(76.5, 123.3);
@@ -1073,19 +1099,43 @@ class SolicitudesController extends Controller{
         $pdf->SetXY(88, 110);
         $pdf->Write(0, $Cuenta);
         
-        $pdf->SetXY(132, 110);
+        $pdf->SetXY(132, 112);
         $pdf->Write(0, $Valor);
 
-        $pdf->SetXY(173, 110);
+        $pdf->SetXY(173, 112);
         $pdf->Write(0, $Liquidacion);
         //Fecha de solicitud 
 
-        $pdf->SetXY(160, 138);
+        $pdf->SetXY(160, 140);
         $pdf->Write(0, $Dia);
-        $pdf->SetXY(174, 138);
+        $pdf->SetXY(174, 140);
         $pdf->Write(0, $Mes);
-        $pdf->SetXY(188, 138);
+        $pdf->SetXY(188, 140);
         $pdf->Write(0, $Año);
+
+        //si el usuario decide añadir recibo
+        if(isset($request['imgRecibo'])){
+
+            //Agregar imagen recibo de pago a solicitud
+            $nombreImg =  Session('usu_cedula') . 'Recibo' . '.' .$request->file('imgRecibo')->getClientOriginalExtension();
+
+            $request->file('imgRecibo')->move(
+                base_path() . '/public/recibosPago/', $nombreImg
+            );
+
+            //Añadir imagen recibo de pago
+
+            $pdf->AddPage();
+            $pdf->SetFont('Arial','B',10);
+            $pdf->SetXY(78, 20);
+            $pdf->Write(0, 'RECIBO DE PAGO PARA LA SOLICITUD');
+            $pdf->SetXY(78, 20);
+            $pdf->Write(0, '');
+            $pdf->Image('../public/recibosPago/' . $nombreImg, 10, 30, 170);
+
+            //Eliminar la imagen subida al servidor
+            unlink('../public/recibosPago/' . $nombreImg);
+        }
 
         $pdf->Close();
 

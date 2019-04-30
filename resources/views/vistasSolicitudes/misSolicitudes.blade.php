@@ -23,6 +23,8 @@
         	</div>
         </div>	
 	</div>
+	<br>
+	<br>
 
 	<div class="container-fluid">
 		<table id="example" class="responstable">
@@ -50,7 +52,7 @@
 
 					<!--En parameters se escribe las variables que llevará el metodo GET. En atributes cosas como la clase css, id, etc. Entre corchetes por que es un array-->
 					<td>
-						{!! link_to('solicitudesPDF/' . $solicitud->sol_formato, $title = " Ver solicitud PDF", $attributes = ['class'=>'fa fa-file-pdf-o btn btn-outline-danger', 'target'=>'_blank'], $secure = null); !!}
+						<a href="{{'/solicitudesPDF/' . $solicitud->sol_formato}}" class="btn btn-outline-danger" target="_blank"><i class="far fa-file-pdf"></i> &nbsp; Ver</a>
 					</td>
 				</tr>
 				@endforeach
@@ -58,6 +60,9 @@
 			</tbody>
 		</table>
 	</div>
+
+	<br>
+	<br>
 
 @stop
 

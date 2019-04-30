@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Mail;
+use telesign\sdk\messaging\MessagingClient;
 use Gesol\Http\Requests\ValidaFormsSolicitudes;
 use Gesol\solicitudes;
 use Gesol\respuestas;
@@ -214,23 +215,25 @@ class RespuestasController extends Controller
             
             $Docente1 = $_POST["Docente1"];
             $Docente2 = $_POST["Docente2"];
-            $Dia = $_POST["dia"];
-            $Mes = $_POST["mes"];
-            $Año = $_POST["año"];
 
-            $pdf->SetXY(19, 123);
+            $fecha = explode('-', $_POST["fechaSol"]);
+            $Año = $fecha[0];
+            $Mes = $fecha[1];
+            $Dia = $fecha[2];
+
+            $pdf->SetXY(22, 126);
             $pdf->Write(0, $Docente1);
 
-            $pdf->SetXY(111, 123);
+            $pdf->SetXY(115, 126);
             $pdf->Write(0, $Docente2);
 
-            $pdf->SetXY(27, 136);
+            $pdf->SetXY(30, 143);
             $pdf->Write(0, $Dia);
 
-            $pdf->SetXY(36, 136);
+            $pdf->SetXY(39, 143);
             $pdf->Write(0, $Mes);
 
-            $pdf->SetXY(46, 136);
+            $pdf->SetXY(49, 143);
             $pdf->Write(0, $Año);
         }
         
@@ -243,28 +246,30 @@ class RespuestasController extends Controller
             $resultado2 = substr($Concepto, 80, 174);
             $Numero = $_POST["Numero"];
             $Letras = $_POST["Letras"];
-            $Dias = $_POST["dia1"];
-            $Meses = $_POST["mes1"];
-            $Años = $_POST["año1"];
 
-            $pdf->SetXY(43, 158);
+            $fecha = explode('-', $_POST["fechaSol"]);
+            $Años = $fecha[0];
+            $Meses = $fecha[1];
+            $Dias = $fecha[2];
+
+            $pdf->SetXY(47, 162.5);
             $pdf->Write(0, $resultado);
-            $pdf->SetXY(14, 163.5);
+            $pdf->SetXY(19, 167.5);
             $pdf->Write(0, $resultado2);
 
-            $pdf->SetXY(32, 172.5);
+            $pdf->SetXY(32, 175.5);
             $pdf->Write(0, $Numero);
 
-            $pdf->SetXY(57, 172.5);
+            $pdf->SetXY(61, 175.5);
             $pdf->Write(0, $Letras);
 
-            $pdf->SetXY(150, 172.5);
+            $pdf->SetXY(153, 177.5);
             $pdf->Write(0, $Dias);
 
-            $pdf->SetXY(156, 172.5);
+            $pdf->SetXY(162, 177.5);
             $pdf->Write(0, $Meses);
 
-            $pdf->SetXY(165, 172.5);
+            $pdf->SetXY(170, 177.5);
             $pdf->Write(0, $Años);
 
         }
@@ -275,22 +280,24 @@ class RespuestasController extends Controller
             $Concepto2 = $_POST["Concepto2"];
             $resultado3 = substr($Concepto2, 0, 79);
             $resultado4 = substr($Concepto2, 80, 174);
-            $Diasas = $_POST["dia2"];
-            $Mesese = $_POST["mes2"];
-            $Añosa = $_POST["año2"];
 
-            $pdf->SetXY(43, 216);
+            $fecha = explode('-', $_POST["fechaSol"]);
+            $Añosa = $fecha[0];
+            $Mesese = $fecha[1];
+            $Diasas = $fecha[2];
+
+            $pdf->SetXY(46, 219.3);
             $pdf->Write(0, $resultado3);
-            $pdf->SetXY(14, 221.5);
+            $pdf->SetXY(16, 224.5);
             $pdf->Write(0, $resultado4);
 
-            $pdf->SetXY(26, 237);
+            $pdf->SetXY(25.5, 241);
             $pdf->Write(0, $Diasas);
 
-            $pdf->SetXY(32, 237);
+            $pdf->SetXY(31, 241);
             $pdf->Write(0, $Mesese);
 
-            $pdf->SetXY(40, 237);
+            $pdf->SetXY(43, 241);
             $pdf->Write(0, $Añosa);
         }
         
@@ -350,31 +357,33 @@ class RespuestasController extends Controller
         $Concepto2 = $_POST["Concepto"];
         $resultado = substr($Concepto, 0, 95);
         $resultado2 = substr($Concepto2, 95, 190);
-        $Dia = $_POST["dia"];
-        $Mes = $_POST["mes"];
-        $Año = $_POST["año"];
+
+        $fecha = explode('-', $_POST["fechaSol"]);
+        $Año = $fecha[0];
+        $Mes = $fecha[1];
+        $Dia = $fecha[2];
 
         //Renglon 1
 
-        $pdf->SetXY(80, 234);
+        $pdf->SetXY(80, 222);
         $pdf->Write(0, $Numero);
 
-        $pdf->SetXY(116, 234);
+        $pdf->SetXY(116, 222);
         $pdf->Write(0,  $Letras);
 
         //Observaciones
-        $pdf->SetXY(14, 218);
+        $pdf->SetXY(37, 200.7);
         $pdf->Write(0, $resultado);
-        $pdf->SetXY(14, 223);
+        $pdf->SetXY(16, 205.8);
         $pdf->Write(0, $resultado2);
 
         //Fecha de solicitud 
 
-        $pdf->SetXY(33, 251);
+        $pdf->SetXY(31, 246);
         $pdf->Write(0, $Dia);
-        $pdf->SetXY(45, 251);
+        $pdf->SetXY(40, 246);
         $pdf->Write(0, $Mes);
-        $pdf->SetXY(55, 251);
+        $pdf->SetXY(53, 246);
         $pdf->Write(0, $Año);
 
         $pdf->Close();
@@ -438,49 +447,50 @@ class RespuestasController extends Controller
             $Numero = $_POST["Numero"];
             $Letras = $_POST["Letras"];
 
-            $Dia = $_POST["dia"];
-            $Mes = $_POST["mes"];
-            $Año = $_POST["año"];
+            $fecha = explode('-', $_POST["fechaSol"]);
+            $Año = $fecha[0];
+            $Mes = $fecha[1];
+            $Dia = $fecha[2];
 
-            $pdf->SetXY(14, 154.5);
+            $pdf->SetXY(19, 142.5);
             $pdf->Write(0, $Apellidos);
 
-            $pdf->SetXY(79, 154.5);
+            $pdf->SetXY(84, 142.5);
             $pdf->Write(0,  $Nombres);
 
-            $pdf->SetXY(134, 154.5);
+            $pdf->SetXY(139, 142.5);
             $pdf->Write(0, $Codigo);
 
-            $pdf->SetXY(34, 163);
+            $pdf->SetXY(41, 157);
             $pdf->Write(0,  $resultado);
-            $pdf->SetXY(14, 171);
+            $pdf->SetXY(19, 165);
             $pdf->Write(0,  $resultado2);
-            $pdf->SetXY(14, 179);
+            $pdf->SetXY(19, 173);
             $pdf->Write(0,  $resultado3);
 
-            $pdf->SetXY(58, 190.5);
+            $pdf->SetXY(58, 184.5);
             $pdf->Write(0, $Corte1);
 
-            $pdf->SetXY(97, 190.5);
+            $pdf->SetXY(97, 184.5);
             $pdf->Write(0, $Corte2);
 
-            $pdf->SetXY(136, 190.5);
+            $pdf->SetXY(136, 184.5);
             $pdf->Write(0, $Corte3);
 
-            $pdf->SetXY(178, 190.5);
+            $pdf->SetXY(178, 184.5);
             $pdf->Write(0, $Habilitacion);
 
-            $pdf->SetXY(55, 198);
+            $pdf->SetXY(55, 192);
             $pdf->Write(0, $Numero);
 
-            $pdf->SetXY(73, 198);
+            $pdf->SetXY(73, 192);
             $pdf->Write(0, $Letras);
 
-            $pdf->SetXY(152, 198);
+            $pdf->SetXY(156, 193);
             $pdf->Write(0, $Dia);
-            $pdf->SetXY(161, 198);
+            $pdf->SetXY(165, 193);
             $pdf->Write(0, $Mes);
-            $pdf->SetXY(169, 198);
+            $pdf->SetXY(173, 193);
             $pdf->Write(0, $Año);
 
         }
@@ -493,9 +503,9 @@ class RespuestasController extends Controller
             $resultado4 = substr($Observaciones, 0, 94);
             $resultado5 = substr($Observaciones2, 95, 190);
 
-            $pdf->SetXY(14, 242);
+            $pdf->SetXY(14, 237);
             $pdf->Write(0, $resultado4);
-            $pdf->SetXY(14, 248);
+            $pdf->SetXY(14, 243);
             $pdf->Write(0, $resultado5);
         }
 
@@ -553,27 +563,29 @@ class RespuestasController extends Controller
             $resultado2 = substr($Concepto, 85, 180);
             $Numero = $_POST["Numero"];
             $Letras = $_POST["Letras"];
-            $Dia = $_POST["dia"];
-            $Mes = $_POST["mes"];
-            $Año = $_POST["año"];
 
-            $pdf->SetXY(35, 168);
+            $fecha = explode('-', $_POST["fechaSol"]);
+            $Año = $fecha[0];
+            $Mes = $fecha[1];
+            $Dia = $fecha[2];
+
+            $pdf->SetXY(35, 165);
             $pdf->Write(0, $resultado);
 
-            $pdf->SetXY(14, 174);
+            $pdf->SetXY(14, 171);
             $pdf->Write(0, $resultado2);
 
-            $pdf->SetXY(88, 185);
+            $pdf->SetXY(88, 182);
             $pdf->Write(0,  $Numero);
 
-            $pdf->SetXY(144, 185);
+            $pdf->SetXY(144, 182);
             $pdf->Write(0, $Letras);
 
-            $pdf->SetXY(27, 202.5);
+            $pdf->SetXY(27, 200.5);
             $pdf->Write(0, $Dia);
-            $pdf->SetXY(35, 202.5);
+            $pdf->SetXY(35, 200.5);
             $pdf->Write(0, $Mes);
-            $pdf->SetXY(42, 202.5);
+            $pdf->SetXY(42, 200.5);
             $pdf->Write(0, $Año);
 
         }
@@ -584,20 +596,22 @@ class RespuestasController extends Controller
             $Concepto2 = $_POST["Concepto2"];
             $resultado3 = substr($Concepto2, 0, 85);
             $resultado4= substr($Concepto2, 85, 180);
-            $Dia2 = $_POST["dia2"];
-            $Mes2 = $_POST["mes2"];
-            $Año2 = $_POST["año2"];
+            
+            $fecha = explode('-', $_POST["fechaSol"]);
+            $Año2 = $fecha[0];
+            $Mes2 = $fecha[1];
+            $Dia2 = $fecha[2];
 
-            $pdf->SetXY(35, 233);
+            $pdf->SetXY(36.5, 233-1);
             $pdf->Write(0,  $resultado3);
-            $pdf->SetXY(14, 239.5);
+            $pdf->SetXY(15.5, 239.5-1);
             $pdf->Write(0,  $resultado4);
 
-            $pdf->SetXY(27, 253);
+            $pdf->SetXY(27, 253-3);
             $pdf->Write(0, $Dia2);
-            $pdf->SetXY(38, 253);
+            $pdf->SetXY(38, 253-3);
             $pdf->Write(0, $Mes2);
-            $pdf->SetXY(45, 253);
+            $pdf->SetXY(45, 253-3);
             $pdf->Write(0, $Año2);
 
         }
@@ -627,6 +641,7 @@ class RespuestasController extends Controller
 
         $pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($request['sol_formato'], 'I');
+
         Session::flash('mensaje-exito', 'Se ha guardado la respuesta correctamente <br> Se ha notificado al correo del estudiante. Revise el formato de esta solicitud para corroborar cambios');
 
 

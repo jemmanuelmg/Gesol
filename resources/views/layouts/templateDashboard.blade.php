@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>@section('titulo') SB Admin 2 - Dashboard @show </title>
+  <title>@section('titulo') Dashboard Administrador @show </title>
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset('fonts/fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css">

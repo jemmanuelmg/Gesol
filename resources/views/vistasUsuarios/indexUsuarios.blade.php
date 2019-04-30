@@ -42,7 +42,6 @@
 					<th>Nombre</th>
 					<th>Apellidos</th>
 					<th>Genero</th>
-					<th>Fecha de nacimiento</th>
 					<th>Telefono</th>
 					<th>Correo Electronico</th>
 					<th>Rol Usuario</th>
@@ -58,7 +57,6 @@
 					<td>{{$usuario->usu_nombres}}</td>
 					<td>{{$usuario->usu_apellidos}}</td>
 					<td>{{$usuario->usu_genero}}</td>
-					<td>{{$usuario->usu_fechaNac}}</td>
 					<td>{{$usuario->usu_telefono}}</td>
 					<td style="text-align: left;">{{$usuario->email}}</td>
 					<td>{{$usuario->rol_nombre}}</td>

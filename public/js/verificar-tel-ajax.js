@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-
+	//los del primer div visible para escoger metodo de verificación	
 	var contenedorTel = $("#contenedor-tel");
 	var labelTelefono = $("#label-telefono");
 	var spanTel = $("#span-tel");
@@ -9,14 +9,18 @@ $(document).ready(function() {
 	var email = $("#input-email");
 	var botonTelefono = $("#btn-telefono");
 
+	//los del segundo div invisible, para ingresar el token enviado
 	var divIngresarToken = $('#div-ingresar-token');
 	var inputToken = $("#input-token");
 	var inputTokenRes = $("#input-token-res");
 	var lblToken = $("#lbl-token");
 	var divSpin = $("#div-spin");
 
+	//laos radio buttons de telefono o email, en el primer div visible
 	var opcTel = $("#opc-tel");
 	var opcEmail = $("#opc-email");
+	var iconoTel = $("#icono-tel");
+	var iconoEmail = $("#icono-email");
 	var opcVerif;
 
 	
@@ -190,10 +194,15 @@ $(document).ready(function() {
 
 	opcTel.on('click', function(){
 		opcVerif = 'tel';
+		iconoEmail.fadeOut("slow");
+		iconoTel.fadeIn("slow");
 	});
 
 	opcEmail.on('click', function(){
 		opcVerif = 'email';
+		iconoTel.fadeOut("slow");
+		iconoEmail.fadeIn("slow");
+		
 	});
 
 

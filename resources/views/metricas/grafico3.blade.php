@@ -99,7 +99,7 @@
 				        type: 'column',
 				    },
 				    title: {
-				        text: 'Cantidad solicitudes atentidas Vs pendientes'
+				        text: 'Cantidad solicitudes por tipo'
 				    },
 
 				    

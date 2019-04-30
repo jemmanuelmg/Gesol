@@ -56,13 +56,7 @@
 
                     <div class="form-group">
                       <label class="control-label" for="programa">Programa Academico *</label>
-                        <div class="input-group">
-                            <select name="programa" class="custom-select mb-2 mr-sm-2 mb-sm-0">
-                                <option value="Seleccione">Seleccione</option>
-                                <option value="Desarrollo de sistemas informaticos">Desarrollo de sistemas informaticos</option>
-                                <option value="Deportiva">Tecnologia en Deportes</option>
-                            </select>
-                        </div>              
+                        <input type="text" name="programa" size="30" class="form-control" placeholder="Introduzca su programa académico" required>            
                     </div>
 
                     <div class="form-group">
@@ -100,7 +94,7 @@
                     <div class="form-group">
                         <label class="control-label" for="telefono">Telefono *</label>
                         <div class="input-group">
-                            <input type="number" name="telefono" value="{{session('usu_cedula')}}" size="30" class="form-control" readonly >
+                            <input type="number" name="telefono" value="{{session('usu_telefono')}}" size="30" class="form-control" readonly >
                         </div>              
                     </div>
 
