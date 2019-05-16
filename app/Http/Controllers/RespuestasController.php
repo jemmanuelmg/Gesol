@@ -410,6 +410,12 @@ class RespuestasController extends Controller
         $pdf->SetXY(53, 246);
         $pdf->Write(0, $Año);
 
+        //Escribir la firma del usuario
+        if (!empty(session('usu_firma')) ) {
+
+            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 130, 233, 30, 13.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+        }
+
         $pdf->Close();
 
         $rutaGuardar = '../public/solicitudesPDF/' . $request['sol_formato'];
@@ -430,7 +436,7 @@ class RespuestasController extends Controller
         //Enviar correo informativo a estudiante que solicita
         $this->enviarCorreo($request);
 
-        $pdf->Output($rutaGuardar, 'F'); 
+        //$pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($request['sol_formato'], 'I');
 
         Session::flash('mensaje-exito', 'Se ha guardado la respuesta correctamente <br> Se ha notificado al correo del estudiante. Revise el formato de esta solicitud para corroborar cambios');
@@ -549,12 +555,12 @@ class RespuestasController extends Controller
 
         //Crear registro en bd con cedula de secreatario(a) o persona
         //que responde
-        /*Respuestas::create([
+        Respuestas::create([
             'usu_cedula' => Session('usu_cedula'),
             'sol_nombre' => $request['sol_nombre'],
             'res_formato' => $request['sol_formato']
         ]);
-*/
+
         //Editar solicitud para cambiar estado a 'Atendida'
         //solo si así se especifica
         if ($request['atendida'] == "si") {
@@ -622,6 +628,12 @@ class RespuestasController extends Controller
             $pdf->SetXY(42, 200.5);
             $pdf->Write(0, $Año);
 
+            //Escribir la firma del usuario
+            if (!empty(session('usu_firma')) ) {
+
+                $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 100, 190-2, 28.5, 13.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+            }
+
         }
 
         //Decano
@@ -648,6 +660,11 @@ class RespuestasController extends Controller
             $pdf->SetXY(45, 253-3);
             $pdf->Write(0, $Año2);
 
+            //Escribir la firma del usuario
+            if (!empty(session('usu_firma')) ) {
+
+                $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 100, 240, 28, 12.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+            }
         }
 
         $pdf->Close();  

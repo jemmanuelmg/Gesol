@@ -486,6 +486,12 @@ class SolicitudesController extends Controller{
         $pdf->SetXY(68, 176);
         $pdf->Write(0, $Año);
 
+        //Escribir la firma del usuario
+        if (!empty(session('usu_firma')) ) {
+
+            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 124, 162.5, 29, 13.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+        }
+
         $pdf->Close();
 
         /**
@@ -513,6 +519,7 @@ class SolicitudesController extends Controller{
             'usu_cedula' => Session('usu_cedula')
 
             ]);
+        
 
         //Enviar correo para informar que la solicitud se ha creado
         //se envia como parametro el correo de destino y el nombre de archivo
@@ -966,6 +973,12 @@ class SolicitudesController extends Controller{
             unlink('../public/recibosPago/' . $nombreImg);
         }
 
+        //Escribir la firma del usuario
+        if (!empty(session('usu_firma')) ) {
+
+            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 93, 125, 28, 12.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+        }
+
         $pdf->Close();
 
         //Crear nombre del  pdf para guardar localmente en server
@@ -1152,6 +1165,12 @@ class SolicitudesController extends Controller{
             unlink('../public/recibosPago/' . $nombreImg);
         }
 
+        //Escribir la firma del usuario
+        if (!empty(session('usu_firma')) ) {
+
+            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 145, 116, 34, 16.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+        }
+
         $pdf->Close();
 
 
@@ -1160,19 +1179,19 @@ class SolicitudesController extends Controller{
         $rutaGuardar = '../public/solicitudesPDF/' . $sol_formato;
 
         //Guardar registro en BD
-        solicitudes::create([
-            'sol_nombre'=>'R-DC-52',
-            'sol_formato'=>$sol_formato,
-            'sol_estado' => 'Pendiente',
-            'usu_cedula' => Session('usu_cedula')
-            ]);
+        // solicitudes::create([
+        //     'sol_nombre'=>'R-DC-52',
+        //     'sol_formato'=>$sol_formato,
+        //     'sol_estado' => 'Pendiente',
+        //     'usu_cedula' => Session('usu_cedula')
+        //     ]);
 
         //Enviar correo al usuario con solicitud creada
         $this->enviarCorreo($sol_formato, Session('email'));
 
         $this->enviarSms($sol_nombre);
 
-        $pdf->Output($rutaGuardar, 'F'); 
+        //$pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($sol_formato, 'I'); 
 
     }
