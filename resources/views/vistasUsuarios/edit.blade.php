@@ -30,7 +30,7 @@
 						</label>
 
 						<label class="btn btn-secondary">
-							<input type="radio" name="opcion_foto" value="no" data-toggle="popover" data-trigger="focus" data-placement="right" data-content="Si no funciona la camara, da clic en (&#8520), al lado del botón recargar, y concede permiso para la camara"> Con foto
+							<input type="radio" name="opcion_foto" value="no" data-toggle="popover" data-trigger="focus" data-placement="right" > Con foto
 						</label>
 					</div>
 				</div>
@@ -174,7 +174,7 @@
 			        	</div>
 			        </div>
 
-			        @if($usuario->rol_id != 1)
+			        
 			        <br>
 			        <center>
 			        <div class="alert alert-primary" id="div-firma" role="alert">
@@ -186,7 +186,7 @@
 			        		</div>
 
 			        		<div class="col-sm-11">
-			        			<p>Al ser usuario administrativo, ingrese una imagen que contenga su firma:</p>	
+			        			<p>Porfavor, ingrese una imagen con su firma para agregarla a los documentos que diligencie:</p>	
 					  			<input type="file" name="firma" class="form-control-file" accept=".jpg, .jpeg, .png, .gif">			
 					  			<input type="hidden" name="MAX_FILE_SIZE" value="1228800" />
 			        		</div>
@@ -196,7 +196,6 @@
 					</div>
 					</center>
 					<br>
-					@endif
 
 			        
 					<!--Solo usuario con rol 3 (admin) puede editar roles, y no puede editar

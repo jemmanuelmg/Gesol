@@ -621,8 +621,10 @@ class SolicitudesController extends Controller{
             //Agregar imagen recibo de pago a solicitud
             $nombreImg =  Session('usu_cedula') . 'Recibo' . '.' .$request->file('imgRecibo')->getClientOriginalExtension();
 
+            //Esta es la forma que tiene laravel de mover archivos subidos a traves de POST
+            //para ver la forma general que tiene php, ir a usuario controller edit, en foto de usuario
             $request->file('imgRecibo')->move(
-                base_path() . '/public/recibosPago/', $nombreImg
+                base_path() . '/public/images/recibosPago/', $nombreImg
             );
 
             //Añadir imagen recibo de pago
@@ -633,10 +635,15 @@ class SolicitudesController extends Controller{
             $pdf->Write(0, 'RECIBO DE PAGO PARA LA SOLICITUD');
             $pdf->SetXY(78, 20);
             $pdf->Write(0, '');
-            $pdf->Image('../public/recibosPago/' . $nombreImg, 10, 30, 170);
+            $pdf->Image('../public/images/recibosPago/' . $nombreImg, 10, 30, 170); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
 
             //Eliminar la imagen subida al servidor
-            unlink('../public/recibosPago/' . $nombreImg);
+            unlink('../public/images/recibosPago/' . $nombreImg);
+        }
+
+        //Escribir la firma del usuario
+        if (!empty(session('usu_firma')) ) {
+            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 94, 87  , 30, 15); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
         }
 
         $pdf->Close();
@@ -779,7 +786,15 @@ class SolicitudesController extends Controller{
         $pdf->SetXY(76, 122);
         $pdf->Write(0, $Año);
 
+        //Escribir la firma del usuario
+        if (!empty(session('usu_firma')) ) {
+            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 140, 109.5, 30, 15); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+        }
+
+
+
         $pdf->Close();
+
 
         //Crear nombre del  pdf para guardar localmente en server
         $sol_formato = Session('usu_cedula') . '-R-DC-14' . 'No' . $cuantasVeces . '.pdf';
@@ -1174,7 +1189,7 @@ class SolicitudesController extends Controller{
 
         //Arreglo de datos para funcion enviar
 
-        $datosMensaje = [
+        /*$datosMensaje = [
         'sol_formato' => $sol_formato
         ];
 
@@ -1184,7 +1199,7 @@ class SolicitudesController extends Controller{
             ->from('gesol.uts@gmail.com',  'Gesol')
             ->subject('Confirmacion Gesol: solicitud guardada');
             
-        });
+        });*/
     }
 
     /**
@@ -1192,7 +1207,7 @@ class SolicitudesController extends Controller{
     */
     public function enviarSms($sol_nombre){
 
-        if(Session('usu_telefono') != null || !empty(Session('usu_telefono'))){
+        /*if(Session('usu_telefono') != null || !empty(Session('usu_telefono'))){
 
             //Iniciar config de idioma y zona horaria
             setlocale(LC_ALL,"es_ES");
@@ -1209,7 +1224,7 @@ class SolicitudesController extends Controller{
             $messaging = new MessagingClient($customer_id, $api_key);
             $response = $messaging->message($phone_number, $message, $message_type);
 
-        }
+        }*/
 
     }
 }

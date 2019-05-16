@@ -220,9 +220,9 @@ class UsuarioController extends Controller
         if (isset($request['firma'])){
 
             $conFirma = true;
-            $ext = explode( '/',$_FILES['firma']['type'])[1];
-            $targetfile = base_path() . '/public/images/firmas_usuarios/firma_usuario'. Session('usu_cedula') . '.' . $ext;
-            move_uploaded_file($_FILES['firma']['tmp_name'], $targetfile);
+            $ext = explode( '/',$_FILES['firma']['type'])[1]; //obtener la eztensión de imagen con explode posición 1
+            $targetfile = base_path() . '/public/images/firmas_usuarios/firma_usuario'. Session('usu_cedula') . '.' . $ext; //definir el nombre final del archivo en servidor (firma_usuario1046669400.jpeg)
+            move_uploaded_file($_FILES['firma']['tmp_name'], $targetfile); //mover el archivo subido a la ubicación deseada dentro del servidor. El nombre se cambia aquí con el nombre que le de $targetfile
 
         }
 

@@ -206,6 +206,7 @@ class RespuestasController extends Controller
 
         $pdf->useTemplate($tplIdx, 1, 1, 217, 279);
 
+
         $pdf->SetTitle('R-DC-13');
         $pdf->SetFont('Arial','',10);
         $pdf->SetTextColor(0, 0, 0);
@@ -235,6 +236,14 @@ class RespuestasController extends Controller
 
             $pdf->SetXY(49, 143);
             $pdf->Write(0, $Año);
+
+            //Escribir la firma del usuario
+            if (!empty(session('usu_firma')) ) {
+                $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 140, 130.5, 26,10); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+
+                $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 145, 242, 28, 12.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+            }
+
         }
         
 
@@ -263,14 +272,19 @@ class RespuestasController extends Controller
             $pdf->SetXY(61, 175.5);
             $pdf->Write(0, $Letras);
 
-            $pdf->SetXY(153, 177.5);
+            $pdf->SetXY(151, 176.5);
             $pdf->Write(0, $Dias);
 
-            $pdf->SetXY(162, 177.5);
+            $pdf->SetXY(160, 176.5);
             $pdf->Write(0, $Meses);
 
-            $pdf->SetXY(170, 177.5);
+            $pdf->SetXY(168, 176.5);
             $pdf->Write(0, $Años);
+
+            //Escribir la firma del usuario
+            if (!empty(session('usu_firma')) ) {
+                $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 30, 185, 33.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+            }
 
         }
 
@@ -299,7 +313,15 @@ class RespuestasController extends Controller
 
             $pdf->SetXY(43, 241);
             $pdf->Write(0, $Añosa);
+
+            //Escribir la firma del usuario
+            if (!empty(session('usu_firma')) ) {
+
+                $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 33, 249, 28, 12.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+            }
         }
+
+        
         
 
         $pdf->Close();
@@ -326,8 +348,10 @@ class RespuestasController extends Controller
         //Enviar correo informativo a estudiante que solicita
         $this->enviarCorreo($request);
 
-        $pdf->Output($request['sol_formato'], 'I');
+
         $pdf->Output($rutaGuardar, 'F'); 
+        
+        $pdf->Output($request['sol_formato'], 'I');
 
         Session::flash('mensaje-exito', 'Se ha guardado la respuesta correctamente <br> Se ha notificado al correo del estudiante. Revise el formato de esta solicitud para corroborar cambios');
 
@@ -452,13 +476,13 @@ class RespuestasController extends Controller
             $Mes = $fecha[1];
             $Dia = $fecha[2];
 
-            $pdf->SetXY(19, 142.5);
+            $pdf->SetXY(19, 144.5);
             $pdf->Write(0, $Apellidos);
 
-            $pdf->SetXY(84, 142.5);
+            $pdf->SetXY(84, 144.5);
             $pdf->Write(0,  $Nombres);
 
-            $pdf->SetXY(139, 142.5);
+            $pdf->SetXY(139, 144.5);
             $pdf->Write(0, $Codigo);
 
             $pdf->SetXY(41, 157);
@@ -493,6 +517,10 @@ class RespuestasController extends Controller
             $pdf->SetXY(173, 193);
             $pdf->Write(0, $Año);
 
+            if (!empty(session('usu_firma')) ) {
+                $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 97, 199, 28,11); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+            }
+
         }
 
         //Coordinador
@@ -503,10 +531,16 @@ class RespuestasController extends Controller
             $resultado4 = substr($Observaciones, 0, 94);
             $resultado5 = substr($Observaciones2, 95, 190);
 
-            $pdf->SetXY(14, 237);
+            $pdf->SetXY(20, 237);
             $pdf->Write(0, $resultado4);
-            $pdf->SetXY(14, 243);
+            $pdf->SetXY(20, 243);
             $pdf->Write(0, $resultado5);
+
+            //Poner firma
+            if (!empty(session('usu_firma')) ) {
+                $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 30, 245, 28,9); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+            }
+
         }
 
         $pdf->Close();
@@ -515,12 +549,12 @@ class RespuestasController extends Controller
 
         //Crear registro en bd con cedula de secreatario(a) o persona
         //que responde
-        Respuestas::create([
+        /*Respuestas::create([
             'usu_cedula' => Session('usu_cedula'),
             'sol_nombre' => $request['sol_nombre'],
             'res_formato' => $request['sol_formato']
         ]);
-
+*/
         //Editar solicitud para cambiar estado a 'Atendida'
         //solo si así se especifica
         if ($request['atendida'] == "si") {
@@ -532,7 +566,7 @@ class RespuestasController extends Controller
         //Enviar correo informativo a estudiante que solicita
         $this->enviarCorreo($request);
 
-        $pdf->Output($rutaGuardar, 'F'); 
+        //$pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($request['sol_formato'], 'I');
 
         Session::flash('mensaje-exito', 'Se ha guardado la respuesta correctamente <br> Se ha notificado al correo del estudiante. Revise el formato de esta solicitud para corroborar cambios');
@@ -650,7 +684,7 @@ class RespuestasController extends Controller
 
     public function enviarCorreo(Request $request){
 
-        $infoAdicional = DB::table('solicitudes')
+        /*$infoAdicional = DB::table('solicitudes')
         ->join('usuarios', 'usuarios.usu_cedula', '=', 'solicitudes.usu_cedula')
         ->select('sol_fechaCreacion', 'email', 'usu_telefono')
         ->where('sol_id', '=', $request['sol_id'])
@@ -665,6 +699,8 @@ class RespuestasController extends Controller
         *algunos proienen del formulario enviado, otros de la sesion de usuario activa
         *usada para respodner y otros se recuperan desde la consulta
         */
+
+        /*
         $datosMensaje = array(
             'sol_nombre' => $request['sol_nombre'], //datos traidos del formulario del que procede la respuesta
             'sol_fechaCreacion' => $infoAdicional->sol_fechaCreacion, //fecha de creacion recuperada en consulta usando el id de la solicitud que viene del formulario
@@ -692,7 +728,7 @@ class RespuestasController extends Controller
         $message_type = "ARN";
 
         $messaging = new MessagingClient($customer_id, $api_key);
-        $response = $messaging->message($phone_number, $message, $message_type);
+        $response = $messaging->message($phone_number, $message, $message_type);*/
 
     }
 

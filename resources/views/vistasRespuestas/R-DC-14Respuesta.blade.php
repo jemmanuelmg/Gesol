@@ -33,14 +33,14 @@
                     <div class="form-group">
                       <label class="control-label" for="apellidos">Apellidos *</label>
                         <div class="input-group">
-                            <input type="text" name="apellidos" size="30" class="form-control" placeholder="Introduzca sus apellidos">
+                            <input type="text" name="apellidos" value="{{session('usu_apellidos')}}" size="30" class="form-control" readonly>
                         </div>              
                     </div>
 
                     <div class="form-group">
                       <label class="control-label" for="nombres">Nombres *</label>
                         <div class="input-group">
-                            <input type="text" name="nombres" size="30" class="form-control" placeholder="Introduzca su nombre">
+                            <input type="text" name="nombres" value="{{session('usu_nombres')}}" size="30" class="form-control" readonly>
                         </div>              
                     </div>
 

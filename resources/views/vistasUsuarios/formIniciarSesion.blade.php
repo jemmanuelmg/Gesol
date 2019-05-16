@@ -21,6 +21,9 @@
 
       <!--<form class="form-horizontal" role="form" method="POST" action="/login"> -->
       {!!Form::open(['route' => 'login.store', 'method'=>'POST'])!!}
+
+      {!! csrf_field() !!}
+      
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
