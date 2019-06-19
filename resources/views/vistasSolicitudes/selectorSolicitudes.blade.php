@@ -62,6 +62,8 @@
 		<br>
 
 	</div>
+
+	
 	<!-- FIN DEL CONTENEDOR PARA SELECCIONAR SOLICITUDES -->
 
 @stop

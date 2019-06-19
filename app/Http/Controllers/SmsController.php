@@ -44,6 +44,9 @@ class SmsController extends Controller
 		$usuario = new Usuarios();
 		$usuario = usuarios::where('usu_telefono', '=', $telefono)->first();
 
+		//pruebas con usuario predefinido
+		//$usuario = usuarios::where('usu_cedula', '=', '199988833')->first();
+
 		if ($usuario === null) {
 
 		   Session::flash('mensaje-error', 'No se ha encontrado ningún usuario con número de teléfono ' . $telefono . '. Vuelva a intentarlo');
@@ -69,7 +72,7 @@ class SmsController extends Controller
 
 
 			Session::flash('mensaje-exito', 'Se ha enviado un SMS con tu contraseña provisional. Revisala');
-            return Redirect::to('/login');
+            return Redirect::to('/');
 
 		}
 

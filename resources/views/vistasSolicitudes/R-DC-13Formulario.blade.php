@@ -119,7 +119,7 @@
                     </div>
                     <br>
 
-                    <input class="btn btn-primary btn-enviar-sol" type="submit" value="Generar">
+                    <input class="btn btn-primary btn-enviar-sol" type="submit" value="Generar" data-toggle="modal" data-target="#modalFirma">
 
                     {!!Form::close()!!}
 
@@ -138,6 +138,9 @@
         <i class="fas fa-spinner fa-6x fa-spin"></i>
         <p id="letra-pequena-load">&nbsp;&nbsp;Cargando...</p>
     </div>
+
+
+   
 
     <!-- FIN DEL CONTENEDOR PARA FORMULARIO R-DC-13 -->
 

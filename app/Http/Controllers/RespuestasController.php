@@ -701,7 +701,7 @@ class RespuestasController extends Controller
 
     public function enviarCorreo(Request $request){
 
-        /*$infoAdicional = DB::table('solicitudes')
+        $infoAdicional = DB::table('solicitudes')
         ->join('usuarios', 'usuarios.usu_cedula', '=', 'solicitudes.usu_cedula')
         ->select('sol_fechaCreacion', 'email', 'usu_telefono')
         ->where('sol_id', '=', $request['sol_id'])
@@ -717,7 +717,7 @@ class RespuestasController extends Controller
         *usada para respodner y otros se recuperan desde la consulta
         */
 
-        /*
+        
         $datosMensaje = array(
             'sol_nombre' => $request['sol_nombre'], //datos traidos del formulario del que procede la respuesta
             'sol_fechaCreacion' => $infoAdicional->sol_fechaCreacion, //fecha de creacion recuperada en consulta usando el id de la solicitud que viene del formulario

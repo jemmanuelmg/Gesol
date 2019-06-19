@@ -1179,12 +1179,12 @@ class SolicitudesController extends Controller{
         $rutaGuardar = '../public/solicitudesPDF/' . $sol_formato;
 
         //Guardar registro en BD
-        // solicitudes::create([
-        //     'sol_nombre'=>'R-DC-52',
-        //     'sol_formato'=>$sol_formato,
-        //     'sol_estado' => 'Pendiente',
-        //     'usu_cedula' => Session('usu_cedula')
-        //     ]);
+         solicitudes::create([
+             'sol_nombre'=>'R-DC-52',
+             'sol_formato'=>$sol_formato,
+             'sol_estado' => 'Pendiente',
+             'usu_cedula' => Session('usu_cedula')
+             ]);
 
         //Enviar correo al usuario con solicitud creada
         $this->enviarCorreo($sol_formato, Session('email'));
@@ -1208,7 +1208,7 @@ class SolicitudesController extends Controller{
 
         //Arreglo de datos para funcion enviar
 
-        /*$datosMensaje = [
+        $datosMensaje = [
         'sol_formato' => $sol_formato
         ];
 
@@ -1218,7 +1218,7 @@ class SolicitudesController extends Controller{
             ->from('gesol.uts@gmail.com',  'Gesol')
             ->subject('Confirmacion Gesol: solicitud guardada');
             
-        });*/
+        });
     }
 
     /**
@@ -1226,7 +1226,7 @@ class SolicitudesController extends Controller{
     */
     public function enviarSms($sol_nombre){
 
-        /*if(Session('usu_telefono') != null || !empty(Session('usu_telefono'))){
+        if(Session('usu_telefono') != null || !empty(Session('usu_telefono'))){
 
             //Iniciar config de idioma y zona horaria
             setlocale(LC_ALL,"es_ES");
@@ -1243,7 +1243,7 @@ class SolicitudesController extends Controller{
             $messaging = new MessagingClient($customer_id, $api_key);
             $response = $messaging->message($phone_number, $message, $message_type);
 
-        }*/
+        }
 
     }
 }
