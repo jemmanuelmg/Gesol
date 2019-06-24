@@ -9,6 +9,7 @@
         "codedge/laravel-fpdf": "^1.2",
         "consoletvs/charts": "3.*",
         "doctrine/dbal": "2.5.1",
+        "fedeisas/laravel-mail-css-inliner": "^2.2",
         "google/cloud-dialogflow": "^0.5.1",
         "guzzlehttp/guzzle": "~6.0",
         "itbz/fpdi": "~1.0",

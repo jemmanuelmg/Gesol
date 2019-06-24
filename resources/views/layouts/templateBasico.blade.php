@@ -52,7 +52,7 @@
           <ul class="navbar-nav mr-auto">
           </ul>
 
-          <ul class="navbar-nav">
+          <ul class="navbar-nav custom-center">
 
             <!-- SI ESTA LOGUEADO -->
             @if(session()->has('sesionIniciada'))
@@ -285,6 +285,8 @@
       <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
 
       <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+      <script type="text/javascript" src="{{ asset('js/esconder-navbar.js') }}"></script>
 
       <!--<script type="text/javascript" src="{{ asset('pwa-assets.js') }}"></script>-->
 

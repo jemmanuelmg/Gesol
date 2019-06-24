@@ -181,7 +181,7 @@
   <br>
   <br>
   <br>
-  <h2>Nuestros clientes</h2>
+  <h2>Nuestras Instituciones</h2>
   <br>
 
 
@@ -192,12 +192,18 @@
     <div class="customer-logos">
       <!--Ojo, estilos en slick.js-->
       <div class="slide"><img src="{{ URL::asset('images/itm-logo.png') }}"></div>
-      <div class="slide"><img src="{{ URL::asset('images/pascual-bravo-logo.png') }}" class="marca-aux"></div>
-      <div class="slide"><img src="{{ URL::asset('images/colegio-mayor-logo.png') }}" class="marca-aux"></div>
+      <!-- <div class="slide"><img src="{{ URL::asset('images/pascual-bravo-logo.png') }}" class="marca-aux"></div>
+      <div class="slide"><img src="{{ URL::asset('images/colegio-mayor-logo.png') }}" class="marca-aux"></div> -->
       <div class="slide"><img src="{{ URL::asset('images/colegio-logo.png') }}" class="foto-marca"></div>
       <div class="slide"><img src="{{ URL::asset('images/salesianos-logo.png') }}" class="foto-marca"></div>
-      <div class="slide"><img src="{{ URL::asset('images/udea-logo.png') }}"></div>
-      <div class="slide"><img src="{{ URL::asset('images/harvard-logo.png') }}" class="foto-marca"></div>
+      <div class="slide"><img src="{{ URL::asset('images/itm-logo.png') }}"></div>
+      <div class="slide"><img src="{{ URL::asset('images/colegio-logo.png') }}" class="foto-marca"></div>
+      
+      
+
+
+      <!-- <div class="slide"><img src="{{ URL::asset('images/udea-logo.png') }}"></div> -->
+      <!-- <div class="slide"><img src="{{ URL::asset('images/harvard-logo.png') }}" class="foto-marca"></div> -->
     </div>
   </div>
 

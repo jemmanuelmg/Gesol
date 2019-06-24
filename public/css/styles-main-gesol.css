@@ -13,18 +13,6 @@ src: url("../fonts/Raleway-Regular.ttf") format("truetype"),
      url("../fonts/Raleway-Regular.woff") format("woff");
 }
 
-.nav-item{
-  margin-left: 15px;
-}
-
-.dropdown-menu .dropdown-menu-right{
-  margin-bottom: 2px;
-}
-
-.navbar-toggler{
-  margin-right: 10px;
-}
-
 .linea-encabezado{
   
   height: 0.5px;
@@ -462,6 +450,27 @@ CSS BRAND CAROUSELL
     border-color: #FFF;
     box-shadow: 0 0 0 0 white;
 }
+
+.custom-center{
+  margin: auto !important;
+  text-align: center;
+}
+
+
+/*Estilos para nav bar. Esconderse automaticamente*/
+
+.nav-item{
+  margin-left: 15px;
+}
+
+.dropdown-menu .dropdown-menu-right{
+  margin-bottom: 2px;
+}
+
+.navbar-toggler{
+  margin-right: 10px;
+}
+
 
 /* FIN CSS DEL NAVBAR */
 
@@ -945,6 +954,7 @@ video{
   border-radius: 10%;
   float: right;
 }
+
 
 
 
