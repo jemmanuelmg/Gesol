@@ -180,8 +180,6 @@ return [
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         Nexmo\Laravel\NexmoServiceProvider::class,
         RezaAr\Highcharts\Provider::class,
-        Fedeisas\LaravelMailCssInliner\LaravelMailCssInlinerServiceProvider::class,
-
 
     ],
 
