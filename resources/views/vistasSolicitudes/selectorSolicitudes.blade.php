@@ -31,7 +31,8 @@
 						{{ csrf_field() }}
 
 						<label for="codSol" class="mx-4">Selecciona la solicitud que deseas realizar: </label>
-
+						<br>
+						<center>
 						<select name='codSol' class="custom-select mb-2 mr-sm-2 mb-sm-0">
 							<option>Seleccione una solicitud</option>
 							<option value="R-DC-13">R-DC-13 Autorización Examen Autosuficiencia</option>
@@ -40,6 +41,7 @@
 							<option value="R-DC-40">R-DC-40 Solicitud de Transferencia Externa</option>
 							<option value="R-DC-52">R-DC-52 Inscripción Curso de Vacaciones</option>
 						</select>
+						</center>
 
 						<br><br><br>
 

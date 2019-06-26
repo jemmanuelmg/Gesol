@@ -30,7 +30,6 @@ class CorreoController extends Controller
      */
     public function create()
     {
-        Session::flash('mensaje-advertencia', 'Puedes ver nuestros números de teléfono y dirección al final de esta página');
         return view('correos.contacto');
     }
 

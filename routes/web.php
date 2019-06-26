@@ -28,6 +28,8 @@ Route::get('/ayuda', function () {
 	return view('vistasUsuarios.paginaAyuda');
 });
 
+Route::get('offline', 'UsuarioController@offline');
+
 	/**
 	 * Rutas de usuario.
 	 */
@@ -106,5 +108,9 @@ Route::get('grafico3', 'MetricasController@procesarG3');
 Route::get('404', function () {
 	return view('vistasErrores.404');
 })->name('404');
+
+Route::get('500', function () {
+	return view('vistasErrores.500');
+})->name('500');
 
 

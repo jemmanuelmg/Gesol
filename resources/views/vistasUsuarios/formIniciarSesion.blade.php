@@ -72,9 +72,3 @@
   </div>
 
   @stop
-	<!-- FIN CONTENEDOR -->
-
-	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-	@section('javascript')
-      
-  @show

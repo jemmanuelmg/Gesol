@@ -57,15 +57,13 @@
 
 						<br>
 						<p style="text-align: left">
-
-							
 							<hr>
-
-							<br>
-							Ó selecciona una foto: <i class="fas fa-upload"></i> &nbsp;&nbsp;
-							<br>
+							<p>Ó selecciona una foto: <i class="fas fa-upload"></i> &nbsp;&nbsp;</p>
+							<p>
 							<input type="file" name="foto2" class="form-control-file" accept=".jpg, .jpeg, .png, .gif">
 							<input type="hidden" name="MAX_FILE_SIZE" value="1228800" />
+							</p>
+
 						</p> 
 
 					</center>
@@ -99,14 +97,6 @@
 	        		<!--Input escondido para almacenar la foto codificada-->
 	        		<input id="foto" type="hidden" name="foto" value=""/>
 	        		
-	         		
-		          	<div class="form-group">
-			          <label class="control-label" for="cedula">Cedula</label>
-			          	<div class="input-group">
-			            	<input type="number" value='{{$usuario->usu_cedula}}' class="form-control" name="cedula" id="cedula" placeholder="Introduzca su cedula" />
-			        	</div>             	
-			        </div>  
-
 			        <div class="form-group">
 			          <label class="control-label" for="nombres">Nombres</label>
 			          	<div class="input-group">

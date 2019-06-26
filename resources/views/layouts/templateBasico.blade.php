@@ -11,7 +11,6 @@
 
   <!--MANIFEST-->
   <link rel="manifest" href="{{ asset('manifest.json') }}" />
-  
 
   <!--CSS: BOOTSTRAP, ESTILOS Y FONTAWESOME-->
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -211,74 +210,76 @@
     
 
     <!--FOOTER-->
+    
     <div class="footer">
       <div class="row">
         
         <div class="col-md-3 col-lg-3 alinear-izquierda col-footer">
 
-        <center>
-
-        <img src="{{asset('images/gesol_logo_new2.png')}}" width="110px">
-
-        
-        <div class="redes">
-            <div class="email"><a href="/contacto/create"></a></div>
-            <div class="facebook"><a href="#"></a></div>
-            <div class="twitter"><a href="#"></a></div>
-        </div>
-        
-
-        </center>
-        
-      </div>
-
-      <div class="col-md-3 col-lg-3 alinear-izquierda col-footer">
           <center>
-          Gesol 2019 ® 
-          Todos los derechos reservados <br><br>
 
-          Avenida No. 45A #56-89, Medellín - Antioquia.
+          <img src="{{asset('images/gesol_logo_new2.png')}}" width="110px">
+
+          
+          <div class="redes">
+              <div class="email"><a href="/contacto/create"></a></div>
+              <div class="facebook"><a href="#"></a></div>
+              <div class="twitter"><a href="#"></a></div>
+          </div>
+          
+
           </center>
-
-
-      </div>        
-
-      <div class="col-md-3 col-lg-3 alinear-izquierda col-footer">
           
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex evaborum.
-
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis <br> <br>
-
-          nostrud exercitation ullamco laboris nisi ut aliquip ex evaborum.
-          tempor incidi quis nostrud exercitation ullamco laboris nisi ut aliquip ex evaborum.
-          tempor incidi 
-          
-          
-
-      </div>
-
-      <div class="col-md-3 col-lg-3 alinear-izquierda col-footer">
-
-          
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqt in voluptatet laborum.
-
-          <br> <br>
-
-          magna aliqt in voluptatet laborum. magna aliqt in voluptatet laborum.
-          
-
-            </div>
         </div>
+
+        <div class="col-md-3 col-lg-3 alinear-izquierda col-footer">
+            <center>
+            <p>  
+            Gesol 2019 ® 
+            Todos los derechos reservados <br><br>
+
+            Avenida No. 45A #56-89, Medellín - Antioquia.
+            </center>
+            </p>
+
+
+        </div>        
+
+        <div class="col-md-3 col-lg-3 alinear-izquierda col-footer">
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex evaborum.
+
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis <br> <br>
+
+            nostrud exercitation ullamco laboris nisi ut aliquip ex evaborum.
+            tempor incidi quis nostrud exercitation ullamco laboris nisi ut aliquip ex evaborum.
+            tempor incidi 
+            </p>
+            
+
+        </div>
+
+        <div class="col-md-3 col-lg-3 alinear-izquierda col-footer">
+
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqt in voluptatet laborum.
+
+            <br> <br>
+
+            magna aliqt in voluptatet laborum. magna aliqt in voluptatet laborum.
+            </p>
+
+        </div>
+      </div>
     </div>
+    
     <!--./FOOTER-->
 
     @section('javascript')
-
-      <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.slim.min.js') }}"></script>
 
       <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 
@@ -288,7 +289,7 @@
 
       <script type="text/javascript" src="{{ asset('js/esconder-navbar.js') }}"></script>
 
-      <!--<script type="text/javascript" src="{{ asset('pwa-assets.js') }}"></script>-->
+      <script type="text/javascript" src="{{ asset('pwa-assets.js') }}"></script>
 
     @show
 

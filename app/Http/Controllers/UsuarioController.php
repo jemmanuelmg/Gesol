@@ -2,6 +2,7 @@
 
 namespace Gesol\Http\Controllers;
 
+use Illuminate\Http\Request as RequestAjax;
 use Gesol\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -19,7 +20,7 @@ class UsuarioController extends Controller
 
         /*Aplicar primera proteccion. Necesita esta autenticarse para todo
         menos para registrarse. Se redireccionará segun lo escrito en Exceptions/handler@*/
-        $this->middleware('autenticado')->except('create', 'store', 'formIniciarSesion');
+        $this->middleware('autenticado')->except('create', 'store', 'formIniciarSesion', 'offline');
         /*Segunda proteccion. Los usuarios registrados solo pueden entrar a index de usuario
         si son administradores*/
         $this->middleware('administrador')->only('index', 'destroy', 'verDashboard');
@@ -301,5 +302,12 @@ class UsuarioController extends Controller
         Session::flash('mensaje-exito', 'El usuario se ha eliminado satisfactoriamente');
         return Redirect::to('/usuarios');
 
+    }
+
+    public function offline(RequestAjax $request){
+       
+        if($request->ajax()){
+            return json_encode(array('status'=> 'success'));  
+        }
     }
 }

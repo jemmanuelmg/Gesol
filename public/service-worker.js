@@ -1,14 +1,13 @@
 
 
-var dataCacheName = 'Gesol:cache';
-var cacheName = 'Geso::cache';
+var cacheName = 'Gesol-cache';
 var filesToCache = [
-  '/',
+  '/',/*
   'http://127.0.0.1:8000/ayuda',
   'http://127.0.0.1:8000/iniciarSesion',
   'http://127.0.0.1:8000/usuarios/create',
   'http://127.0.0.1:8000/contacto/create',
-
+*/
 ];
 
 
@@ -57,12 +56,6 @@ self.addEventListener('activate', function(e) {
     })
   );
 });
-
-
-/*
-self.addEventListener('fetch', function(e) {
-});
-*/
 
 
 

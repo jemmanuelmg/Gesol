@@ -84,35 +84,35 @@
       <ul>
 
         <li>
-          <i class="fas fa-bolt fa-2x" aria-hidden="true"></i>  &nbsp;&nbsp;&nbsp;&nbsp;  No mas filas!: </strong> Con Gesol puedes diligenciar cualquier solicitud académica (cambio de jornada, revision de notas, tranferencia interna, etc.) <strong>desde la comodida de tu casa!,</strong> Todo se enviará automáticamente a tu bandeja de entrada ;).
+          <p>&nbsp;<i class="fas fa-bolt fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;  No mas filas!: </strong> Con Gesol puedes diligenciar cualquier solicitud académica (cambio de jornada, revision de notas, tranferencia interna, etc.) <strong>desde la comodida de tu casa!,</strong> Todo se enviará automáticamente a tu bandeja de entrada.</p>
         </li>
 
         <li>
-          <i class="fab fa-envira fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;  100% ecológico: Gracias a Gesol logramos reducir el uso de tinta y papel a 0.
+          <p>&nbsp;<i class="fab fa-envira fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;  100% ecológico: Gracias a Gesol logramos reducir el uso de tinta y papel a 0.</p>
         </li>
 
         <li>
-          <i class="fas fa-cloud-download-alt fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp; Todo estará alojado en la nube: tus solicitudes y respuestas se guardarán aquí, para que las veas cuando quieras.
+          <p>&nbsp;<i class="fas fa-cloud-download-alt fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Todo estará alojado en la nube: tus solicitudes y respuestas se guardarán aquí, para que las veas cuando quieras.</p>
         </li>
 
         <li>
-          <i class="fas fa-id-card-alt fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp; Tus datos personales están a salvo gracias a mecanismos de potección virtual de alta tecnología.
+          <p>&nbsp;<i class="fas fa-id-card-alt fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Tus datos personales están a salvo gracias a mecanismos de potección virtual de alta tecnología.</p>
         </li>
 
         <li>
-          <i class="fas fa-comments fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp; Servicios de ayuda, chats, manuales, recuperación de contraseña y muchas cosas mas a tu disposición: ¡Que esperas!
+          <p>&nbsp;<i class="fas fa-comments fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Servicios de ayuda, chats, manuales, recuperación de contraseña y muchas cosas mas a tu disposición: ¡Que esperas!</p>
         </li>
 
       </ul>
 
       <p>
-        Pensado en tu comodidad y bienestar hemos desarrollado esta aplicación. Nuestro mayor logro es que cada vez mas estudiantes disfruten de estos beneficios. Únete ahora mismo a esta comunidad y disfruta de todo lo que ofrece!. Desarrollado <strong>para ayudar a estudiantes.</strong>
+        Pensado en tu comodidad y bienestar hemos desarrollado esta aplicación. Nuestro mayor logro es que cada vez mas estudiantes disfruten de estos beneficios. Únete ahora mismo a esta comunidad y disfruta de todo lo que ofrece!. Desarrollado <strong>para ayudar a estudiantes.</strong></p>
       </p>
 
     </div>
 
     <div class="col-lg-6">
-      <img class="img-fluid rounded" src="../images/gesol-inicio-comunidad.jpeg" alt="">
+      <img id="img-index-comunidad" class="img-fluid rounded" src="../images/gesol-inicio-comunidad.jpeg" alt="">
     </div>
   </div>
   <!-- /.row -->
@@ -174,7 +174,7 @@
 
     </div>
     <div class="col-md-4">
-      <a class="btn btn-primary btn-lg push" href="/usuarios/create">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registrarse&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-thumbs-up fa-2x" aria-hidden="true"></i></a>
+      <a class="btn btn-primary btn-lg push" href="/usuarios/create">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registrarse&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-thumbs-up fa-lg" aria-hidden="true"></i></a>
     </div>
   </div>
 
@@ -214,7 +214,5 @@
   
   <script type="text/javascript" src="{{ URL::asset('js/slick.min.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/brand-carousell.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/push.min.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/push-notifications.js') }}"></script>
 
 @stop

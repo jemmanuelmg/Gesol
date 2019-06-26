@@ -19,7 +19,7 @@ use Chart;
 
 class MetricasController extends Controller
 {
-   
+   /*
     public function lala(){
 
         $solicitudes= DB::select(DB::raw("
@@ -42,7 +42,7 @@ class MetricasController extends Controller
             $i++;
         }
 
-    }
+    }*/
 
 
     public function procesarG1(Request $request){
