@@ -70,7 +70,7 @@ p, label{
   font-size: 1rem;
   margin: 1rem 0;
 }
-a, select, .card-body{
+a, select, .card-body, #opc-tel, #opc-email{
   font-size: 1rem;
 }
 td, th{
@@ -149,10 +149,9 @@ body {
   color: #FFF;
 }
 
-.anadir-apk{
+.anadir-apk1, .anadir-apk2{
   width: 13rem;
 }
-
 /*FIN CSS ESTILOS GENERALES*/
 
 

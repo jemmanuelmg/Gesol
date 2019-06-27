@@ -16,10 +16,8 @@
     				<br>
     				<br>
 	    			<h3 class="subencabezado">Elegir método de recuperación</h3>
-	    			<br>
 		      		<p>Elige el método que te resulte mas cómodo para recuperar tu contraseña:</p>
 		      		
-
 	      		</div>
 
     		</div>
@@ -121,7 +119,7 @@
 						<b>En un momento te será enviada una contraseña provisional a tu teléfono vía SMS, para que la cambies despues de iniciar sesión con ella. <br> No añadas prefijos (no +57), solo tus 10 dígitos </b>
 					</p>
 
-			        <input type="submit" value="Enviar correo" class="btn btn-primary btn-lg">
+			        <input type="submit" value="Enviar sms" class="btn btn-primary btn-lg">
 
 		          	{!!Form::close()!!}
 

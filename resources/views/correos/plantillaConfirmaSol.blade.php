@@ -25,7 +25,7 @@
 		background-color: #eceeef;
 		border-radius: 0.3rem;">
 
-	        <center><h1 style="font-size: 25px;">Gesol: Solicitud guardada con exito</h1></center>
+	        <center><center><img src="{{ $message->embed(public_path() . '/images/gesol_logo_new2.png') }}" /></center></center>
 	        <p>
 				Se ha guardado la nueva solicitud en el sistema Gesol. Desde ahora, su petición será revisada por la coordinación y en unos dias se enviará la respuesta automáticamente a su bandeja de entrada. Ninguna otra acción es requerida.
 			</p>

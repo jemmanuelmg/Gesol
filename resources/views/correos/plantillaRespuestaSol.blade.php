@@ -25,7 +25,7 @@
 		background-color: #eceeef;
 		border-radius: 0.3rem;">
 
-	        <center><h1 style="font-size: 25px;">Respuesta a su solicitud</h1></center>
+	        <center><center><img src="{{ $message->embed(public_path() . '/images/gesol_logo_new2.png') }}" /></center></center>
 	        <p>
 				Su solicitud {{ $sol_nombre }} formulada en fecha {{ $sol_fechaCreacion }} ha sido respondida:
 				A continuación, se muestra un resumen de la respuesta.

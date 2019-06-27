@@ -70,7 +70,7 @@
 <div class="container">
 
   <center>
-    <img src={{asset('images/gesol_logo_new2.png')}} alt="Logo" height="80px">
+    <img src="{{asset('images/gesol_logo_new2.png')}}" alt="Logo" height="80px">
   </center>
 
   <h1 class="my-4">Bienvenido</h1>
@@ -178,12 +178,12 @@
   <div class="row">
     <div class="col-md-6">
       <center>
-        <img src="../images/playstore.png" id="butInstall1" class="anadir-apk">
+        <img src="../images/playstore.png" id="butInstall1" class="anadir-apk1">
       </center>
     </div>
     <div class="col-md-6">
       <center>
-        <img src="../images/appstore.png" id="butInstall2" class="anadir-apk">
+        <img src="../images/appstore.png" id="butInstall2" class="anadir-apk2">
       </center>
     </div>
   </div>
