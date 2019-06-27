@@ -60,7 +60,7 @@
             @if(session('rol_id') == 3)
 
               <li class="nav-item">
-                <a href="/indexDashboard" class="nav-link" id="puerta-dashboard"><button type="button" class="btn btn-primary">Panel de Admin. &nbsp; <i class="fas fa-book-reader"></i></button> </a>
+                <a href="/indexDashboard" class="nav-link btn btn-link" id="puerta-dashboard">Panel de Admin. &nbsp; <i class="fas fa-book-reader"></i></a>
               </li>
 
             @endif
@@ -271,6 +271,8 @@
             <br> <br>
 
             magna aliqt in voluptatet laborum. magna aliqt in voluptatet laborum.
+
+            <button id="butInstall" aria-label="Install" hidden></button>
             </p>
 
         </div>
@@ -290,6 +292,7 @@
       <script type="text/javascript" src="{{ asset('js/esconder-navbar.js') }}"></script>
 
       <script type="text/javascript" src="{{ asset('pwa-assets.js') }}"></script>
+      <script type="text/javascript" src="{{ asset('install.js') }}"></script>
 
     @show
 

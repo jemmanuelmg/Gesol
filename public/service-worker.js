@@ -1,13 +1,7 @@
-
-
 var cacheName = 'Gesol-cache';
 var filesToCache = [
-  '/',/*
-  'http://127.0.0.1:8000/ayuda',
-  'http://127.0.0.1:8000/iniciarSesion',
-  'http://127.0.0.1:8000/usuarios/create',
-  'http://127.0.0.1:8000/contacto/create',
-*/
+  '/',
+  'images/itm-logo.png'
 ];
 
 
@@ -27,7 +21,7 @@ self.addEventListener('install', function(e) {
 
 //Evento para recuperar el cntenido de la caché en vez que de la red
 
-self.addEventListener('fetch', function(e) {
+/*self.addEventListener('fetch', function(e) {
   e.respondWith(
     caches.match(e.request).then(function(r) {
           console.log('[Service Worker] Fetching resource: '+e.request.url);
@@ -38,6 +32,16 @@ self.addEventListener('fetch', function(e) {
           return response;
         });
       });
+    })
+  );
+});*/
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+
+    fetch(event.request).catch(() => {
+      
+      return caches.match(event.request);
     })
   );
 });

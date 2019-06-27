@@ -3,7 +3,6 @@
 <br/>
 <br/>
 <div class='alert alert-success  alert-dismissible' role='alert'>
-	<br/>
 	<button type="button" class="close" data-dismiss='alert' aria-label="close"><span aria-hidden="true">&times;</span></button>
 	<strong><h3>Correcto:</h3></strong>
 	{!!Session::get('mensaje-exito')!!}

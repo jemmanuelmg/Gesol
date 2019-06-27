@@ -168,20 +168,41 @@
   <hr>
 
   <!-- Call to Action Section -->
-  <div class="row mb-4">
-    <div class="col-md-8">
-      <p>Para empezar tu experiencia usando GESOL, porfavor registrate dando clic en el siguiente boton. Es la manera mas eficiente de solicitudar cualquier servicio. ¡No te quedes atras!</p>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Prueva nuestra app movil! &nbsp; <i class="fas fa-mobile-alt"></i></h2>
+      <p>Añade esta página a tu teléfono como aplicación movil. Selecciona Play Store si tienes un dispositivo Android o App Store para iOS:</p>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-md-6">
+      <center>
+        <img src="../images/playstore.png" id="butInstall1" class="anadir-apk">
+      </center>
     </div>
-    <div class="col-md-4">
-      <a class="btn btn-primary btn-lg push" href="/usuarios/create">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registrarse&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-thumbs-up fa-lg" aria-hidden="true"></i></a>
+    <div class="col-md-6">
+      <center>
+        <img src="../images/appstore.png" id="butInstall2" class="anadir-apk">
+      </center>
     </div>
+  </div>
+
+    <!-- <div class="col-md-4">
+      <a class="btn btn-primary btn-lg push" id="butInstall">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agregar app&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-mobile-alt"></i></a>
+    </div> -->
   </div>
 
   <br>
   <br>
   <br>
-  <h2>Nuestras Instituciones</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Nuestras Instituciones</h2>
+      </div>  
+    </div>
+  </div>
   <br>
 
 
