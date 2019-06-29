@@ -217,7 +217,7 @@ class UsuarioController extends Controller
             move_uploaded_file($_FILES['foto2']['tmp_name'], $targetfile);
 
         }
-        //Si añadió firma en caso de ser usuario administrativo
+        //Si añadió firma 
         if (isset($request['firma'])){
 
             $conFirma = true;
@@ -304,10 +304,4 @@ class UsuarioController extends Controller
 
     }
 
-    public function offline(RequestAjax $request){
-       
-        if($request->ajax()){
-            return json_encode(array('status'=> 'success'));  
-        }
-    }
 }

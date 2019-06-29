@@ -97,7 +97,7 @@
                     </div>
 
                     <div class="form-group">
-                      <label class="control-label" for="direccion">Direccion *</label>
+                      <label class="control-label" for="direccion">Direccion (de estudiante)*</label>
                         <div class="input-group">
                             <input type="text" name="direccion" size="30" class="form-control" placeholder="Introduzca su direccion" required> 
                         </div>              
@@ -115,43 +115,68 @@
                     <br>
 
                     <p style="color: #BBD035;">
-                        Documentos Anexos
+                        <b>Documentos Anexos</b>
                     </p>
 
                     <br>
 
                     <div class="form-group">
                         <div class="input-group">
-                            <div class="col-md-3">
-                                <label class="control-label" for="estudios">
-                                    <input type="checkbox" name="estudios" aria-label="form-check-input">
-                                    Centificados de estudios
-                                </label>
-                            </div>
 
-                            <label class="control-label mx-2" for="folios">Numero de Folios *</label>
+                            <div class="row">
                             
-                            <input type="number" name="folios" size="30" class="form-control" placeholder="Introduzca el numero de folios" required>
+                                <div class="col-md-4">
+                                    <center>
+                                        <label class="control-label" for="estudios">
+                                            <input type="checkbox" name="estudios" aria-label="form-check-input">
+                                            Centificados de estudios
+                                        </label>
+                                    </center>
+                                </div>
+
+                                <div class="col-md-4"><center><label class="control-label mx-2" for="folios">Numero de Folios *</label></center></div>
+                                
+                                <div class="col-md-4"><center><input style="width: 300px;" type="number" name="folios" size="30" class="form-control" placeholder="Introduzca el numero de folios"></center></div>
+
+                            </div>
+                            
                         </div>              
                     </div>
 
                     <div class="form-group">
                         <div class="input-group">
-                            <div class="col-md-3">
-                                <label class="control-label" for="tematicos">
-                                    <input type="checkbox" name="tematicos" aria-label="form-check-input">
-                                    Contenidos Tematicos
-                                </label>
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <center>
+                                        <label class="control-label" for="tematicos">
+                                            <input type="checkbox" name="tematicos" aria-label="form-check-input">
+                                            Contenidos Tematicos
+                                        </label>
+                                    </center>
+                                </div>
+                                
+                                <div class="col-md-4"><center><label class="control-label mx-2" for="folios2">Numero de Folios *</label></center></div>
+                                
+                                <div class="col-md-4"><center><input style="width: 300px;" type="number" name="folios2" size="30" class="form-control" placeholder="Introduzca el numero de folios"></center></div>                              
+
                             </div>
-                            
-                            <label class="control-label mx-2" for="folios2">Numero de Folios *</label>
-                            
-                            <input type="number" name="folios2" size="30" class="form-control" placeholder="Introduzca el numero de folios" required>                                    
+
                         </div>
                     </div>
+                    <br>
+                    <div>
+                        <p>Añadir archivo con certificado de estudios (archivo pdf)</p>
+                        <input type="file" name="certificado" class="form-control-file" accept=".pdf">
+                        <br>
+                        <p>Añadir archivo con contenidos tematicos (archivo pdf)</p>
+                        <input type="file" name="contenidos" class="form-control-file" accept=".pdf">
 
+                    </div>
+                    
+                    <hr>
                     <div class="form-group">
-                        <label class="control-label" for="imgRecibo"><b>Seleccionar imagen con escaneo de pago</b> </label>
+                        <label class="control-label" for="imgRecibo"><p style="color: #BBD035;"><b>Seleccionar imagen con escaneo de pago</b></p> </label>
                         
                         <p class="form-control-static">Si lo desea, puede adjuntar el recibo de pago para un trámite mas rápido.</p>
 

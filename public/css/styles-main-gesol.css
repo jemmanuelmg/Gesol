@@ -34,17 +34,17 @@ html {
 }
 @media screen and (min-width: 800px){
   html{
-    font-size: 19px;
+    font-size: 16px;
   }
 }
 @media screen and (min-width: 860px){
   html{
-    font-size: 20px;
+    font-size: 17px;
   }
 }
 @media screen and (min-width: 920px){
   html{
-    font-size: 21px;
+    font-size: 17px;
   }
 }
 @media screen and (min-width: 1000px){
@@ -970,9 +970,10 @@ code {
 #div-loading{
   z-index:1000;
   position: fixed;
-  top:50%;
-  left:50%;
+  top:40%;
+  left:45%;
   display: none;
+  font-size: 6rem;
 }
 
 #oscurecer{
@@ -992,7 +993,7 @@ code {
 }
 
 #letra-pequena-load{
-  font-size: 15px;
+  font-size: 1rem;
   color:#4169E1;
   font-family: 'Raleway', 'Open Sans', sans-serif;
 }

@@ -54,7 +54,7 @@
 					<td>{{$solicitud->sol_nombre}}</td>
 					<td>{{$solicitud->sol_fechaCreacion}}</td>
 					<td>{{$solicitud->usu_nombres}}</td>
-					<td>{{$solicitud->usu_apellidos}}</td>
+					<td width="80px">{{$solicitud->usu_apellidos}}</td>
 					<td>{{$solicitud->usu_cedula}}</td>
 					<td style="text-align: left;">{{$solicitud->email}}</td>
 					<td>{{$solicitud->sol_estado}}</td>
@@ -62,7 +62,7 @@
 					<!--En parameters se escribe las variables que llevará el metodo GET. En atributes cosas como la clase css, id, etc. Entre corchetes por que es un array-->
 					<td style="width:14%">
 						
-						<a href="{{'/solicitudesPDF/' . $solicitud->sol_formato}}" class="btn btn-outline-danger" target="_blank"><i class="far fa-file-pdf"></i> &nbsp;Ver</a>
+						<a href="{{'/solicitudesPDF/' . $solicitud->sol_formato}}" class="btn btn-outline-danger btn-sm" target="_blank"><i class="far fa-file-pdf"></i> &nbsp;Ver</a>
 
 						@if(session('rol_id') == 3) <!--solo admin coordinador puede editar solicitud-->
 						
@@ -71,12 +71,12 @@
 							sin tener que usar solicitudes.edit
 							{!! link_to_route('solicitudes.edit', $title = 'Editar', $parameters = $solicitud->sol_id, $attributes = ['class'=>'far fa-edit btn btn-outline-primary']); !!}-->
 
-							<a href="{{'/solicitudes/' . $solicitud->sol_id . '/edit'}}" class="btn btn-outline-primary" target="_blank"><i class="far fa-edit"></i>&nbsp;Edit</a>
+							<a href="{{'/solicitudes/' . $solicitud->sol_id . '/edit'}}" class="btn btn-outline-primary btn-sm" target="_blank"><i class="far fa-edit"></i>&nbsp;Edit</a>
 
 						@endif
 
 
-						<a href="{{'/redactarRespuesta/' . $solicitud->sol_nombre . '/' . $solicitud->sol_formato . '/' . $solicitud->sol_id}}" class="btn btn-outline-info" target="_blank"><i class="far fa-arrow-alt-circle-left"></i> &nbsp;Resp</a>
+						<a href="{{'/redactarRespuesta/' . $solicitud->sol_nombre . '/' . $solicitud->sol_formato . '/' . $solicitud->sol_id}}" class="btn btn-outline-info btn-sm" target="_blank"><i class="far fa-arrow-alt-circle-left"></i> &nbsp;Resp</a>
 
 					</td>
 				</tr>

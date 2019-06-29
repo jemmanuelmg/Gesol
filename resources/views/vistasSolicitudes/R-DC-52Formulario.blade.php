@@ -197,7 +197,7 @@
     <div id="oscurecer"></div>
         
     <div id="div-loading">
-        <i class="fas fa-spinner fa-6x fa-spin"></i>
+        <i class="fas fa-spinner fa-spin"></i>
         <p id="letra-pequena-load">&nbsp;&nbsp;Cargando...</p>
     </div>
 

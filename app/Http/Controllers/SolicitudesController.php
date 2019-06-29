@@ -622,6 +622,13 @@ class SolicitudesController extends Controller{
         $pdf->SetXY(158, 81);
         $pdf->Write(0, $Telefono);
 
+        //Escribir la firma del usuario
+        //Debe hacerse antes de el recibo por si agrega otra pagina
+        //si no, la firma aparece en la segunda hoja
+        if (!empty(session('usu_firma')) ) {
+            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 94, 87  , 30, 15); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+        }
+
         //si el usuario decide añadir recibo
         if(isset($request['imgRecibo'])){
 
@@ -648,15 +655,8 @@ class SolicitudesController extends Controller{
             unlink('../public/images/recibosPago/' . $nombreImg);
         }
 
-        //Escribir la firma del usuario
-        if (!empty(session('usu_firma')) ) {
-            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 94, 87  , 30, 15); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
-        }
-
         $pdf->Close();
         
-        
-
         //Crear nombre del  pdf para guardar localmente en server
         $sol_formato = Session('usu_cedula') . '-R-DC-13' . 'No' . $cuantasVeces . '.pdf';
         $rutaGuardar = '../public/solicitudesPDF/' . $sol_formato;
@@ -675,8 +675,6 @@ class SolicitudesController extends Controller{
 
         //Enviar mensaje de texto
         $this->enviarSms($sol_nombre);
-
-        
 
         $pdf->Output($rutaGuardar, 'F');
         $pdf->Output($sol_formato, 'I'); 
@@ -873,9 +871,18 @@ class SolicitudesController extends Controller{
         $Educativa = $_POST["Educativa"];
         $Direccion = $_POST["direccion"];
         $Telefono = $_POST["telefono"];
-        $Estudios = $_POST["estudios"];
+
+        $Estudios = false;
+        $Tematicos = false;
+        if (isset($_POST["estudios"])) {
+           $Estudios = $_POST["estudios"];
+        }
+
+        if (isset($_POST["tematicos"])) {
+           $Tematicos = $_POST["tematicos"];
+        }
+
         $Folios = $_POST["folios"];
-        $Tematicos = $_POST["tematicos"];
         $Folios2 = $_POST["folios2"];
 
         $fecha = explode('-', $_POST["fechaSol"]);
@@ -923,7 +930,7 @@ class SolicitudesController extends Controller{
         $pdf->SetXY(149, 91-5);
         $pdf->Write(0, $Telefono);
 
-        if ($Estudios== true) {
+        if ($Estudios == true) {
             $pdf->SetXY(103.5, 114);
             $pdf->Write(0, "X");
         }
@@ -947,7 +954,63 @@ class SolicitudesController extends Controller{
         $pdf->SetXY(42, 140-3);
         $pdf->Write(0, $Año);
 
-        
+         //Escribir la firma del usuario
+        if (!empty(session('usu_firma')) ) {
+
+            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 93, 125, 28, 12.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+        }
+
+        //guardar archivos adjuntos
+        if (isset($request['certificado'])){
+
+            $nombre1 = 'adjunto-cc-' . session('usu_cedula') . '-' . rand(10000, 99999);
+            $ext1 = explode( '/',$_FILES['certificado']['type'])[1]; //obtener la eztensión de imagen con explode posición 1
+            $targetfile = base_path() . '/public/adjuntos/'. $nombre1 . '.' . $ext1; //definir el nombre final del archivo en servidor (firma_usuario1046669400.jpeg)
+            move_uploaded_file($_FILES['certificado']['tmp_name'], $targetfile); //mover el archivo subido a la ubicación deseada dentro del servidor. El nombre se cambia aquí con el nombre que le de $targetfile
+
+            $pdf->setSourceFile('../public/adjuntos/'. $nombre1 . '.' . $ext1); 
+
+            
+
+            for ($i=1; $i <= $Folios; $i++) { 
+                $pdf->AddPage();
+                try{
+                    $tplIdx = $pdf->importPage($i);
+                    $pdf->useTemplate($tplIdx, 1, 1, 217, 279);
+                }catch(Exception $e) {
+                  null;
+                }
+            }
+
+            unlink('../public/adjuntos/'. $nombre1 . '.' . $ext1);
+
+        }
+
+        //guardar archivos adjuntos
+        if (isset($request['contenidos'])){
+
+            $nombre2 = 'adjunto-cc-' . session('usu_cedula') . '-' . rand(10000, 99999);
+            $ext2 = explode( '/',$_FILES['contenidos']['type'])[1]; //obtener la eztensión de imagen con explode posición 1
+            $targetfile = base_path() . '/public/adjuntos/'. $nombre2 . '.' . $ext2; //definir el nombre final del archivo en servidor (firma_usuario1046669400.jpeg)
+            move_uploaded_file($_FILES['contenidos']['tmp_name'], $targetfile); //mover el archivo subido a la ubicación deseada dentro del servidor. El nombre se cambia aquí con el nombre que le de $targetfile
+
+            $pdf->setSourceFile('../public/adjuntos/'. $nombre2 . '.' . $ext2); 
+
+            for ($i=1; $i <= $Folios2; $i++) { 
+                
+                $pdf->AddPage();
+                try {
+                    $tplIdx = $pdf->importPage($i);
+                    $pdf->useTemplate($tplIdx, 1, 1, 217, 279);
+                }catch(Exception $e) {
+                  null;
+                }
+            }
+
+            unlink('../public/adjuntos/'. $nombre2 . '.' . $ext2);
+
+        }
+
 
         //si el usuario decide añadir recibo
         if(isset($request['imgRecibo'])){
@@ -973,11 +1036,7 @@ class SolicitudesController extends Controller{
             unlink('../public/recibosPago/' . $nombreImg);
         }
 
-        //Escribir la firma del usuario
-        if (!empty(session('usu_firma')) ) {
-
-            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 93, 125, 28, 12.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
-        }
+       
 
         $pdf->Close();
 
@@ -1002,6 +1061,8 @@ class SolicitudesController extends Controller{
 
         $pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($sol_formato, 'I'); 
+
+
 
     }
 
@@ -1141,6 +1202,13 @@ class SolicitudesController extends Controller{
         $pdf->SetXY(188, 140);
         $pdf->Write(0, $Año);
 
+        //Escribir la firma del usuario
+        if (!empty(session('usu_firma')) ) {
+
+            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 145, 116, 34, 16.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+        }
+
+
         //si el usuario decide añadir recibo
         if(isset($request['imgRecibo'])){
 
@@ -1165,12 +1233,7 @@ class SolicitudesController extends Controller{
             unlink('../public/recibosPago/' . $nombreImg);
         }
 
-        //Escribir la firma del usuario
-        if (!empty(session('usu_firma')) ) {
-
-            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 145, 116, 34, 16.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
-        }
-
+        
         $pdf->Close();
 
 
@@ -1191,7 +1254,7 @@ class SolicitudesController extends Controller{
 
         $this->enviarSms($sol_nombre);
 
-        //$pdf->Output($rutaGuardar, 'F'); 
+        $pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($sol_formato, 'I'); 
 
     }
@@ -1207,6 +1270,7 @@ class SolicitudesController extends Controller{
     public function enviarCorreo($sol_formato, $usuCorreo){
 
         //Arreglo de datos para funcion enviar
+        
 
         $datosMensaje = [
         'sol_formato' => $sol_formato
@@ -1232,8 +1296,8 @@ class SolicitudesController extends Controller{
             setlocale(LC_ALL,"es_ES");
             date_default_timezone_set("America/Bogota");
 
-            $customer_id = "44153ECC-F0AD-4D45-9F23-E95431EC8C63";
-            $api_key = "orub9TGHNbP1itCRoF1lFINssYfy+VHYJI8FnXNp2hhzc2/S9QOGmZyQQHVR1qmbaIxfVQjgsgInHrz9JymGHQ==";
+            $customer_id = "E03FF2E9-A27B-4A11-8DC9-C11DF6D54E3E";
+            $api_key = "SDnEC0qB848NLboLrs1iHNZD7jOndtV7Um2xBOvQEL1EvojRkSzXQ2wOuYx2tGAhXXgcABxc1ccxpVsuA1EBnA==";
 
                 //$phone_number = $request->telefono;
             $phone_number = '57' . Session('usu_telefono');

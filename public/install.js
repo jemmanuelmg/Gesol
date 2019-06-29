@@ -50,7 +50,10 @@ installButton.removeAttribute('hidden');
  */
 function installPWA(evt) {
   // CODELAB: Add code show install prompt & hide the install button.
+  // CODELAB: Add code show install prompt & hide the install button.
   deferredInstallPrompt.prompt();
+  // Hide the install button, it can't be called twice.
+  //evt.srcElement.setAttribute('hidden', true);
 
 
   // CODELAB: Log user response to prompt.
@@ -79,7 +82,7 @@ window.addEventListener('appinstalled', logAppInstalled);
  */
 function logAppInstalled(evt) {
   // CODELAB: Add code to log the event
-  console.log('Gesol Mobile fue instalada', evt);
+  console.log('Aplicación meteorológica fue instalada.', evt);
 
 
 }

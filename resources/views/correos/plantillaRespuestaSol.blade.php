@@ -48,10 +48,11 @@
     	<center>
     	
 
-		<p class="lead" style="color: #fff;
+		<p style="color: #FFFFFF;
   background-color: #0275d8;
-  border-color: #0275d8;width:150px; height:50px; border-radius: 6px;">
-		{!! link_to('solicitudesPDF/' . $sol_formato, $title = "Ver documento", $attributes = ['class'=>'btn btn-primary btn-lg'], $secure = null); !!}
+  border-color: #0275d8;width:150px; height:50px; border-radius: 6px; padding-top: 20px">
+
+		{!! link_to('solicitudesPDF/' . $sol_formato, $title = "Ver documento", $attributes = ['style'=>'color:#FFFFFF;  text-decoration: none'], $secure = null); !!}
 		</p>
 
 		</center>

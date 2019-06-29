@@ -39,7 +39,7 @@
 							<option value="R-DC-14">R-DC-14 Solicitud Revisión de Nota</option>
 							<option value="R-DC-39">R-DC-39 Modificación Matricula Académica</option>
 							<option value="R-DC-40">R-DC-40 Solicitud de Transferencia Externa</option>
-							<option value="R-DC-52">R-DC-52 Inscripción Curso de Vacaciones</option>
+							<option value="R-DC-52">R-DC-52 Inscripción Curso Extracurricular</option>
 						</select>
 						</center>
 

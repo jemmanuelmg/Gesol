@@ -37,7 +37,7 @@ $(document).ready(function() {
 			setTimeout(function() {
 			    oscurecer.hide();
 			    divLoading.hide();
-			}, 18000);
+			}, 10000);
 
 		}else{
 			

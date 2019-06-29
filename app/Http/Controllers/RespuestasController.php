@@ -737,15 +737,15 @@ class RespuestasController extends Controller
 
 
         //Enviar mensaje de texto
-        $customer_id = "44153ECC-F0AD-4D45-9F23-E95431EC8C63";
-        $api_key = "orub9TGHNbP1itCRoF1lFINssYfy+VHYJI8FnXNp2hhzc2/S9QOGmZyQQHVR1qmbaIxfVQjgsgInHrz9JymGHQ==";
+        $customer_id = "E03FF2E9-A27B-4A11-8DC9-C11DF6D54E3E";
+            $api_key = "SDnEC0qB848NLboLrs1iHNZD7jOndtV7Um2xBOvQEL1EvojRkSzXQ2wOuYx2tGAhXXgcABxc1ccxpVsuA1EBnA==";
 
         $phone_number = '57' . $telEstudiante;
         $message = "\n Gesol: Sol. respondida por " . Session("rol_nombre") . " " . Session("usu_nombres")  . " " . Session("usu_apellidos") . ". Ver bandeja de entrada";
         $message_type = "ARN";
 
         $messaging = new MessagingClient($customer_id, $api_key);
-        $response = $messaging->message($phone_number, $message, $message_type);*/
+        $response = $messaging->message($phone_number, $message, $message_type);
 
     }
 

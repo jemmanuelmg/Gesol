@@ -106,7 +106,7 @@ Registrarse en Gesol
 				</div>
 				@endif
 
-				
+				@if(session('rol_id') != 3)
 				<div id="contenedor-tel">
 					<div class="form-group">
 
@@ -121,11 +121,13 @@ Registrarse en Gesol
 						<!--INICIA DIV VISIBLE SELECCIONAR EMAIL O TELEFONO-->	
 						<div>
 
-							<!--INICIA RADIO BUTTONS EMAIL TELEFONO-->	
+							<!--INICIA RADIO BUTTONS EMAIL TELEFONO-->
+							<p>	
 							<center>
 							<i class="fas fa-mobile-alt fa-1x" id="icono-tel"></i>&nbsp;&nbsp;<input type="radio" name="opc-verif" id="opc-tel"> Con teléfono &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<i class="fas fa-envelope fa-1x" id="icono-email"></i>&nbsp;&nbsp;<input type="radio" name="opc-verif" id="opc-email"> Con Email
 							</center>
+							</p>
 							<!--FIN RADIO BUTTONS EMAIL TELEFONO-->	
 							
 
@@ -166,6 +168,7 @@ Registrarse en Gesol
 					<!--TERMINA DIV PARA INGRESAR EL TOKEN-->
 
 				</div>
+				@endif
 
 				<br>
 

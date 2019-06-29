@@ -96,6 +96,13 @@
 
 	        		<!--Input escondido para almacenar la foto codificada-->
 	        		<input id="foto" type="hidden" name="foto" value=""/>
+
+	        		<div class="form-group">
+			          <label class="control-label" for="nombres">No. Documento</label>
+			          	<div class="input-group">
+			            	<input type="text" value='{{$usuario->usu_cedula}}' class="form-control" name="cedula" placeholder="Introduzca su nombre" readonly="true" />
+			        	</div>             	
+			        </div>
 	        		
 			        <div class="form-group">
 			          <label class="control-label" for="nombres">Nombres</label>

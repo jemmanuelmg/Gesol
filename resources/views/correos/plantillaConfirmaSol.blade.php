@@ -4,7 +4,7 @@
 	<title></title>
 </head>
 
-<body style="font-family: 'Century Gothic'; font-size: 14px;">
+<body style="font-family: 'Verdana'; font-size: 14px">
 
 	<!-- CONTENEDOR PARA CONFIRMAR SOLICITUD -->
     <div class="container" style="position: relative;
@@ -27,7 +27,7 @@
 
 	        <center><center><img src="{{ $message->embed(public_path() . '/images/gesol_logo_new2.png') }}" /></center></center>
 	        <p>
-				Se ha guardado la nueva solicitud en el sistema Gesol. Desde ahora, su petición será revisada por la coordinación y en unos dias se enviará la respuesta automáticamente a su bandeja de entrada. Ninguna otra acción es requerida.
+				Se ha guardado la nueva solicitud en el sistema Gesol. Desde ahora, su petición será revisada por su Institución Educativa y en unos dias se enviará la respuesta automáticamente a su bandeja de entrada. Ninguna otra acción es requerida.
 			</p>
     	</div>
     	<!-- /.jumbotron -->
@@ -36,17 +36,18 @@
     	<center>
     	
 
-		<p class="lead" style="color: #fff;
+		<p style="color: #FFFFFF;
   background-color: #0275d8;
-  border-color: #0275d8;width:150px; height:50px; border-radius: 6px;">
-		{!! link_to('solicitudesPDF/' . $sol_formato, $title = "Ver documento", $attributes = ['class'=>'btn btn-primary btn-lg'], $secure = null); !!}
+  border-color: #0275d8;width:150px; height:50px; border-radius: 6px; padding-top: 20px">
+
+		{!! link_to('solicitudesPDF/' . $sol_formato, $title = "Ver documento", $attributes = ['style'=>'color:#FFFFFF;  text-decoration: none'], $secure = null); !!}
 		</p>
 
 		</center>
 
 
 
-    	<p class="texto-gris" style="color:gray;">
+    	<p style="color:gray;">
     		Atentamente, 
     		<i>-El equipo Gesol.</i>
     	</p>
@@ -62,61 +63,4 @@
 </body>
 </html>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-
-<body>
-
-	<!-- CONTENEDOR PARA CONFIRMAR SOLICITUD -->
-    <div class="container">
-
-    	<div class="jumbotron">
-	        <h1 class="display-4"></h1>
-	        <hr/>
-	        <p class="lead">
-	        	
-			</p>
-
-			<hr class="my-2">
-
-			<p>
-				El formato generado con los datos que ingresaste se encuentra disponible en el siguiente link.
-				<br>
-			    Atentamente: el equipo Gesol.
-		    </p>
-
-			<p class="lead">
-			   {!! link_to('solicitudesPDF/' . $sol_formato, $title = "link al recurso", $attributes = ['class'=>'btn btn-primary btn-lg'], $secure = null); !!}
-			</p>
-
-    	</div>
-      <!-- /.jumbotron -->
-
-    </div>
-    <!-- FIN CONTENEDOR PARA CONFIRMAR SOLICITUD -->
-
-
-
-</body>
-</html>
-
-	
 
