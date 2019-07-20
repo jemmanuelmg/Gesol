@@ -870,16 +870,16 @@
         },
         {
             "name": "google/protobuf",
-            "version": "v3.6.1",
+            "version": "v3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "48cb18e5c419ddd23d9badcfe4e9df7bde1979b2"
+                "reference": "7b9ad7d4272ec45779bfa074efffd55586f1965c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/48cb18e5c419ddd23d9badcfe4e9df7bde1979b2",
-                "reference": "48cb18e5c419ddd23d9badcfe4e9df7bde1979b2",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/7b9ad7d4272ec45779bfa074efffd55586f1965c",
+                "reference": "7b9ad7d4272ec45779bfa074efffd55586f1965c",
                 "shasum": ""
             },
             "require": {
@@ -894,8 +894,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Google\\Protobuf\\": "php/src/Google/Protobuf",
-                    "GPBMetadata\\Google\\Protobuf\\": "php/src/GPBMetadata/Google/Protobuf"
+                    "Google\\Protobuf\\": "src/Google/Protobuf",
+                    "GPBMetadata\\Google\\Protobuf\\": "src/GPBMetadata/Google/Protobuf"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -907,7 +907,7 @@
             "keywords": [
                 "proto"
             ],
-            "time": "2018-07-27T20:30:28+00:00"
+            "time": "2019-07-12T00:17:38+00:00"
         },
         {
             "name": "grpc/grpc",
