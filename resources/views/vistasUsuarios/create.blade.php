@@ -12,7 +12,7 @@ Registrarse en Gesol
 
 @section('contenido')
 
-<!-- CONTENEDOR PARA REGISTRARSE -->
+<!-- CONTENEDOR PARA REGISTRARSE (este es un pequeño cambio para heroku) -->
 <div class="container">
 
 	<div class="jumbotron">
