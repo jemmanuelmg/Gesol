@@ -44,6 +44,14 @@
                 <h2>Preguntas frecuentes</h2>
 
                 <div id="accordion" role="tablist">
+
+
+
+
+
+
+
+
                     <div class="card">
                         <div class="card-header" role="tab" id="headingOne">
                             <h5 class="mb-0">
@@ -72,6 +80,8 @@
                         <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
                                 Para hacer un solicitud primero hay que estar registrado en GESOL (si no esta registrado <a href="/usuarios/create" id="link-ayuda">Clic aquí</a> para registrarse). Si ya tiene una cuenta, <a href="/redactarSolicitud" id="link-ayuda">Clic aquí</a> para hacer una solicitud.
+
+
                             </div>
                         </div>
                     </div>
@@ -112,7 +122,7 @@
                         <div class="card-header" role="tab" id="headingFive">
                             <h5 class="mb-0">
                             <a class="collapsed" data-toggle="collapse" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" id="link-ayuda">
-                            ¿Qué tengo que hacer para que respondan?
+                            ¿Qué tengo que hacer para obtener respuesta?
                             </a>
                             </h5>
                         </div>

@@ -178,12 +178,12 @@
   <div class="row">
     <div class="col-md-6">
       <center>
-        <img src="../images/playstore.png" id="butInstall1" class="anadir-apk1">
+        <a href="aplicacion-movil-gesol"><img src="../images/playstore.png" class="anadir-apk1"></a>
       </center>
     </div>
     <div class="col-md-6">
       <center>
-        <img src="../images/appstore.png" id="butInstall2" class="anadir-apk2">
+        <a href="aplicacion-movil-gesol"><img src="../images/appstore.png" class="anadir-apk2"></a>
       </center>
     </div>
   </div>

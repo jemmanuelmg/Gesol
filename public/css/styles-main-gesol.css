@@ -152,6 +152,10 @@ body {
 .anadir-apk1, .anadir-apk2{
   width: 13rem;
 }
+
+.force-black-font-color{
+  color: black !important;
+}
 /*FIN CSS ESTILOS GENERALES*/
 
 

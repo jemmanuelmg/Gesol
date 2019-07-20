@@ -28,6 +28,11 @@ Route::get('/ayuda', function () {
 	return view('vistasUsuarios.paginaAyuda');
 });
 
+Route::get('/aplicacion-movil-gesol', function () {
+	return view('vistasUsuarios.appgesol');
+});
+
+
 Route::get('offline', 'UsuarioController@offline');
 
 	/**

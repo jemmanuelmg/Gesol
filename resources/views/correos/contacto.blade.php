@@ -20,9 +20,8 @@
 
 				<h3>
 					<center>
-						<strong>
 							Contáctenos &nbsp;&nbsp; <i class="far fa-comments fa-2x" aria-hidden="true"></i>
-						</strong>
+						
 					</center>
 				</h3>
 
