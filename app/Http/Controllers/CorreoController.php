@@ -47,7 +47,7 @@ class CorreoController extends Controller
         
         if ($recaptcha != '') {
 
-            $secret = '6Lf5vDAUAAAAABQXMPseu-k_mAgthb6Ur9RbGuio';
+            $secret = '6LczrK4UAAAAAKSI9swwZ4y6m_Yuj8nUdej33MAl';
             $ip = $_SERVER['REMOTE_ADDR'];
             $var = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $recaptcha . '&remoteip=' . $ip);
             $array = json_decode($var, true);

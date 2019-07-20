@@ -74,7 +74,7 @@
 
 				<br/>
 
-				<div class="g-recaptcha" data-sitekey="6LczrK4UAAAAAH0cICv73Jr_m11VaG6X-VocLrgB"></div>
+				<div class="g-recaptcha" data-sitekey="6Lf5vDAUAAAAAB-fgq6MBtZjAqKPOc0Ljw7fZeJX"></div>
 
 				<br/>
 
