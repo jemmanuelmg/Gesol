@@ -977,7 +977,6 @@ code {
   top:40%;
   left:45%;
   display: none;
-  font-size: 6rem;
 }
 
 #oscurecer{
@@ -997,7 +996,7 @@ code {
 }
 
 #letra-pequena-load{
-  font-size: 1rem;
+  font-size: 14px;
   color:#4169E1;
   font-family: 'Raleway', 'Open Sans', sans-serif;
 }

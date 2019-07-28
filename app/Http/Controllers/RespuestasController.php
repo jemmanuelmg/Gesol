@@ -436,7 +436,7 @@ class RespuestasController extends Controller
         //Enviar correo informativo a estudiante que solicita
         $this->enviarCorreo($request);
 
-        //$pdf->Output($rutaGuardar, 'F'); 
+        $pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($request['sol_formato'], 'I');
 
         Session::flash('mensaje-exito', 'Se ha guardado la respuesta correctamente <br> Se ha notificado al correo del estudiante. Revise el formato de esta solicitud para corroborar cambios');
@@ -572,7 +572,7 @@ class RespuestasController extends Controller
         //Enviar correo informativo a estudiante que solicita
         $this->enviarCorreo($request);
 
-        //$pdf->Output($rutaGuardar, 'F'); 
+        $pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($request['sol_formato'], 'I');
 
         Session::flash('mensaje-exito', 'Se ha guardado la respuesta correctamente <br> Se ha notificado al correo del estudiante. Revise el formato de esta solicitud para corroborar cambios');

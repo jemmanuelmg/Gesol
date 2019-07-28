@@ -806,7 +806,7 @@ class SolicitudesController extends Controller{
     
         $rutaGuardar = '../public/solicitudesPDF/' . $sol_formato;
 
-
+/*
         //Guardar registro en BD
         solicitudes::create([
             'sol_nombre'=>'R-DC-14',
@@ -820,7 +820,7 @@ class SolicitudesController extends Controller{
 
         $this->enviarSms($sol_nombre);
 
-        $pdf->Output($rutaGuardar, 'F'); 
+        $pdf->Output($rutaGuardar, 'F'); */
         $pdf->Output($sol_formato, 'I'); 
     }
 
@@ -960,6 +960,31 @@ class SolicitudesController extends Controller{
             $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 93, 125, 28, 12.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
         }
 
+         //si el usuario decide añadir recibo
+        if(isset($request['imgRecibo'])){
+
+            //Agregar imagen recibo de pago a solicitud
+            $nombreImg =  Session('usu_cedula') . 'Recibo' . '.' .$request->file('imgRecibo')->getClientOriginalExtension();
+
+            $request->file('imgRecibo')->move(
+                base_path() . '/public/recibosPago/', $nombreImg
+            );
+
+            //Añadir imagen recibo de pago
+
+            $pdf->AddPage();
+            $pdf->SetFont('Arial','B',10);
+            $pdf->SetXY(78, 20);
+            $pdf->Write(0, 'RECIBO DE PAGO PARA LA SOLICITUD');
+            $pdf->SetXY(78, 20);
+            $pdf->Write(0, '');
+            $pdf->Image('../public/recibosPago/' . $nombreImg, 10, 30, 170);
+
+            //Eliminar la imagen subida al servidor
+            unlink('../public/recibosPago/' . $nombreImg);
+        }
+
+
         //guardar archivos adjuntos
         if (isset($request['certificado'])){
 
@@ -982,7 +1007,7 @@ class SolicitudesController extends Controller{
                 }
             }
 
-            unlink('../public/adjuntos/'. $nombre1 . '.' . $ext1);
+            
 
         }
 
@@ -1007,38 +1032,16 @@ class SolicitudesController extends Controller{
                 }
             }
 
-            unlink('../public/adjuntos/'. $nombre2 . '.' . $ext2);
+            
 
         }
 
-
-        //si el usuario decide añadir recibo
-        if(isset($request['imgRecibo'])){
-
-            //Agregar imagen recibo de pago a solicitud
-            $nombreImg =  Session('usu_cedula') . 'Recibo' . '.' .$request->file('imgRecibo')->getClientOriginalExtension();
-
-            $request->file('imgRecibo')->move(
-                base_path() . '/public/recibosPago/', $nombreImg
-            );
-
-            //Añadir imagen recibo de pago
-
-            $pdf->AddPage();
-            $pdf->SetFont('Arial','B',10);
-            $pdf->SetXY(78, 20);
-            $pdf->Write(0, 'RECIBO DE PAGO PARA LA SOLICITUD');
-            $pdf->SetXY(78, 20);
-            $pdf->Write(0, '');
-            $pdf->Image('../public/recibosPago/' . $nombreImg, 10, 30, 170);
-
-            //Eliminar la imagen subida al servidor
-            unlink('../public/recibosPago/' . $nombreImg);
-        }
-
-       
 
         $pdf->Close();
+
+        //Borrar documentos adjuntos certificado contenidos
+        unlink('../public/adjuntos/'. $nombre2 . '.' . $ext2);
+        unlink('../public/adjuntos/'. $nombre1 . '.' . $ext1);
 
         //Crear nombre del  pdf para guardar localmente en server
         $sol_formato = Session('usu_cedula') . '-R-DC-40' . 'No' . $cuantasVeces . '.pdf';
