@@ -26,7 +26,7 @@
     			<h3 style="color: black">
 					<center>
 						
-							Descarga nuestra aplicacion mobil &nbsp;&nbsp; <i class="fas fa-mobile-alt fa-2x" aria-hidden="true"></i>
+							Descarga nuestra aplicacion móvil &nbsp;&nbsp; <i class="fas fa-mobile-alt fa-2x" aria-hidden="true"></i>
 						
 					</center>
 				</h3>

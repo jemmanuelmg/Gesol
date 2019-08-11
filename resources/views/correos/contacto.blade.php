@@ -24,10 +24,38 @@
 						
 					</center>
 				</h3>
+				
+				<br>
+				<br>
+				<div class="alert alert-info" role="alert">
+					@if(Session('sesionIniciada'))
+						<p>
+							@foreach($infoInstitucion as $dato)
+								Información de contacto de tu institución educativa: <i><b>{{$dato->ins_nombre}}</i></b>
+								<ul>
+								
+								<li>Teléfono: {{$dato->ins_telefono}}</li>
+								
+								<li>Dirección: {{$dato->ins_direccion}}</li>
+								
+								<li>Correo electrónico: {{$dato->ins_email}}</li>
 
+								<li>Horarios de atención: Lunes a Viernes de 8:00 a 12:00 y 14:00 a 16:00 
+
+
+								</ul>
+							@endforeach
+						</p>
+					@else
+						<p>Inicia sesión para ver aquí los datos de contacto de tu Intitución Educativa</p>
+					@endif
+				</div>
 				<br>
 				<br>
 
+
+
+				<p>Envía un mensaje al personal de <i>Gesol:</i></p>
 			</div>
 
 		</div>
@@ -73,7 +101,7 @@
 
 				<br/>
 
-				<div class="g-recaptcha" data-sitekey="6LczrK4UAAAAAH0cICv73Jr_m11VaG6X-VocLrgB"></div>
+				<div class="g-recaptcha" data-sitekey="6Le6e7IUAAAAAI5KqE-h67CJ3oX1pPGM1597MdNd"></div>
 
 				<br/>
 

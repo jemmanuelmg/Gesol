@@ -23,14 +23,14 @@
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
 
-      <div class="carousel-item active" style="background-image: url('../images/slider-gesol-1.jpeg')">
+      <div class="carousel-item active" style="background-image: url('../images/slider-gesol-4.jpg')">
         <div class="carousel-caption d-none d-md-block">
           <h3 class="texto-azul"><b>Bienvenido a gesol!</b></h3>
           <p>El gestor de solicitudes ideal para Instituciones Educativas</p>
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('../images/slider-gesol-2.jpg')">
+      <div class="carousel-item" style="background-image: url('../images/slider-gesol-1.jpeg')">
         <div class="carousel-caption d-none d-md-block">
           <h3 class="texto-azul"><b>Entrega tus papeles desde tu casa!</b></h3>
           <p>...y espera tu respuesta en tu bandeja de entrada. Así de simple.</p>
@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <div class="carousel-item" style="background-image: url('../images/slider-gesol-4.jpg')">
+      <div class="carousel-item" style="background-image: url('../images/slider-gesol-2.jpg')">
         <div class="carousel-caption d-none d-md-block">
           <h3 class="texto-azul"><b>Para tu comunidad</b></h3>
           <p>Disfruta de la comodidad que te brindan las TIC.</p>
@@ -78,13 +78,13 @@
   <!-- Features Section -->
   <div class="row">
     <div class="col-lg-6">
-      <h2>Caracteristicas</h2>
-      <p>Gesol es una plataforma innovadora para la comunidad, la cual permite gestionar de manera mas eficiente y rápida casi cualquiet trámite que requieran los estudiantes.</p>
+      <h2>Características</h2>
+      <p>Gesol es una plataforma innovadora para Instituciónes Educativas, que permite gestionar de manera más eficiente y rápida casi cualquier trámite que requieran los estudiantes.</p>
 
       <ul>
 
         <li>
-          <p>&nbsp;<i class="fas fa-bolt fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;  No mas filas!: </strong> Con Gesol puedes diligenciar cualquier solicitud académica (cambio de jornada, revision de notas, tranferencia interna, etc.) <strong>desde la comodida de tu casa!,</strong> Todo se enviará automáticamente a tu bandeja de entrada.</p>
+          <p>&nbsp;<i class="fas fa-bolt fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;  No mas filas!: </strong> Con Gesol puedes diligenciar cualquier solicitud académica (cambio de jornada, revision de notas, tranferencia interna, etc.) <strong>desde la comodida de tu casa!</strong>
         </li>
 
         <li>
@@ -100,13 +100,13 @@
         </li>
 
         <li>
-          <p>&nbsp;<i class="fas fa-comments fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Servicios de ayuda, chats, manuales, recuperación de contraseña y muchas cosas mas a tu disposición: ¡Que esperas!</p>
+          <p>&nbsp;<i class="fas fa-comments fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Servicios de ayuda, chats, notificaciones vía SMS y muchas cosas mas a tu disposición: ¡Únete!</p>
         </li>
 
       </ul>
 
       <p>
-        Pensado en tu comodidad y bienestar hemos desarrollado esta aplicación. Nuestro mayor logro es que cada vez mas estudiantes disfruten de estos beneficios. Únete ahora mismo a esta comunidad y disfruta de todo lo que ofrece!. Desarrollado <strong>para ayudar a estudiantes.</strong></p>
+        Pensado en tu comodidad y bienestar hemos desarrollado esta aplicación. Nuestro mayor logro es que cada vez más estudiantes disfruten de estos beneficios. ¡Únete ahora mismo a esta comunidad y disfruta de todo lo que ofrece!.</p>
       </p>
 
     </div>
@@ -170,7 +170,7 @@
   <!-- Call to Action Section -->
   <div class="row">
     <div class="col-md-12">
-      <h2>Prueva nuestra app movil! &nbsp; <i class="fas fa-mobile-alt"></i></h2>
+      <h2>Prueba nuestra app movil! &nbsp; <i class="fas fa-mobile-alt"></i></h2>
       <p>Añade esta página a tu teléfono como aplicación movil. Selecciona Play Store si tienes un dispositivo Android o App Store para iOS:</p>
     </div>
   </div>
