@@ -118,7 +118,7 @@ body {
   }
 }
 
-.texto-azul{
+{
   color:#3d89c8;
 }
 
@@ -130,6 +130,7 @@ body {
   position: absolute;
   top: 1px;
   left: 1px;
+
 }
 
 #div-firma{
@@ -156,6 +157,8 @@ body {
 .force-black-font-color{
   color: black !important;
 }
+
+
 /*FIN CSS ESTILOS GENERALES*/
 
 

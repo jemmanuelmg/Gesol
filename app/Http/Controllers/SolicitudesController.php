@@ -162,6 +162,10 @@ class SolicitudesController extends Controller{
 
         switch ($request['codSol']){
 
+            case 'R-ITM-01':
+            $this->procesarRITM01($request);
+            break;
+
             case 'R-DC-13':
             $this->procesarRDC13($request);
             break;
@@ -248,6 +252,10 @@ class SolicitudesController extends Controller{
             return view('vistasSolicitudes.R-DC-52Formulario');
             break;
 
+            case "R-ITM-01":
+            return view('vistasSolicitudes.R-ITM-01Formulario');
+            break;
+
             default:
             Session::flash('mensaje-error', 'La solicitud seleccionada no existe.');
             return Redirect::to('/redactarSolicitud');
@@ -255,7 +263,14 @@ class SolicitudesController extends Controller{
 }
 
 
-    
+    /**
+    * Método llamado por store para procesar toda la informacion
+    * proveniente de una solicitud RITM01
+    *
+    */
+    public function procesarRITM01(Request $request){
+
+    }
 
     /**
      * Método llamado por store para procesar toda la informacion

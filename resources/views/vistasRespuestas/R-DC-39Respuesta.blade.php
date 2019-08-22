@@ -23,7 +23,7 @@
 
                     <input type="hidden" value="{{$sol_id}}" name="sol_id" class="form-control">
 
-                    <h1><center><strong>Coordinador</strong></center></h1>
+                    <h1><center><strong>Redactar respuesta</strong></center></h1>
 
                     <br>
 

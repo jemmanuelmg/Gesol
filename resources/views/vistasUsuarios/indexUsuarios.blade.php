@@ -56,7 +56,16 @@
 					<td>{{$usuario->usu_cedula}}</td>
 					<td>{{$usuario->usu_nombres}}</td>
 					<td>{{$usuario->usu_apellidos}}</td>
-					<td>{{$usuario->usu_genero}}</td>
+
+					@if($usuario->usu_genero == "Masculino")
+					<td>M</td>
+					@elseif($usuario->usu_genero == "Femenino")
+					<td>F</td>
+					@else
+					<td>-</td>
+					@endif
+
+
 					<td>{{$usuario->usu_telefono}}</td>
 					<td style="text-align: left;">{{$usuario->email}}</td>
 					<td>{{$usuario->rol_nombre}}</td>

@@ -116,7 +116,7 @@
                     <!--Si tiene rol de coordinador, puede editar los siguientes campos-->
                     @if(Session('rol_id') == 3)
 
-                    <h1><center><strong>Coordinador</strong></center></h1>
+                    <h1><center><strong>Redactar respuesta</strong></center></h1>
 
                     <br>
 

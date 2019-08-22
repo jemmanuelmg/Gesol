@@ -289,7 +289,7 @@ class RespuestasController extends Controller
         }
 
         //Coordinador
-        if (Session('rol_id') == 3) {
+        if (Session('rol_id') == 3 || Session('rol_id') == 2) {
 
             $Concepto2 = $_POST["Concepto2"];
             $resultado3 = substr($Concepto2, 0, 79);
@@ -530,7 +530,7 @@ class RespuestasController extends Controller
         }
 
         //Coordinador
-        if (Session('rol_id') == 3) {
+        if (Session('rol_id') == 3 || Session('rol_id') == 2) {
 
             $Observaciones = $_POST["Observaciones"];
             $Observaciones2 = $_POST["Observaciones"];
@@ -596,7 +596,7 @@ class RespuestasController extends Controller
         $pdf->SetTextColor(0, 0, 0);
 
         //Coordinador
-        if(Session('rol_id') == 3) {
+        if(Session('rol_id') == 3 || Session('rol_id') == 2) {
 
             $Concepto = $_POST["Concepto"];
             $resultado = substr($Concepto, 0, 85);

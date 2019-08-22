@@ -99,7 +99,7 @@
                     <!--Si tiene rol de coordinador, puede editar los siguientes campos-->
                     @if(session('rol_id') == 3 || session('rol_id') == 2)
 
-                    <h1><center><strong>Coordinador</strong></center></h1>
+                    <h1><center><strong>Redactar respuesta</strong></center></h1>
 
                     <br>
 

@@ -20,6 +20,7 @@
 			<br>
 
 			<!--Switch para tomar foto o no-->
+			@if($usuario->usu_cedula == Session('usu_cedula'))
 			<center>
         		<h5 class="texto-azul" id="lblFoto"> ¿Quieres añadir una foto a tu perfil?:</h5>
 
@@ -35,6 +36,7 @@
 					</div>
 				</div>
 		    </center>
+		    @endif
 
 
 			{!!Form::open(['route' => ['usuarios.update', $usuario->usu_cedula], 'files' => true, 'enctype' => 'multipart/form-data', 'method'=>'PUT'])!!}
@@ -247,7 +249,7 @@
 					<hr>
 
 					<p style="color: #DC3545;">
-						<span class="badge badge-danger" id="span-tel">info</span>  Al eliminar ésta cuenta se removerán todos los registros de la base de datos relacionados a la misma., como solicitudes, respuestas, documentos PDF, etc.								
+						<span class="badge badge-danger" id="span-tel">info</span>  Al eliminar ésta cuenta se removerán todos los registros de la base de datos relacionados a la misma (solicitudes, respuestas, documentos PDF). <b>Esta información no podrá ser recuperada.</b> <strong>Porfavor realizar este proceso con responsabilidad</strong>								
 					</p>
 				</div>
 			</div><!--/row-->
