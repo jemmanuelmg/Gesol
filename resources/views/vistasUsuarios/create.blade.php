@@ -113,7 +113,7 @@ Registrarse en Gesol
 						<!--INICIA INDICACIONES-->
 						<label class="control-label" id="label-telefono" for="telefono">Comprobar cuenta:</label>
 						<p class="texto-gris"> 
-							<span class="badge badge-info" id="span-tel">info</span> Debes introducir tu numero de celular o email donde quieres que sea enviado un código de confirmación, que luego podrás ingresar aquí para validar tus datos.
+							<span class="badge badge-info" id="span-tel">info</span> Pide el código de confirmación con tu email o numero de teléfono:
 						</p>
 						<!--FIN INDICACIONES-->
 						
@@ -134,8 +134,10 @@ Registrarse en Gesol
 							
 							<!--INICIA BOTÓN ENVIAR CODIGO-->
 							<button id="btn-telefono"class="btn btn-primary btn-sm" type="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Verificando.." data-content="Se intentará enviar un mensaje al número o email">
+								1. Obtener código &nbsp;
 								<i class="fas fa-user fa-1x" aria-hidden="true"></i>
 								<div id="div-spin"><i class="fas fa-sync fa-spin fa-1x" aria-hidden="true"></i></div>
+								<br>
 							</button>
 							<!--FIN BOTÓN ENVIAR CODIGO-->
 
@@ -158,6 +160,7 @@ Registrarse en Gesol
 							<input type="text" size="4" maxlength="4" id="input-token" name="token" class="form-control" />
 							</div>
 						</div>
+						<p class="texto-gris">Introduce el código y da click en '2. Registrarse'</p>
 						</center>
 						<!--TERMINA INPUT DEL TOKEN-->
 
@@ -171,8 +174,9 @@ Registrarse en Gesol
 				@endif
 
 				<br>
+				<br>
 
-				<input type="submit" value="Registrarme" class="btn btn-primary btn-lg">
+				<input type="submit" value="2. Registrarse" class="btn btn-primary btn-lg">
 
 
 			</div>

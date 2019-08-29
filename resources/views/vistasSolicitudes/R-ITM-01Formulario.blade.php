@@ -27,7 +27,7 @@
 
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="hidden" value="R-DC-40" name="codSol" class="form-control">
+                            <input type="hidden" value="R-ITM-01" name="codSol" class="form-control">
                         </div>              
                     </div>
 
@@ -84,9 +84,9 @@
                             </div>
 
                             <div class="form-group">
-                              <label class="control-label" for="cedula">Lugar de expedición *</label>
+                              <label class="control-label" for="lugar">Lugar de expedición *</label>
                                 <div class="input-group">
-                                    <input type="text" name="lugar" placeholder="Departamento y municipio donde obtuvo su identificación" size="30" class="form-control" required > 
+                                    <input type="text" name="lugar" maxlength="21" placeholder="Departamento y municipio donde obtuvo su identificación" size="30" class="form-control" required > 
                                 </div>              
                             </div>
 
@@ -106,7 +106,7 @@
                             <div class="form-group">
                               <label class="control-label" for="celular">Número teléfono celular *</label>
                                 <div class="input-group">
-                                    <input type="number" name="celular" placeholder="Introduzca número de teléfono celular" size="30" class="form-control" required> 
+                                    <input type="number" name="celular" value="{{session('usu_telefono')}}" placeholder="Introduzca número de teléfono celular" size="30" class="form-control" required> 
                                 </div>              
                             </div>
 
@@ -120,7 +120,7 @@
                             <div class="form-group">
                               <label class="control-label" for="email2">Correo personal *</label>
                                 <div class="input-group">
-                                    <input type="text" name="email2" placeholder="Introduzca su e-mail de uso personal" size="30" class="form-control" required > 
+                                    <input type="text" name="email2" value="{{session('email')}}" placeholder="Introduzca su e-mail de uso personal" size="30" class="form-control" required > 
                                 </div>              
                             </div>
 
@@ -145,7 +145,7 @@
                             <div class="form-group">
                               <label class="control-label" for="programa">Programa académico *</label>
                                 <div class="input-group">
-                                    <input type="text" name="asunto" placeholder="Introduzca el nombre de su programa académico actual" size="30" class="form-control" required>
+                                    <input type="text" name="programa" placeholder="Introduzca el nombre de su programa académico actual" size="30" class="form-control" required>
                                 </div>              
                             </div>
 
@@ -153,8 +153,8 @@
                             <div class="form-group">
                                 <label class="control-label" for="tipoPrograma">Tipo de programa académico *</label>
                                 <br>
-                                <input type="radio" name="programa" value="1"> Tecnología &nbsp;&nbsp;
-                                <input type="radio" name="programa" value="2"> Ingeniería
+                                <input type="radio" name="tipoPrograma" value="1"> Tecnología &nbsp;&nbsp;
+                                <input type="radio" name="tipoPrograma" value="2"> Ingeniería
 
                             </div>
 
@@ -179,8 +179,8 @@
                     </p>   
 
                     <div>
-                        <p>Si lo desea puede adjuntar un documento en formato pdf con información adicional (no obligatorio)</p>
-                        <input type="file" name="certificado" class="form-control-file" accept=".pdf">
+                        <p>Si lo desea puede adjuntar un documento en formato pdf con información adicional que respalde sus solicitud</p>
+                        <input type="file" name="adjunto1" class="form-control-file" accept=".pdf">
                     </div>
 
 

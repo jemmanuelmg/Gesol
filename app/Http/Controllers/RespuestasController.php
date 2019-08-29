@@ -79,6 +79,10 @@ class RespuestasController extends Controller
         
         switch ($request['sol_nombre']){
 
+            case "R-ITM-01":
+            $this->responderRITM01($request);
+            break;
+
             case 'R-DC-13':
             $this->responderRDC13($request);
             break;
@@ -96,7 +100,7 @@ class RespuestasController extends Controller
             break;
 
             case "R-DC-52":
-            $this->procesarRDC52($request);
+            $this->responderRDC52($request);
             break;
 
             default:
@@ -165,6 +169,10 @@ class RespuestasController extends Controller
         
         switch ($sol_nombre){
 
+            case "R-ITM-01":
+            return view('vistasRespuestas.R-ITM-01Respuesta', compact('sol_nombre', 'sol_formato', 'sol_id'));
+            break;
+
             case 'R-DC-13':
             return view('vistasRespuestas.R-DC-13Respuesta', compact('sol_nombre', 'sol_formato', 'sol_id'));
             break;
@@ -190,6 +198,132 @@ class RespuestasController extends Controller
             return Redirect::to('/respuestas');
         }
     }
+
+
+
+    public function responderRITM01(Request $request){
+
+        $pdf = new \fpdi\FPDI('P', 'mm','Letter');
+
+        $pdf->SetTitle('R-ITM-01');
+        $pdf->SetFont('Times','',12);
+        $pdf->SetTextColor(0, 0, 0);
+
+        //variables
+        $texto = $request["texto"];
+        $fechaSol = $request["fechaSol"];
+        $concepto = $request["concepto"];
+
+
+        //Importar el contenido ya existente de la solicitud (datos, archivos adjuntos, etc)
+        //Luego escribir en la última página la respuesta a la solicitud
+        $numPaginas = $pdf->setSourceFile("../public/solicitudesPDF/" . $request['sol_formato']); 
+
+        for ($i=1; $i <= $numPaginas; $i++) { 
+            $pdf->AddPage();
+            try{
+                $tplIdx = $pdf->importPage($i);
+                $pdf->useTemplate($tplIdx, 1, 1, 217, 279);
+            }catch(Exception $e) {
+              null;
+            }
+
+        }
+
+        //Importar la última página del formato inicial, 
+        //en donde se escribe usualmente la respuesta
+        $pdf->AddPage();
+
+        $pdf->setSourceFile("../public/basePDF/R-ITM-01.pdf");
+        $tplIdx = $pdf->importPage(3); //la 3 es la pagina
+        $pdf->useTemplate($tplIdx, 1, 1, 217, 279);
+
+
+        $pdf->SetXY(34, 50);
+        $pdf->Write(0, $fechaSol);
+
+        $pdf->SetXY(66, 50);
+        $pdf->Write(0, Session('usu_nombres') . ' ' . Session('usu_apellidos'));
+
+        $pdf->SetFont('Times','',10);
+        $pdf->SetXY(66, 54);
+        $pdf->Write(0, 'Miembro comité trabajos de grado');
+
+        $pdf->SetFont('Times','B',12);
+        $pdf->SetXY(160, 50);
+        $pdf->Write(0, $concepto);
+        $pdf->SetFont('Times','',12);
+
+
+
+        //Escribir el texto de la respuesta
+        $cantCaracteres = strlen($texto);
+        $cantRenglones = ceil($cantCaracteres/90); //cada renglón tendrá 90 caracteres (segun lo que medí)
+
+
+        
+        if($cantCaracteres <= 90){//si solo hay caracteres suficientes para un solo renglón de 90 cacarcteres
+
+            $pdf->SetXY(30, 74);
+            $pdf->Write(0, $texto);
+
+        }else{//Si se escriben mas de un renglón   
+
+            $y=74;
+            $ini=0;
+            for ($i=0; $i < $cantRenglones; $i++) { 
+
+                $pdf->SetXY(30, $y);
+                $pdf->Write(0, substr($texto, $ini, 90)); //string base, posicion inicial, cantidad de caracteres para tomar a partir del punto inicial 
+
+                $y += 5; //aumentamos y en 5 cada vez que escribimos
+                $ini += 90; //movemos el punto inicial para cortar el string en 90. Luego tomamos 90 caracteres mas a partir de él
+            }
+
+        }
+
+        if (!empty(session('usu_firma')) ) {
+
+            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 43, 230, 30, 13.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+        }
+
+        $pdf->SetXY(30, 248);
+        $pdf->Write(0, Session('usu_nombres') . ' ' . Session('usu_apellidos'));
+
+        $pdf->SetXY(30, 252.5);
+        $pdf->SetFont('Times','',10);
+        $pdf->Write(0, 'Miembro comité trabajos de grado');
+        
+        $pdf->Close();
+        $pdf->Output('probando respuesta', 'I');
+
+
+        $rutaGuardar = '../public/solicitudesPDF/' . $request['sol_formato'];
+
+        //Crear registro en bd con cedula de secreatario(a) o persona
+        //que responde
+        Respuestas::create([
+            'usu_cedula' => Session('usu_cedula'),
+            'sol_nombre' => $request['sol_nombre'],
+            'res_formato' => $request['sol_formato']
+        ]);
+
+        //Editar solicitud para cambiar estado a 'Atendida'
+        $solicitud = Solicitudes::find($request['sol_id']);
+        $solicitud->sol_estado = 'Atendida';
+        $solicitud->save();
+
+        //Enviar correo informativo a estudiante que solicita
+        $this->enviarCorreo($request);
+
+        $pdf->Output($rutaGuardar, 'F'); 
+        $pdf->Output($request['sol_formato'], 'I');
+
+        Session::flash('mensaje-exito', 'Se ha guardado la respuesta correctamente <br> Se ha notificado al correo del estudiante. Revise el formato de esta solicitud para corroborar cambios');
+    }
+
+
+
 
 
     public function responderRDC13(Request $request){
@@ -736,9 +870,19 @@ class RespuestasController extends Controller
         });
 
 
+
+        /** Por qué esta parte no está separada en otro método? **/
+
+        //Esta parte, en donde el método envía SMS es diferente al comportamiento de solicitures
+        //En las solicitudes, se envia el SMS al usuario actual, al estudiante que esta diligenciando la sol.
+        //Pero en este caso, se intenta enviar SMS a otro usuario, diferente al de la sesion actual.
+        //Para obtener el telefono debo hacer una consulta a la bd, u si separo esta parte en otro metodo
+        //tendría que hacer 2 consultas. Por esa razon decidí mantenerlo unido.
+
+        /*
         //Enviar mensaje de texto
         $customer_id = "E03FF2E9-A27B-4A11-8DC9-C11DF6D54E3E";
-            $api_key = "SDnEC0qB848NLboLrs1iHNZD7jOndtV7Um2xBOvQEL1EvojRkSzXQ2wOuYx2tGAhXXgcABxc1ccxpVsuA1EBnA==";
+        $api_key = "SDnEC0qB848NLboLrs1iHNZD7jOndtV7Um2xBOvQEL1EvojRkSzXQ2wOuYx2tGAhXXgcABxc1ccxpVsuA1EBnA==";
 
         $phone_number = '57' . $telEstudiante;
         $message = "\n Gesol: Sol. respondida por " . Session("rol_nombre") . " " . Session("usu_nombres")  . " " . Session("usu_apellidos") . ". Ver bandeja de entrada";
@@ -746,6 +890,7 @@ class RespuestasController extends Controller
 
         $messaging = new MessagingClient($customer_id, $api_key);
         $response = $messaging->message($phone_number, $message, $message_type);
+        */
 
     }
 

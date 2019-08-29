@@ -27,15 +27,15 @@
 	<br>
 
 	<div class="container-fluid">
-		<table id="example" class="responstable">
+		<table id="tabla1" class="responstable">
 			<thead>
 				<tr>
-					<th>Nombre solicitud</th>
-					<th>Fecha solicitud (aaaa/mm/dd)</th>
-					<th>Nombres estudiante</th>
-					<th>Apellidos estudiante</th>
-					<th>Cedula estudiante</th>
-					<th>Estado solicitud</th>
+					<th>Procedimiento</th>
+					<th>Fecha</th>
+					<th>Nombres</th>
+					<th>Apellidos</th>
+					<th>Documento</th>
+					<th>Estado</th>
 					<th>Opciones</th>
 				</tr>
 			</thead>
@@ -75,25 +75,32 @@
 	<script type="text/javascript">
 
 		$(document).ready(function() {
-			$('#example').DataTable({
+			$('#tabla1').DataTable({
+
+				"order":[[0,"desc"]],
+
 				"language":{
 					"search":"Buscar en tabla",
+					"lengthMenu":     "Mostrar _MENU_ registros",
+					"lenghtMenu":"Mostrando _MENU_ registros por pagina.",
+					"zeroRecords":"No se ha encontrado información.",
+					"info":"Mostrando la pagina _PAGE_ de _PAGES_",
+					"infoEmpty":"No hay registros disponibles.",
+					"infoFiltered":"(filtrado de _MAX_ registros totales.)",
 					"paginate":{
 						"first" : "primero",
 						"previous" : "anterior",
 						"next" : "siguiente",
 						"last" : "ultimo",
 					},
-					"lengthMenu":     "Mostrar _MENU_ registros",
-					"lenghtMenu":"Mostrando _MENU_ registros por pagina.",
-					"zeroRecords":"No se ha encontrado información.",
-					"info":"Mostrando la pagina _PAGE_ de _PAGES_",
-					"infoEmpty":"No hay registros disponibles.",
-					"infoFiltered":"(filtrado de _MAX_ registros totales.)"
 				}
 			});
 
 		} );
 
+
 	</script>
+
+
+
 @stop

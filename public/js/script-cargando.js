@@ -37,7 +37,7 @@ $(document).ready(function() {
 			setTimeout(function() {
 			    oscurecer.hide();
 			    divLoading.hide();
-			}, 10000);
+			}, 15000); //tiempo en segundos. 3000 = 3 segundos. 15000 = 15 segundos
 
 		}else{
 			

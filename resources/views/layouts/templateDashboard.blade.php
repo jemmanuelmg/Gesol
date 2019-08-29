@@ -73,14 +73,14 @@
       <li class="nav-item">
         <a class="nav-link" href="/solicitudes">
           <i class="fas fa-edit"></i>
-          <span>Solicitudes</span></a>
+          <span>Responder Solicitudes</span></a>
       </li>
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link" href="/respuestas">
           <i class="far fa-arrow-alt-circle-left"></i>
-          <span>Respuestas</span></a>
+          <span>Respuestas dadas</span></a>
       </li>
 
       <!-- Divider -->

@@ -37,8 +37,8 @@
 				@else
 				<tr>
 				@endif	
-					<th>Nombre solicitud</th>
-					<th>Fecha solicitud (aaaa/mm/dd)</th>
+					<th>Procedimiento</th>
+					<th>Fecha solicitud</th>
 					<th>Nombres estudiante</th>
 					<th>Apellidos estudiante</th>
 					<th>Cedula estudiante</th>
@@ -71,7 +71,7 @@
 							sin tener que usar solicitudes.edit
 							{!! link_to_route('solicitudes.edit', $title = 'Editar', $parameters = $solicitud->sol_id, $attributes = ['class'=>'far fa-edit btn btn-outline-primary']); !!}-->
 
-							<a href="{{'/solicitudes/' . $solicitud->sol_id . '/edit'}}" class="btn btn-outline-primary btn-sm" target="_blank"><i class="far fa-edit"></i>&nbsp;Edit</a>
+							<!-- <a href="{{'/solicitudes/' . $solicitud->sol_id . '/edit'}}" class="btn btn-outline-primary btn-sm" target="_blank"><i class="far fa-edit"></i>&nbsp;Edit</a> -->
 
 						@endif
 
@@ -100,6 +100,7 @@
 
 		$(document).ready(function() {
 			$('#example').DataTable({
+				"order":[[0,"desc"]],
 				"language":{
 					"search":"Buscar en tabla",
 					"paginate":{

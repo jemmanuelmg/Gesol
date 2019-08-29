@@ -79,6 +79,7 @@
 
 		$(document).ready(function() {
 			$('#example').DataTable({
+				"order":[[0,"desc"]],
 				"language":{
 					"search":"Buscar en tabla",
 					"paginate":{

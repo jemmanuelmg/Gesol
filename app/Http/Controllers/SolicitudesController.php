@@ -107,17 +107,19 @@ class SolicitudesController extends Controller{
         //hay que seleccionarlo como tabla.campo: usuarios.usu_cedula
         //Seleccionar las solicitudes que puede editar cada rol.
         
-        if (session('rol_id') == 3 || session('rol_id') == 2) {     //Si es coordinador o secretaria
+        /*if (session('rol_id') == 3 || session('rol_id') == 2) {     //Si es coordinador o secretaria
             
             $listaSol = \DB::table('solicitudes')
             ->join('usuarios', 'usuarios.usu_cedula', '=', 'solicitudes.usu_cedula')
-            ->select('sol_id','sol_nombre', 'sol_formato', 'sol_fechaCreacion', 'sol_estado', 'usu_nombres','usu_apellidos', 'usuarios.usu_cedula', 'email')            
+            ->select('sol_id','sol_nombre', 'sol_formato', 'sol_fechaCreacion', 'sol_estado', 'usu_nombres','usu_apellidos', 'usuarios.usu_cedula', 'email')
+            ->orderBy('sol_fechaCreacion', 'desc')            
             ->get();
 
         } elseif (session('rol_id') == 5) {     //Si es docente
             $listaSol = \DB::table('solicitudes')
             ->join('usuarios', 'usuarios.usu_cedula', '=', 'solicitudes.usu_cedula')
-            ->select('sol_id','sol_nombre', 'sol_formato', 'sol_fechaCreacion', 'sol_estado', 'usu_nombres','usu_apellidos', 'usuarios.usu_cedula', 'email') 
+            ->select('sol_id','sol_nombre', 'sol_formato', 'sol_fechaCreacion', 'sol_estado', 'usu_nombres','usu_apellidos', 'usuarios.usu_cedula', 'email')
+            ->orderBy('sol_fechaCreacion', 'desc') 
             ->whereIn('sol_nombre', array('R-DC-13', 'R-DC-14'))           
             ->get();
 
@@ -125,9 +127,17 @@ class SolicitudesController extends Controller{
             $listaSol = \DB::table('solicitudes')
             ->join('usuarios', 'usuarios.usu_cedula', '=', 'solicitudes.usu_cedula')
             ->select('sol_id','sol_nombre', 'sol_formato', 'sol_fechaCreacion', 'sol_estado', 'usu_nombres','usu_apellidos', 'usuarios.usu_cedula', 'email')
+            ->orderBy('sol_fechaCreacion', 'desc')
             ->whereIn('sol_nombre', array('R-DC-13', 'R-DC-40'))             
             ->get();
-        }
+        }*/
+
+        $listaSol = \DB::table('solicitudes')
+            ->join('usuarios', 'usuarios.usu_cedula', '=', 'solicitudes.usu_cedula')
+            ->select('sol_id','sol_nombre', 'sol_formato', 'sol_fechaCreacion', 'sol_estado', 'usu_nombres','usu_apellidos', 'usuarios.usu_cedula', 'email')
+            ->orderBy('sol_fechaCreacion', 'desc')            
+            ->get();
+
 
         //compact usa solo el nombre de la variable sin el signo '$'
         return view('vistasSolicitudes.indexSolicitudes', compact('listaSol'));
@@ -209,7 +219,10 @@ class SolicitudesController extends Controller{
      ->join('usuarios', 'usuarios.usu_cedula', '=', 'solicitudes.usu_cedula')
      ->select('sol_id','sol_nombre', 'sol_formato', 'sol_fechaCreacion', 'sol_estado', 'usu_nombres','usu_apellidos', 'usuarios.usu_cedula')
      ->where('usuarios.usu_cedula', '=', Session('usu_cedula'))
+     ->orderBy('sol_fechaCreacion', 'desc')
      ->get();
+
+     //dd($listaSol);
 
         //compact usa solo el nombre de la variable sin el $
      return view('vistasSolicitudes.misSolicitudes', compact('listaSol'));
@@ -270,6 +283,287 @@ class SolicitudesController extends Controller{
     */
     public function procesarRITM01(Request $request){
 
+        //Consultar cuantas veces el usuario ha hecho esta misma solicitud
+        $sol_nombre = 'R-ITM-01';
+        $usu_cedula = Session('usu_cedula');
+
+        $cuantasVeces = DB::table('solicitudes')->where([
+            ['sol_nombre' , '=', $sol_nombre],
+            ['usu_cedula' , '=', $usu_cedula],
+            ])->count();
+
+        //nueva variabñe solo usada para itm
+        $radicado = Session('usu_cedula') . '-RITM01' . '-' . $cuantasVeces;
+
+        //Esta consulta no lleva ->get() por que se extrae un numero.
+        //con funciones de agragacion no se usa get.
+
+        // Iniciar el objeto para hacer operaciones
+        $pdf = new \fpdi\FPDI('P', 'mm','Letter');
+
+        //Nueva Página
+        $pdf->AddPage();
+
+        //Extraer plantilla desde pdf existente
+        $pdf->setSourceFile("../public/basePDF/R-ITM-01.pdf");
+
+        //Importar página de plantilla (en este caso, la 1)
+        $tplIdx = $pdf->importPage(1);
+
+        //Poner esta pagina en nueo documento con coordenadas de posicion
+        $pdf->useTemplate($tplIdx, 1, 1, 217, 279);
+
+        $fuente = 'Arial';
+        $pdf->SetTitle('R-ITM-01');
+        $pdf->SetFont('Times','',9);
+        $pdf->SetTextColor(0, 0, 0);
+
+        //Variables
+        $asunto = $request['asunto'];
+        $departamento = $request['departamento'];
+        $nombres = $request['nombres'];
+        $apellidos = $request['apellidos'];
+        $carne = $request['carne'];
+        $cedula = $request['cedula'];
+        $lugar = $request['lugar'];
+        $fijo = $request['fijo'];
+        $celular = $request['celular'];
+        $email1 = $request['email1'];
+        $email2 = $request['email2'];
+        $modalidad = $request['modalidad'];
+        $programa = $request['programa'];
+        $tipoPrograma = $request['tipoPrograma'];
+        $fechaSol = $request['fechaSol'];
+
+
+        $pdf->SetXY(151, 25);
+        $pdf->Write(0, 'Comité de trabajos de grado');
+
+        $pdf->SetXY(142, 33);
+        $pdf->Write(0, $fechaSol . ' (a/m/d)');
+
+        $pdf->SetXY(146, 33+8.3);
+        $pdf->Write(0, $radicado);
+
+        //poner letra a estandar 12 puntos
+        $pdf->SetFont('Times','',12);
+
+        $pdf->SetXY(66, 62);
+        $pdf->Write(0, $departamento);
+
+        $pdf->SetXY(66-8, 95.5);
+        $pdf->Write(0, '"'.$asunto.'"');
+
+        $pdf->SetXY(38, 129);
+        $pdf->Write(0, $nombres . ' ' . $apellidos);
+
+        $pdf->SetXY(40, 129+5.5);
+        $pdf->Write(0, $cedula);
+
+        $pdf->SetXY(101, 129+5.5);
+        $pdf->Write(0, $lugar);
+
+        $pdf->SetFont('Arial','B',12);
+        switch ($modalidad) {
+
+            case "1":
+            default:
+                $pdf->SetXY(35-3.9, 151.4);
+                $pdf->Write(0, 'x');
+                break;
+
+            case "2":
+                $pdf->SetXY(35-3.9, 157.4);
+                $pdf->Write(0, 'x');
+                break;
+
+            case "3":
+                $pdf->SetXY(35-3.9, 157.7 +6);
+                $pdf->Write(0, 'x');
+                break;
+
+            case "4":
+                $pdf->SetXY(35-3.9, 158.1 +12);
+                $pdf->Write(0, 'x');
+                break;
+
+            case "5":
+                $pdf->SetXY(88.5, 151.4);
+                $pdf->Write(0, 'x');
+                break;
+
+            case "6":
+                $pdf->SetXY(88.5, 157.4);
+                $pdf->Write(0, 'x');
+                break;
+
+            case "7":
+                $pdf->SetXY(88.5, 157.7 +6);
+                $pdf->Write(0, 'x');
+                break;
+
+            case "8":
+                $pdf->SetXY(138.6, 151.4);
+                $pdf->Write(0, 'x');
+                break;
+
+            case "9":
+                $pdf->SetXY(138.6, 157.4);
+                $pdf->Write(0, 'x');
+                break;
+
+            case "10":
+                $pdf->SetXY(138.6, 157.7 +6);
+                $pdf->Write(0, 'x');
+                break;
+
+        }
+
+        if ($tipoPrograma == '1') {
+            $pdf->SetXY(35-3.9, 191);
+            $pdf->Write(0, 'x');
+        }else{
+            $pdf->SetXY(56.5, 191);
+            $pdf->Write(0, 'x');
+        }
+        
+        //reestablecer fuente a la usada en los anteriores
+        $pdf->SetFont('Times','',12);
+
+        $pdf->SetXY(80, 191);
+        $pdf->Write(0, $programa);
+
+        //Escribir la firma del usuario
+        if (!empty(session('usu_firma')) ) {
+
+            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 31, 212, 29, 13.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+        }
+
+        //guardar archivos adjuntos para la solicitud si fueron agregados
+        if (isset($request['adjunto1'])){
+
+            //establecer nombre de archivo irrepetible
+            $nombre1 = 'adjunto-cc-' . session('usu_cedula') . '-' . rand(10000, 99999);
+            //obtener la extension del archivo subido
+            $ext1 = explode( '/',$_FILES['adjunto1']['type'])[1];
+            //definir la ruta donde será guardado el archivo y que nombre tendrá
+            $targetfile = base_path() . '/public/adjuntos/'. $nombre1 . '.' . $ext1;
+            //mover el archivo subido a la ubicación deseada dentro del servidor. 
+            move_uploaded_file($_FILES['adjunto1']['tmp_name'], $targetfile); 
+
+            //El método setSourceFile() retorna el numero de páginas del documento seleccinado
+            $numPaginas = $pdf->setSourceFile('../public/adjuntos/'. $nombre1 . '.' . $ext1); 
+
+            for ($i=1; $i <= $numPaginas; $i++) { 
+                $pdf->AddPage();
+                try{
+                    $tplIdx = $pdf->importPage($i);
+                    $pdf->useTemplate($tplIdx, 1, 1, 217, 279);
+                }catch(Exception $e) {
+                  null;
+                }
+            }
+        }
+
+        //Luego de agregar los datos adjuntos ed eta solicitud
+        //proseguimos a seguir escribiendo datos en la segunda página de la solicitud
+
+        //Agregamos la segunda página
+        $pdf->AddPage();
+        $pdf->setSourceFile("../public/basePDF/R-ITM-01.pdf");
+        $tplIdx = $pdf->importPage(2);
+        $pdf->useTemplate($tplIdx, 1, 1, 217, 279);
+
+        //Escribimos los datos restantes
+        $pdf->SetXY(95, 45);
+        $pdf->Write(0, $nombres);
+
+        $pdf->SetXY(95, 45+11);
+        $pdf->Write(0, $apellidos);
+
+        $pdf->SetXY(95, 45+22);
+        $pdf->Write(0, 'No. ' . $carne);
+
+        $pdf->SetXY(95, 45+33);
+        $pdf->Write(0, $programa);
+
+        $pdf->SetXY(95, 45+44.5);
+        $pdf->Write(0, $fijo);
+
+        $pdf->SetXY(95, 45+55.5);
+        $pdf->Write(0, $celular);
+
+        $pdf->SetXY(95, 45+66.5);
+        $pdf->Write(0, $email1);
+
+        $pdf->SetXY(95, 45+77.5);
+        $pdf->Write(0, $email2);
+
+        //Escribir la firma del usuario
+        if (!empty(session('usu_firma')) ) {
+
+            //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
+            $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 42, 171.5, 29, 13.5); 
+        }
+
+        $pdf->SetXY(70, 215.5);
+        $pdf->Write(0, $nombres);
+
+        $pdf->SetXY(120, 215.5);
+        $pdf->Write(0, $apellidos);
+
+        $pdf->SetXY(81, 225);
+        $pdf->Write(0, $asunto);
+
+        $pdf->SetXY(60, 225+9);
+        $pdf->Write(0, 'Comité de trabajos de grado ITM');
+
+        $pdf->SetXY(45, 225+9+8);
+        $pdf->Write(0, $fechaSol . '(aaaa/mm/dd)');
+
+        $pdf->SetXY(52, 225+9+8+8);
+        $pdf->Write(0, $radicado);
+
+        /**
+        * mostrar el PDF en pantalla y al mismo tiempo guardarlo en una carpeta.
+        * el primer output lo guarda en el servidor local. El segundo muestra a el usuario
+        * Guardar en servidor local, con numero de cedula y nombre de solicitud
+        * mas numero para diferenciar la solicitud de otra igual
+        * P.ej: 1046668700-R-DC-39No3.pdf
+        */
+        $sol_formato = Session('usu_cedula') . '-R-ITM-01' . 'No' . $cuantasVeces . '.pdf';
+        $rutaGuardar = '../public/solicitudesPDF/' . $sol_formato;
+
+        /**
+        * Iniciar proceso de registro de datos en BD
+        * Tomo la cedula de la sesion iniciada por ser mas confiable 
+        * que la ingreasda en formulario
+        */
+        solicitudes::create([
+
+            'sol_nombre'=>'R-ITM-01',
+            'sol_formato'=>$sol_formato,
+            'sol_estado' => 'Pendiente',
+            'usu_cedula' => Session('usu_cedula')
+
+        ]);
+        
+
+        //Enviar correo para informar que la solicitud se ha creado
+        //se envia como parametro el correo de destino y el nombre de archivo
+        $this->enviarCorreo($sol_formato, Session('email'));
+
+        //Enviar mensaje de texto
+        $this->enviarSms($sol_nombre);
+
+
+        $pdf->Close();
+
+        $pdf->Output($rutaGuardar, 'F'); 
+        $pdf->Output($sol_formato, 'I'); 
+            
+
+
     }
 
     /**
@@ -292,6 +586,28 @@ class SolicitudesController extends Controller{
             ['usu_cedula' , '=', $usu_cedula],
             ])->count();
 
+        //Esta consulta no lleva ->get() por que se extrae un numero.
+        //con funciones de agragacion no se usa get.
+
+        // Iniciar el objeto para hacer operaciones
+        $pdf = new \fpdi\FPDI('P', 'mm','Letter');
+
+        //Nueva Página
+        $pdf->AddPage();
+
+        //Extraer plantilla desde pdf existente
+        $pdf->setSourceFile("../public/basePDF/R-ITM-01.pdf");
+
+        //Importar página de plantilla (en este caso, la 1)
+        $tplIdx = $pdf->importPage(1);
+
+        //Poner esta pagina en nueo documento con coordenadas de posicion
+        $pdf->useTemplate($tplIdx, 1, 1, 217, 279);
+
+        $pdf->SetTitle('R-DC-39');
+        $pdf->SetFont('Arial','',10);
+        $pdf->SetTextColor(0, 0, 0);
+
 
         //Esta consulta no lleva ->get() por que se extrae un numero.
         //con funciones de agragacion no se usa get.
@@ -311,11 +627,6 @@ class SolicitudesController extends Controller{
         //Poner esta pagina en nueo documento con coordenadas de posicion
         $pdf->useTemplate($tplIdx, 1, 1, 217, 279);
 
-        $pdf->SetTitle('R-DC-39');
-        $pdf->SetFont('Arial','',10);
-        $pdf->SetTextColor(0, 0, 0);
-
-        // Ahora escribir información en la página
         $pdf->SetTitle('R-DC-39');
         $pdf->SetFont('Arial','',10);
         $pdf->SetTextColor(0, 0, 0);
@@ -1092,7 +1403,7 @@ class SolicitudesController extends Controller{
      *  ->registrar en la base de datos
      *  ->enviar correo a usuario con solicitud creada
      */
-    public function procesarRDC52(Request $request){
+    public function responderRDC52(Request $request){
 
         $sol_nombre = 'R-DC-52';
         $usu_cedula = Session('usu_cedula');
@@ -1270,7 +1581,7 @@ class SolicitudesController extends Controller{
         //Enviar correo al usuario con solicitud creada
         $this->enviarCorreo($sol_formato, Session('email'));
 
-        $this->enviarSms($sol_nombre);
+        //$this->enviarSms($sol_nombre);
 
         $pdf->Output($rutaGuardar, 'F'); 
         $pdf->Output($sol_formato, 'I'); 
@@ -1308,24 +1619,31 @@ class SolicitudesController extends Controller{
     */
     public function enviarSms($sol_nombre){
 
-        if(Session('usu_telefono') != null || !empty(Session('usu_telefono'))){
+        /*if(Session('usu_telefono') != null || !empty(Session('usu_telefono'))){
 
-            //Iniciar config de idioma y zona horaria
-            setlocale(LC_ALL,"es_ES");
-            date_default_timezone_set("America/Bogota");
+            try {
 
-            $customer_id = "E03FF2E9-A27B-4A11-8DC9-C11DF6D54E3E";
-            $api_key = "SDnEC0qB848NLboLrs1iHNZD7jOndtV7Um2xBOvQEL1EvojRkSzXQ2wOuYx2tGAhXXgcABxc1ccxpVsuA1EBnA==";
+                //Iniciar config de idioma y zona horaria
+                setlocale(LC_ALL,"es_ES");
+                date_default_timezone_set("America/Bogota");
 
-                //$phone_number = $request->telefono;
-            $phone_number = '57' . Session('usu_telefono');
-            $message = "\n\n Gesol: Sol. " . $sol_nombre . " recibida correctamente en fecha:" . date("Y/m/d") . " a las " . date("h:i a") . ". Saludos!";
-            $message_type = "ARN";
+                $customer_id = "E03FF2E9-A27B-4A11-8DC9-C11DF6D54E3E";
+                $api_key = "SDnEC0qB848NLboLrs1iHNZD7jOndtV7Um2xBOvQEL1EvojRkSzXQ2wOuYx2tGAhXXgcABxc1ccxpVsuA1EBnA==";
 
-            $messaging = new MessagingClient($customer_id, $api_key);
-            $response = $messaging->message($phone_number, $message, $message_type);
+                    //$phone_number = $request->telefono;
+                $phone_number = '57' . Session('usu_telefono');
+                $message = "\n\n Gesol: Sol. " . $sol_nombre . " recibida correctamente en fecha:" . date("Y/m/d") . " a las " . date("h:i a") . ". Saludos!";
+                $message_type = "ARN";
 
-        }
+                $messaging = new MessagingClient($customer_id, $api_key);
+                $response = $messaging->message($phone_number, $message, $message_type);
+
+
+            } catch (Exception $e) {
+                null;
+            }
+
+        }*/
 
     }
 }
