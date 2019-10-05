@@ -1,6 +1,7 @@
 var cacheName = 'Gesol-cache';
 var filesToCache = [
   '/',
+  '/ayuda',
   'images/itm-logo.png'
 ];
 

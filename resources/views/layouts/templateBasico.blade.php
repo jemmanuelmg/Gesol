@@ -219,13 +219,6 @@
           <center>
 
           <img src="{{asset('images/gesol_logo_new2.png')}}" width="110px">
-
-          
-          <div class="redes">
-              <div class="email"><a href="/contacto/create"></a></div>
-              <div class="facebook"><a href="#"></a></div>
-              <div class="twitter"><a href="#"></a></div>
-          </div>
           
 
           </center>

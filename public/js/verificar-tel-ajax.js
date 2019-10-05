@@ -8,6 +8,7 @@ $(document).ready(function() {
 	var inputTelefono = $("#input-telefono");
 	var email = $("#input-email");
 	var botonTelefono = $("#btn-telefono");
+	var botonRegistro = $("#btn-registro");
 
 	//los del segundo div invisible, para ingresar el token enviado
 	var divIngresarToken = $('#div-ingresar-token');
@@ -90,6 +91,8 @@ $(document).ready(function() {
 				divIngresarToken.show(300);
 				inputTokenRes.val(data.token);
 
+				botonRegistro.removeAttr('disabled'); ////Habilitar el boton de registro  final
+
 			},
 
 			complete: function() {
@@ -120,6 +123,8 @@ $(document).ready(function() {
 
 				divIngresarToken.show(300);
 				inputTokenRes.val(data.token);
+
+				botonRegistro.removeAttr('disabled'); //Habilitar el boton de registro  final
 
 			},
 

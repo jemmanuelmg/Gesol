@@ -176,7 +176,7 @@ Registrarse en Gesol
 				<br>
 				<br>
 
-				<input type="submit" value="2. Registrarse" class="btn btn-primary btn-lg">
+				<input type="submit" id="btn-registro" value="2. Registrarse" class="btn btn-primary btn-lg" disabled="true">
 
 
 			</div>
