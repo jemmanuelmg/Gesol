@@ -114,7 +114,7 @@
                     <div class="form-group">
                       <label class="control-label" for="motivo">Motivo *</label>
                         <div class="input-group">
-                            <textarea name="motivo" rows="4" cols="50" maxlength="" class="form-control" placeholder="Introduzca su motivo"></textarea>
+                            <textarea name="motivo" rows="4" cols="50" maxlength="278" class="form-control" placeholder="Introduzca su motivo"></textarea>
                         </div>              
                     </div>
 

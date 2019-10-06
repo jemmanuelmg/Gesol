@@ -100,7 +100,7 @@
 
 		$(document).ready(function() {
 			$('#example').DataTable({
-				"order":[[0,"desc"]],
+				"order":[[1,"desc"]],
 				"language":{
 					"search":"Buscar en tabla",
 					"paginate":{

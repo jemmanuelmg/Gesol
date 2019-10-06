@@ -70,7 +70,7 @@ p, label{
   font-size: 1rem;
   margin: 1rem 0;
 }
-a, select, .card-body, #opc-tel, #opc-email{
+a, select, .card-body, #opc-tel, #opc-email, input{
   font-size: 1rem;
 }
 td, th{

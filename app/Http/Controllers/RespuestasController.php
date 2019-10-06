@@ -455,6 +455,23 @@ class RespuestasController extends Controller
             }
         }
 
+        //agregar de nuevo todos los datos adjuntos que tenia la solicitud
+        //en las paginas inferiores
+        //Importar el contenido ya existente de la solicitud (datos, archivos adjuntos, etc)
+        //Luego escribir en la última página la respuesta a la solicitud
+        $numPaginas = $pdf->setSourceFile("../public/solicitudesPDF/" . $request['sol_formato']); 
+
+        for ($i=2; $i <= $numPaginas; $i++) { 
+            $pdf->AddPage();
+            try{
+                $tplIdx = $pdf->importPage($i);
+                $pdf->useTemplate($tplIdx, 1, 1, 217, 279);
+            }catch(Exception $e) {
+              null;
+            }
+
+        }
+
         
         
 
@@ -800,6 +817,24 @@ class RespuestasController extends Controller
                 $pdf->Image('../public/images/firmas_usuarios/' . session('usu_firma'), 100, 240, 28, 12.5); //ruta_archivo, x, y, ancho (no poner alto, se calcula automatico)
             }
         }
+
+        //agregar de nuevo todos los datos adjuntos que tenia la solicitud
+        //en las paginas inferiores
+        //Importar el contenido ya existente de la solicitud (datos, archivos adjuntos, etc)
+        //Luego escribir en la última página la respuesta a la solicitud
+        $numPaginas = $pdf->setSourceFile("../public/solicitudesPDF/" . $request['sol_formato']); 
+
+        for ($i=2; $i <= $numPaginas; $i++) { 
+            $pdf->AddPage();
+            try{
+                $tplIdx = $pdf->importPage($i);
+                $pdf->useTemplate($tplIdx, 1, 1, 217, 279);
+            }catch(Exception $e) {
+              null;
+            }
+
+        }
+        
 
         $pdf->Close();  
 

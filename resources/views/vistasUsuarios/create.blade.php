@@ -124,8 +124,8 @@ Registrarse en Gesol
 							<!--INICIA RADIO BUTTONS EMAIL TELEFONO-->
 							<p>	
 							<center>
-							<i class="fas fa-mobile-alt fa-1x" id="icono-tel"></i>&nbsp;&nbsp;<input type="radio" name="opc-verif" id="opc-tel"> Con teléfono &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<i class="fas fa-envelope fa-1x" id="icono-email"></i>&nbsp;&nbsp;<input type="radio" name="opc-verif" id="opc-email"> Con Email
+							<i class="fas fa-mobile-alt fa-1x" id="icono-tel"></i>&nbsp;&nbsp;<input type="radio" name="opc-verif" id="opc-tel"> <label>Con teléfono</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fas fa-envelope fa-1x" id="icono-email"></i>&nbsp;&nbsp;<input type="radio" name="opc-verif" id="opc-email"> <label>Con Email </label>
 							</center>
 							</p>
 							<!--FIN RADIO BUTTONS EMAIL TELEFONO-->	

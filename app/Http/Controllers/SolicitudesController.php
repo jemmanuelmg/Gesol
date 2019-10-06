@@ -1403,7 +1403,7 @@ class SolicitudesController extends Controller{
      *  ->registrar en la base de datos
      *  ->enviar correo a usuario con solicitud creada
      */
-    public function responderRDC52(Request $request){
+    public function procesarRDC52(Request $request){
 
         $sol_nombre = 'R-DC-52';
         $usu_cedula = Session('usu_cedula');
